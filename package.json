@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "prettier -w src/js/joker.js"
+    "format": "prettier -w src/**/*.js"
   },
   "devDependencies": {
     "prettier": "^3.1.0",
