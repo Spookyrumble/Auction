@@ -1,2 +1,12 @@
+@import "./variables/fonts";
 @import "./variables/themeColors";
 @import "~bootstrap/scss/bootstrap";
+
+.banner {
+  background-color: $secondary;
+  height: 80px;
+}
+
+.cover {
+  object-fit: cover;
+}
