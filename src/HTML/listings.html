@@ -4,9 +4,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Auction listings</title>
+    <script type="module" src="/src/js/main.js"></script>
   </head>
   <body>
-    <header>HELLO WORLD!</header>
+    <header>
+      <nav class="navbar navbar-expand-lg fixed-top">
+        <a id="logoLink" class="navbar-brand text-secondary m-2"
+          ><h1>Pinnacle Auctions</h1></a
+        >
+        <button
+          class="navbar-toggler collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#burgerMenu"
+          aria-controls="burgerMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-between m-2"
+          id="burgerMenu"
+        >
+          <ul class="navbar-nav text-center mr-auto">
+            <li class="nav-item">
+              <a id="profileNavLink" class="nav-link text-secondary m-4"
+                >Profile</a
+              >
+            </li>
+            <li class="nav-item">
+              <a id="feedNavLink" class="nav-link text-secondary m-4" href="#"
+                >Listings</a
+              >
+            </li>
+            <li class="nav-item">
+              <a id="newListing" class="nav-link text-secondary m-4" href="#"
+                >Add Listing</a
+              >
+            </li>
+            <li class="nav-item">
+              <a id="signOut" class="nav-link text-secondary m-4" href="#"
+                >Sign out</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
     <main></main>
     <footer></footer>
   </body>
