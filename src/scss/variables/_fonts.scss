@@ -1,9 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto+Flex:opsz,wght@8..144,100;8..144,300;8..144,400;8..144,700&display=swap");
 
 $font-family-base: "Roboto Flex", sans-serif;
-$font-family-h1: "Merriweather", serif;
-$font-family-h2: "Merriweather", serif;
-$font-family-h3: "Merriweather", serif;
-$font-family-h4: "Merriweather", serif;
-$font-family-h5: "Merriweather", serif;
-$font-family-h6: "Merriweather", serif;
+$headers: "Merriweather", serif;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $headers;
+}
