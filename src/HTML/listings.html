@@ -7,72 +7,83 @@
     <script type="module" src="../js/listings.js"></script>
   </head>
   <body>
-    <header>
-      <nav class="navbar navbar-expand-lg fixed-top">
-        <a id="logoLink" class="navbar-brand text-secondary m-2"
-          ><h1>Pinnacle Auctions</h1></a
-        >
-        <button
-          class="navbar-toggler collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#burgerMenu"
-          aria-controls="burgerMenu"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="collapse navbar-collapse justify-content-between bg-white"
-          id="burgerMenu"
-        >
-          <ul class="navbar-nav text-center mr-auto">
-            <li class="nav-item">
-              <a
-                id="profileNavLink"
-                class="nav-link text-secondary m-4"
-                href="#"
-                >Profile</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                id="feedNavLink"
-                class="nav-link text-secondary m-4 active"
-                href="#"
-                >Listings</a
-              >
-            </li>
-            <li class="nav-item">
-              <a id="newListing" class="nav-link text-secondary m-4" href="#"
-                >Add Listing</a
-              >
-            </li>
-            <li class="nav-item">
-              <a id="signOut" class="nav-link text-secondary m-4" href="#"
-                >Sign out</a
-              >
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <div class="container spacer">
-        <div class="d-flex row m-auto">
-          <form class="form-inline col-8 m-auto">
-            <div class="d-flex gap-3">
-              <label class="form-label m-auto" for="search">Search</label>
-              <input
-                class="form-control"
-                type="text"
-                name="search"
-                id="searchInput"
-              />
-              <button class="btn btn-secondary text-white" type="submit">
-                Go
-              </button>
+    <header class="container-fluid m-auto">
+      <div class="row m-auto">
+        <div class="col-12">
+          <nav class="navbar navbar-expand-lg fixed-top mx-4">
+            <a id="logoLink" class="navbar-brand text-secondary m-2"
+              ><h1>OnlyPineapples</h1></a
+            >
+            <button
+              class="navbar-toggler collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#burgerMenu"
+              aria-controls="burgerMenu"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+              class="collapse navbar-collapse justify-content-between bg-white"
+              id="burgerMenu"
+            >
+              <ul class="navbar-nav text-center mr-auto">
+                <li class="nav-item">
+                  <a
+                    id="profileNavLink"
+                    class="nav-link text-secondary m-4"
+                    href="#"
+                    >Profile</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    id="feedNavLink"
+                    class="nav-link text-secondary m-4 active"
+                    href="#"
+                    >Listings</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    id="newListing"
+                    class="nav-link text-secondary m-4"
+                    href="#"
+                    >Add Listing</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a id="signOut" class="nav-link text-secondary m-4" href="#"
+                    >Sign out</a
+                  >
+                </li>
+              </ul>
             </div>
-          </form>
+          </nav>
+        </div>
+        <div class="row m-auto">
+          <div class="spacer col">
+            <div class="d-flex row banner navbar-expand-lg">
+              <form class="form-inline col-8 m-auto">
+                <div class="d-flex gap-3">
+                  <label class="form-label m-auto text-white" for="search"
+                    >Search</label
+                  >
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="search"
+                    id="searchInput"
+                  />
+                  <button class="btn btn-primary text-white" type="submit">
+                    Go
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </header>
