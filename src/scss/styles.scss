@@ -10,3 +10,12 @@
 .cover {
   object-fit: cover;
 }
+
+.spacer {
+  margin-top: 7rem;
+}
+
+.active {
+  border-top: 2px solid $primary;
+  border-bottom: 2px solid $primary;
+}

@@ -24,17 +24,23 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div
-          class="collapse navbar-collapse justify-content-between m-2"
+          class="collapse navbar-collapse justify-content-between bg-white"
           id="burgerMenu"
         >
           <ul class="navbar-nav text-center mr-auto">
             <li class="nav-item">
-              <a id="profileNavLink" class="nav-link text-secondary m-4"
+              <a
+                id="profileNavLink"
+                class="nav-link text-secondary m-4"
+                href="#"
                 >Profile</a
               >
             </li>
             <li class="nav-item">
-              <a id="feedNavLink" class="nav-link text-secondary m-4" href="#"
+              <a
+                id="feedNavLink"
+                class="nav-link text-secondary m-4 active"
+                href="#"
                 >Listings</a
               >
             </li>
@@ -51,6 +57,24 @@
           </ul>
         </div>
       </nav>
+      <div class="container spacer">
+        <div class="d-flex row m-auto">
+          <form class="form-inline col-8 m-auto">
+            <div class="d-flex gap-3">
+              <label class="form-label m-auto" for="search">Search</label>
+              <input
+                class="form-control"
+                type="text"
+                name="search"
+                id="searchInput"
+              />
+              <button class="btn btn-secondary text-white" type="submit">
+                Go
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </header>
     <main></main>
     <footer></footer>
