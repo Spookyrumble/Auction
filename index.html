@@ -32,10 +32,11 @@
               </button>
             </div>
             <div class="modal-body">
-              <form id="loginRegForm">
+              <form id="loginForm">
                 <div class="form-group my-3">
                   <label for="loginEnput">Email address</label>
                   <input
+                    name="email"
                     type="email"
                     class="form-control"
                     id="loginEnput"
@@ -49,10 +50,12 @@
                 <div class="form-group my-3">
                   <label for="loginPasswordInput">Password</label>
                   <input
+                    name="password"
                     type="password"
                     class="form-control"
                     id="passwordInput"
                     placeholder="Password"
+                    minlength="8"
                   />
                   <small id="passwordHelp" class="form-text text-muted"
                     >Minimum 8 characters.</small

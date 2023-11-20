@@ -1,4 +1,4 @@
-const form = document.getElementById("loginRegForm");
+const form = document.getElementById("loginForm");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
@@ -14,8 +14,10 @@ registerBtn.addEventListener("click", () => {
   if (username.classList.contains("collapse")) {
     registerBtn.textContent = "Register";
     submitBtn.textContent = "Login";
+    form.id = "loginForm";
   } else if (!username.classList.contains("collapse")) {
     registerBtn.textContent = "Return";
     submitBtn.textContent = "Submit";
+    form.id = "registerForm";
   }
 });
