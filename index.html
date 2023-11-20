@@ -5,12 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pinnacle Auctions</title>
     <script type="module" src="src/js/main.js"></script>
+    <script type="module" src="/src/js/modal/registerModal.mjs"></script>
   </head>
   <body class="bg-secondary">
     <header>
       <div class="col-12 bg-secondary banner"></div>
     </header>
     <main>
+      <div
+        class="modal blur"
+        tabindex="-1"
+        role="dialog"
+        style="display: block"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title">Login</h2>
+              <button
+                type="button"
+                class="close bg-secondary rounded"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span class="text-white" aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="loginRegForm">
+                <div class="form-group my-3">
+                  <label for="loginEnput">Email address</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="loginEnput"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >We'll never share your email with anyone else.</small
+                  >
+                </div>
+                <div class="form-group my-3">
+                  <label for="loginPasswordInput">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="passwordInput"
+                    placeholder="Password"
+                  />
+                  <small id="passwordHelp" class="form-text text-muted"
+                    >Minimum 8 characters.</small
+                  >
+                </div>
+                <div id="username" class="form-group collapse my-3">
+                  <label for="usernameInput">Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="usernameInput"
+                    placeholder="Enter Username"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >Please provide a username.</small
+                  >
+                </div>
+                <div id="avatar" class="form-group collapse my-3">
+                  <label for="avatarInput">Avatar URL</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="avatarInput"
+                    placeholder="(Optional) Image URL"
+                  />
+                  <small id="passwordHelp" class="form-text text-muted"
+                    >Valid image URL address must be used. Or leave
+                    empty.</small
+                  >
+                </div>
+                <div class="d-flex justify-content-between mx-3">
+                  <button
+                    id="submitBtn"
+                    type="submit"
+                    class="btn btn-primary mt-3"
+                  >
+                    Login
+                  </button>
+                  <button id="registerBtn" class="btn btn-primary mt-3">
+                    Register
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="col-12 d-flex m-auto">
         <img
           class="img-fluid vh-100 m-auto cover position-relative"
