@@ -1,4 +1,4 @@
-import { createDynamicCarousel } from "./imgCarousel.mjs";
+// import { createDynamicCarousel } from "./imgCarousel.mjs";
 
 export function createAuctionCards(data) {
   const container = document.getElementById("cardContainer");
@@ -15,10 +15,10 @@ export function createAuctionCards(data) {
   const imgArray = data.media;
   console.log(imgArray);
 
-  const carousel = createDynamicCarousel(data.id, imgArray);
+  //   const carousel = createDynamicCarousel(data.id, imgArray);
 
-  carouselContainer.append(carousel);
-  cardBody.append(carouselContainer);
+  //   carouselContainer.append(carousel);
+  //   cardBody.append(carouselContainer);
 
   const cardTitle = document.createElement("h5");
   cardTitle.className = "card-title";

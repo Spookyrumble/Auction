@@ -18,7 +18,7 @@ function formHandler() {
       const data = Object.fromEntries(formData);
       const response = await loginUser(loginURL, data);
       console.log(response, data);
-      window.location.href = "/src/HTML/listings.html";
+      window.location.href = "/src/HTML/auction/index.html";
     });
   }
 
