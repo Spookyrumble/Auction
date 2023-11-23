@@ -1,7 +1,10 @@
-import { imgCarousel } from "../carousel/carousel.mjs";
+import { createDynamicCarousel } from "./imgCarousel.mjs";
 
 export function createAuctionCards(data) {
+  const container = document.getElementById("cardContainer");
+
   const card = document.createElement("div");
+  card.id = data.id;
   (card.className = "card"), "mx-3";
   card.style = "width: 18rem;";
 
@@ -10,7 +13,10 @@ export function createAuctionCards(data) {
 
   const carouselContainer = document.createElement("div");
   const imgArray = data.media;
-  const carousel = imgCarousel(imgArray);
+  console.log(imgArray);
+
+  const carousel = createDynamicCarousel(data.id, imgArray);
+
   carouselContainer.append(carousel);
   cardBody.append(carouselContainer);
 
@@ -32,4 +38,6 @@ export function createAuctionCards(data) {
   cardBody.append(cardText);
   cardBody.append(cardPrice);
   cardBody.append(bidBtn);
+  card.append(cardBody);
+  container.append(card);
 }
