@@ -67,7 +67,7 @@
           <div class="col-12">
             <div class="d-flex justify-content-between banner rounded">
               <div class="col-3 d-flex align-items-center mx-3">
-                <div class="col-2 d-flex gap-1">
+                <div class="col-2-sm d-flex flex-wrap gap-1">
                   <div>
                     <img
                       id="avatar"
@@ -92,12 +92,15 @@
                       >Search</label
                     >
                     <input
-                      class="form-control"
+                      class="form-control border-info"
                       type="text"
                       name="search"
                       id="searchInput"
                     />
-                    <button class="btn btn-primary text-white" type="submit">
+                    <button
+                      class="btn btn-primary text-white border-info"
+                      type="submit"
+                    >
                       Go
                     </button>
                   </div>
@@ -108,7 +111,73 @@
         </div>
       </div>
     </header>
-    <main></main>
+    <main>
+      <div class="container spacer">
+        <div class="row">
+          <div class="col-12-sm d-flex justify-content-center">
+            <img
+              class="img-fluid rounded-circle"
+              src="https://via.placeholder.com/150"
+              alt=""
+            />
+          </div>
+          <div class="col-12 d-flex justify-content-center">
+            <h2 class="text-secondary">Username</h2>
+          </div>
+          <div class="col-12 d-flex justify-content-center gap-5">
+            <div>
+              <p>Credits:<span>900</span></p>
+            </div>
+            <div>
+              <p>Listings:<span>1</span></p>
+            </div>
+          </div>
+          <div class="col-12-sm d-flex justify-content-center gap-5">
+            <button
+              id="editProfileBtn"
+              class="col-3 btn btn-info text-secondary border-secondary"
+            >
+              Avatar
+            </button>
+            <div>
+              <form>
+                <div class="form-group">
+                  <label class="form" for=""></label>
+                  <input type="text" />
+                  <small></small>
+                </div>
+              </form>
+            </div>
+            <button
+              id="newListingBtn"
+              class="col-3 btn btn-info text-secondary border-secondary"
+            >
+              New Listing
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="btn-group mt-5"
+            role="group"
+            aria-label="page load buttons"
+          >
+            <button type="button" class="btn btn-white border-secondary">
+              Bids
+            </button>
+            <button
+              type="button"
+              class="btn btn-white border-secondary activeBtn"
+            >
+              Listings
+            </button>
+            <button type="button" class="btn btn-white border-secondary">
+              Sold
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
     <footer></footer>
   </body>
 </html>
