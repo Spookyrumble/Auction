@@ -139,15 +139,6 @@
             >
               Avatar
             </button>
-            <div>
-              <form>
-                <div class="form-group">
-                  <label class="form" for=""></label>
-                  <input type="text" />
-                  <small></small>
-                </div>
-              </form>
-            </div>
             <button
               id="newListingBtn"
               class="col-3 btn btn-info text-secondary border-secondary"
@@ -155,6 +146,89 @@
               New Listing
             </button>
           </div>
+        </div>
+        <div id="editContainer" class="collapse">
+          <form id="editAvatar">
+            <div class="form-group d-flex flex-column m-auto my-3 col-6">
+              <label class="text-secondary" for="">Avatar URL</label>
+              <input
+                class="form-control border-info"
+                name="avatar"
+                type="text"
+                aria-describedby="urlHelp"
+              />
+              <small id="urlHelp" class="form-text text-muted"
+                >Paste image .jpg address</small
+              >
+            </div>
+          </form>
+        </div>
+        <div id="listingContainer" class="collapse">
+          <form id="newListing">
+            <div class="col-6 m-auto my-4">
+              <div class="form-group mb-3">
+                <label for="">Item</label>
+                <input
+                  class="form-control border-info"
+                  type="text"
+                  name="item"
+                  id="item"
+                  aria-describedby="itemHelp"
+                />
+                <small id="itemHelp" class="form-text text-muted"
+                  >What it is or what it is called</small
+                >
+              </div>
+              <div class="form-group mb-3">
+                <label for="description">Description</label>
+                <textarea
+                  class="form-control border-info"
+                  name="description"
+                  id="description"
+                  cols="30"
+                  rows="4"
+                  aria-describedby="decribeHelp"
+                ></textarea>
+                <small id="decribeHelp" class="form-text text-muted"
+                  >A short description of the item.</small
+                >
+              </div>
+              <div class="form-group mb-3">
+                <label for="tags">Tag</label>
+                <input
+                  class="form-control border-info"
+                  type="text"
+                  name="tags"
+                  id="tags"
+                  aria-describedby="tagsHelp"
+                />
+                <small id="tagsHelp" class="form-text text-muted"
+                  >Tags for the item. To use multiple tags, separate with
+                  commas.</small
+                >
+              </div>
+              <div class="form-group mb-3">
+                <label for="">Starting price</label>
+                <input
+                  class="form-control border-info"
+                  type="text"
+                  name="tags"
+                  id="tags"
+                  aria-describedby="priceHelp"
+                />
+                <small id="priceHelp" class="form-text text-muted"
+                  >What is the items starting price?</small
+                >
+              </div>
+              <div class="form-group">
+                <label for="">Media URL</label>
+                <input class="form-control border-info" type="text" />
+                <small class="form-text text-muted"
+                  >Media link/URL. Must be jpg.</small
+                >
+              </div>
+            </div>
+          </form>
         </div>
         <div class="row">
           <div
