@@ -23,7 +23,7 @@ function formHandler() {
   }
 
   if (registerForm) {
-    registerForm.addEventListener("submit", async (e) => {
+    registerForm.addEventListener("click", async (e) => {
       e.preventDefault();
       const formData = new FormData(registerForm);
       const data = Object.fromEntries(formData);

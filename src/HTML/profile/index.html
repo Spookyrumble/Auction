@@ -29,8 +29,8 @@
               class="collapse navbar-collapse justify-content-between bg-white"
               id="burgerMenu"
             >
-              <ul class="navbar-nav text-center mr-auto">
-                <li class="nav-item">
+              <ul class="navbar-nav text-center m-auto">
+                <li class="nav-item m-auto">
                   <a
                     id="profileNavLink"
                     class="nav-link text-secondary m-4 active"
@@ -38,7 +38,7 @@
                     >Profile</a
                   >
                 </li>
-                <li class="nav-item">
+                <li class="nav-item m-auto">
                   <a
                     id="feedNavLink"
                     class="nav-link text-secondary m-4"
@@ -46,15 +46,18 @@
                     >Listings</a
                   >
                 </li>
-                <li class="nav-item">
+                <li class="nav-item m-auto">
                   <a
                     id="newListing"
                     class="nav-link text-secondary m-4"
                     href="#"
-                    >Add Listing</a
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight"
+                    >Quick list new item</a
                   >
                 </li>
-                <li class="nav-item">
+                <li class="nav-item m-auto">
                   <a id="signOut" class="nav-link text-secondary m-4" href="#"
                     >Sign out</a
                   >
@@ -110,6 +113,111 @@
           </div>
         </div>
       </div>
+      <div
+        class="offcanvas offcanvas-end bgGradient"
+        tabindex="-1"
+        id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel"
+      >
+        <div class="offcanvas-header mt-5">
+          <h5 class="offcanvas-title" id="offcanvasRightLabel">
+            Add new listing
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <form id="newListing" class="needs-validation" novalidate>
+            <div class="">
+              <div class="form-floating mb-3">
+                <input
+                  class="form-control border-info"
+                  type="text"
+                  name="item"
+                  id="item"
+                  aria-describedby="itemHelp"
+                  placeholder="yourname@example.com"
+                  required
+                />
+                <label for="item">Item name</label>
+                <div class="valid-feedback">LGTM</div>
+                <small id="itemHelp" class="ms-2 form-text text-muted"
+                  >What it is or what it is called</small
+                >
+              </div>
+              <div class="form-floating mb-3">
+                <textarea
+                  class="form-control border-info"
+                  name="description"
+                  id="description"
+                  aria-describedby="decribeHelp"
+                  placeholder="Leave a description here"
+                  required
+                ></textarea>
+                <label for="description">Description</label>
+                <small id="decribeHelp" class="ms-2 form-text text-muted"
+                  >A short description of the item.</small
+                >
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  class="form-control border-info"
+                  type="text"
+                  name="tags"
+                  id="tags"
+                  aria-describedby="tagsHelp"
+                  placeholder="tag1, tag2, tag3"
+                />
+                <label for="tags">Tag</label>
+                <small id="tagsHelp" class="ms-2 form-text text-muted"
+                  >To use multiple tags, separate with commas.</small
+                >
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  class="form-control border-info"
+                  type="number"
+                  name="tags"
+                  id="tags"
+                  aria-describedby="priceHelp"
+                  placeholder="Starting price"
+                  required
+                />
+                <label for="">Starting price</label>
+                <small id="priceHelp" class="ms-2 form-text text-muted"
+                  >What is the items starting price?</small
+                >
+              </div>
+              <div class="form-floating">
+                <input
+                  class="form-control border-info"
+                  type="text"
+                  name="url"
+                  id="itemUrl"
+                  aria-describedby="urlHelp"
+                  placeholder="Image URL"
+                />
+                <small class="ms-2 form-text text-muted"
+                  >Media link/URL. Must be jpg.</small
+                >
+                <label for="url">Media URL</label>
+              </div>
+              <div class="d-flex justify-content-center">
+                <button
+                  class="col-3 btn btn-info text-secondary border-secondary my-3"
+                  type="submit"
+                >
+                  create
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </header>
     <main>
       <div class="container spacer">
@@ -136,100 +244,48 @@
             <button
               id="editProfileBtn"
               class="col-3 btn btn-info text-secondary border-secondary"
+              data-bs-target="#editContainer"
             >
               Avatar
             </button>
             <button
               id="newListingBtn"
               class="col-3 btn btn-info text-secondary border-secondary"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasRight"
+              aria-controls="offcanvasRight"
             >
               New Listing
             </button>
           </div>
         </div>
-        <div id="editContainer" class="collapse">
+        <div id="editContainer" data-bs-toggle="collapse" class="collapse">
           <form id="editAvatar">
-            <div class="form-group d-flex flex-column m-auto my-3 col-6">
-              <label class="text-secondary" for="">Avatar URL</label>
+            <div class="form-floating d-flex flex-column m-auto my-3 col-6">
               <input
                 class="form-control border-info"
                 name="avatar"
                 type="text"
                 aria-describedby="urlHelp"
+                placeholder="Image URL"
+                data-bs-toggle="collapse"
               />
+              <label class="form-label text-secondary" for="">Avatar URL</label>
               <small id="urlHelp" class="form-text text-muted"
                 >Paste image .jpg address</small
               >
             </div>
-          </form>
-        </div>
-        <div id="listingContainer" class="collapse">
-          <form id="newListing">
-            <div class="col-6 m-auto my-4">
-              <div class="form-group mb-3">
-                <label for="">Item</label>
-                <input
-                  class="form-control border-info"
-                  type="text"
-                  name="item"
-                  id="item"
-                  aria-describedby="itemHelp"
-                />
-                <small id="itemHelp" class="form-text text-muted"
-                  >What it is or what it is called</small
-                >
-              </div>
-              <div class="form-group mb-3">
-                <label for="description">Description</label>
-                <textarea
-                  class="form-control border-info"
-                  name="description"
-                  id="description"
-                  cols="30"
-                  rows="4"
-                  aria-describedby="decribeHelp"
-                ></textarea>
-                <small id="decribeHelp" class="form-text text-muted"
-                  >A short description of the item.</small
-                >
-              </div>
-              <div class="form-group mb-3">
-                <label for="tags">Tag</label>
-                <input
-                  class="form-control border-info"
-                  type="text"
-                  name="tags"
-                  id="tags"
-                  aria-describedby="tagsHelp"
-                />
-                <small id="tagsHelp" class="form-text text-muted"
-                  >Tags for the item. To use multiple tags, separate with
-                  commas.</small
-                >
-              </div>
-              <div class="form-group mb-3">
-                <label for="">Starting price</label>
-                <input
-                  class="form-control border-info"
-                  type="text"
-                  name="tags"
-                  id="tags"
-                  aria-describedby="priceHelp"
-                />
-                <small id="priceHelp" class="form-text text-muted"
-                  >What is the items starting price?</small
-                >
-              </div>
-              <div class="form-group">
-                <label for="">Media URL</label>
-                <input class="form-control border-info" type="text" />
-                <small class="form-text text-muted"
-                  >Media link/URL. Must be jpg.</small
-                >
-              </div>
+            <div class="d-flex justify-content-center">
+              <button
+                class="col-3 btn btn-info text-secondary border-secondary my-1"
+                type="submit"
+              >
+                Submit
+              </button>
             </div>
           </form>
         </div>
+
         <div class="row">
           <div
             class="btn-group mt-5"

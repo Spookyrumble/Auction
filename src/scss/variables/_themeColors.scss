@@ -3,3 +3,7 @@ $background: #dedede;
 $primary: #055e99;
 $secondary: #041020;
 $info: #ce9300;
+
+.bgGradient {
+  background: linear-gradient(to bottom, white 0%, white 50%, $secondary 100%);
+}

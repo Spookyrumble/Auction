@@ -7,3 +7,11 @@ import Alert from "bootstrap/js/dist/alert";
 import { Tooltip, Toast, Popover } from "bootstrap";
 
 containerHandler();
+
+const listForm = document.getElementById("newListing");
+listForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(listForm);
+  const data = Object.fromEntries(formData.entries());
+  console.log(data);
+});
