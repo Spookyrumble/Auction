@@ -7,10 +7,11 @@ import { Tooltip, Toast, Popover } from "bootstrap";
 import { fetchOpenListings } from "./API/fetch/noAuthFetch.mjs";
 import { createAuctionCards } from "/src/js/cards/createCards.mjs";
 import { end } from "@popperjs/core";
+import { previewInit } from "./handlers/cardPreview.mjs";
 
 async function init() {
   const array = await fetchOpenListings();
-  console.log(array);
+  // console.log(array);
   const currentDateTime = new Date();
 
   for (let i = 0; i < array.length; i++) {
@@ -26,3 +27,4 @@ async function init() {
 }
 
 init();
+previewInit();

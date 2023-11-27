@@ -119,7 +119,7 @@
         id="offcanvasRight"
         aria-labelledby="offcanvasRightLabel"
       >
-        <div class="offcanvas-header mt-5">
+        <div class="offcanvas-header mt-1">
           <h5 class="offcanvas-title" id="offcanvasRightLabel">
             Add new listing
           </h5>
@@ -132,7 +132,7 @@
         </div>
         <div class="offcanvas-body">
           <form id="newListing" class="needs-validation" novalidate>
-            <div class="">
+            <div>
               <div class="form-floating mb-3">
                 <input
                   class="form-control border-info"
@@ -192,6 +192,21 @@
                   >What is the items starting price?</small
                 >
               </div>
+              <div class="form-floating mb-3">
+                <input
+                  class="form-control border-info"
+                  type="date"
+                  name="date"
+                  id="date"
+                  aria-describedby="dateHelp"
+                  placeholder="Auction end date"
+                  required
+                />
+                <label for="">Auction end date</label>
+                <small id="dateHelp" class="ms-2 form-text text-muted"
+                  >When will this auction end?</small
+                >
+              </div>
               <div class="form-floating">
                 <input
                   class="form-control border-info"
@@ -217,6 +232,24 @@
             </div>
           </form>
         </div>
+        <!--  -->
+        <div>
+          <div id="listingPreview" class="card scaleDown mb-5">
+            <img
+              class="cardImgSizing"
+              id="previewImg"
+              src="https://placeholder.com/150"
+              alt="preview image"
+            />
+            <div class="card-body text-end">
+              <h5 id="previewTitle" class="card-title">Title Preview</h5>
+              <p id="previewDescription" class="card-text">
+                Description Preview
+              </p>
+            </div>
+          </div>
+        </div>
+        <!--  -->
       </div>
     </header>
     <main>
