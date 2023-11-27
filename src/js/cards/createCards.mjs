@@ -11,76 +11,95 @@ export function createAuctionCards(data) {
   cardBody.className = "d-flex flex-column justify-content-between card-body";
 
   const imgContainer = document.createElement("div");
-  imgContainer.className = "d-block w-100";
 
   const imgArray = data.media;
-  console.log(data);
 
-  if (imgArray.length > 0) {
-    // Create carousel structure
-    const carousel = document.createElement("div");
-    carousel.id = "carouselExampleSlidesOnly";
-    carousel.className = "carousel slide";
-    carousel.setAttribute("data-bs-ride", "carousel");
+  const thumbnailContainer = document.createElement("div");
+  thumbnailContainer.className =
+    "d-flex justify-content-around thumbnailContainer";
+  if (imgArray.length > 1) {
+    const mainImage = document.createElement("img");
+    mainImage.id = "mainImage";
+    mainImage.className = "d-block cardImgSizing";
+    mainImage.src = imgArray[0];
+    mainImage.alt = "Main Image";
+    imgContainer.append(mainImage);
 
-    const carouselInner = document.createElement("div");
-    carouselInner.className = "carousel-inner";
-    carousel.append(carouselInner);
+    imgArray.forEach((src) => {
+      const thumbnail = document.createElement("img");
+      thumbnail.src = src;
+      thumbnail.className = "img-thumbnail";
+      thumbnail.style.width = "80px";
+      thumbnail.style.cursor = "pointer";
+      thumbnail.onclick = function () {
+        mainImage.src = src;
+      };
+      thumbnailContainer.append(thumbnail);
+    });
 
-    // Loop through the images
-    for (let i = 0; i < imgArray.length; i++) {
-      const carouselItem = document.createElement("div");
-      carouselItem.className = "carousel-item";
-      if (i === 0) {
-        carouselItem.classList.add("active");
-      }
-
-      const img = document.createElement("img");
-      img.className = "img-fluid";
-      img.src = imgArray[i];
-      img.alt = `Image ${i}`;
-
-      carouselItem.append(img);
-      carouselInner.append(carouselItem);
-    }
-
-    // Append the carousel to a container
-    imgContainer.append(carousel);
-  } else if (imgArray.length >= 0) {
+    imgContainer.append(thumbnailContainer);
+  } else if (imgArray.length === 1) {
     const img = document.createElement("img");
-    img.className = "d-block w-100";
-    img.src = "https://via.placeholder.com/150";
-    img.alt = "placeholder";
+    img.className = "d-block cardImgSizing";
+    img.src = imgArray[0];
+    img.alt = "Image";
     imgContainer.append(img);
+  } else {
+    const noImageText = document.createElement("p");
+    noImageText.textContent = "No images available.";
+    imgContainer.append(noImageText);
   }
 
+  const titleContainer = document.createElement("div");
+  titleContainer.className = "my-2 text-end";
   const cardTitle = document.createElement("h5");
   cardTitle.className = "card-title";
   cardTitle.textContent = data.title;
+  const textContainer = document.createElement("div");
+  textContainer.className = "text-end";
   const cardText = document.createElement("p");
-  cardText.className = "card-text";
+  cardText.className = "card-text mb-4";
   cardText.textContent = data.description;
+  const priceContainer = document.createElement("div");
   const cardPrice = document.createElement("p");
   cardPrice.className = "card-text";
   cardPrice.textContent = data.price;
+  titleContainer.append(cardTitle);
+  textContainer.append(cardText);
+  priceContainer.append(cardPrice);
 
   const countdown = document.createElement("div");
-  countdown.classList = "countdown";
+  countdown.classList = "countdown text-end";
   const time = data.endsAt;
-  cardBody.append(countdown);
-  triggerCountdown(time);
+  const countdownTimer = document.createElement("span");
+  triggerCountdown(time, countdownTimer);
+  countdown.append(countdownTimer);
 
+  const bids = document.createElement("div");
+  bids.className = "text-end";
+  const bidCount = document.createElement("small");
+  bidCount.classList = "text-muted text-end";
+  bidCount.className = "card-text";
+  const bidCountNr = data._count.bids;
+
+  bidCount.textContent = `Current bids: ${bidCountNr}`;
+  bids.append(bidCount);
+
+  const btnContainer = document.createElement("div");
+  btnContainer.className = "d-flex justify-content-end";
   const bidBtn = document.createElement("a");
-  bidBtn.className = "btn btn-info border border-secondary";
+  bidBtn.className = "btn btn-info border border-secondary mt-5";
   bidBtn.textContent = "Bid Now";
   bidBtn.href = "#";
+  btnContainer.append(bidBtn);
 
   cardBody.append(imgContainer);
-  cardBody.append(cardTitle);
-  cardBody.append(cardText);
-  cardBody.append(cardPrice);
-  // cardBody.append(countdownContainer);
-  cardBody.append(bidBtn);
+  cardBody.append(titleContainer);
+  cardBody.append(textContainer);
+  cardBody.append(priceContainer);
+  cardBody.append(countdown);
+  cardBody.append(bids);
+  cardBody.append(btnContainer);
   card.append(cardBody);
   container.append(card);
 }
