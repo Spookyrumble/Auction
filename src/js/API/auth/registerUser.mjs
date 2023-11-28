@@ -1,12 +1,9 @@
-import { baseURL, registerURL } from "./API/constants/urls.mjs";
-
-const form = document.getElementById("#registerForm");
-
-export async function createNewUser() {
+export async function registerUser(url) {
+  const form = document.getElementById("#registerForm");
   const userObject = new FormData(form);
 
   try {
-    const response = await fetch(`${baseURL}/${registerURL}`, {
+    const response = await fetch(url, {
       method: "POST",
       headers: {
         "content-Type": "application/json",
