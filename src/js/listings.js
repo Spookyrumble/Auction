@@ -11,7 +11,7 @@ import { previewInit } from "./handlers/cardPreview.mjs";
 
 async function init() {
   const array = await fetchOpenListings();
-  // console.log(array);
+  console.log(array);
   const currentDateTime = new Date();
 
   for (let i = 0; i < array.length; i++) {

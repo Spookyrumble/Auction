@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -66,11 +66,13 @@
             </div>
           </nav>
         </div>
-        <div class="row m-auto d-flex">
-          <div class="col-12">
-            <div class="d-flex justify-content-between banner rounded">
+        <div class="row m-auto d-flex bg-secondary">
+          <div class="col-12-sm">
+            <div
+              class="d-flex flex-wrap justify-content-between banner rounded"
+            >
               <div class="col-3 d-flex align-items-center ms-3">
-                <div class="col-2-sm d-flex flex-wrap gap-1">
+                <div class="col-2-sm d-flex gap-1">
                   <div>
                     <img
                       id="avatar"
@@ -231,24 +233,43 @@
               </div>
             </div>
           </form>
-        </div>
-        <!--  -->
-        <div>
-          <div id="listingPreview" class="card scaleDown mb-5">
-            <img
-              class="cardImgSizing"
-              id="previewImg"
-              src="https://placeholder.com/150"
-              alt="preview image"
-            />
-            <div class="card-body text-end">
-              <h5 id="previewTitle" class="card-title">Title Preview</h5>
-              <p id="previewDescription" class="card-text">
-                Description Preview
-              </p>
+          <div>
+            <div class="mt-5">
+              <h4 class="text-center">Listing preview</h4>
+            </div>
+            <div id="listingPreview" class="card scaleDown">
+              <img
+                class="cardImgSizing"
+                id="previewImg"
+                src="https://placeholder.com/150"
+                alt="preview image"
+              />
+              <div class="card-body">
+                <small class="text-muted">Title</small>
+                <h5 id="previewTitle" class="card-title">Title Preview</h5>
+                <small class="text-muted">Description</small>
+                <p id="previewDescription" class="card-text">
+                  Description Preview
+                </p>
+                <div>
+                  <small id="previewCreated"></small>
+                  <div>
+                    <small id="previewEndsAt"></small>
+                  </div>
+                  <div>
+                    <span id="previewPrice"></span>
+                  </div>
+                  <div class="d-flex justify-content-end">
+                    <button class="btn btn-info border-secondary" disabled>
+                      Place bid
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <!--  -->
         <!--  -->
       </div>
     </header>
@@ -257,83 +278,6 @@
         <h2 class="spacer mx-4 border-bottom border-secondary">
           Ongoing auctions
         </h2>
-        <!-- <div class="container">
-          <div
-            id="carouselExampleIndicators"
-            class="carousel slide"
-            data-bs-ride="carousel"
-          >
-            <div class="carousel-indicators">
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="0"
-                class="active"
-                aria-current="true"
-                aria-label="Slide 1"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="1"
-                aria-label="Slide 2"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="2"
-                aria-label="Slide 3"
-              ></button>
-            </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img
-                  src="/src/images/wesley-tingey-9z9fxr_7Z-k-unsplash_gavel.jpg"
-                  class="d-block w-100"
-                  alt="..."
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  src="/src/images/wesley-tingey-9z9fxr_7Z-k-unsplash_gavel.jpg"
-                  class="d-block w-100"
-                  alt="..."
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  src="/src/images/wesley-tingey-9z9fxr_7Z-k-unsplash_gavel.jpg"
-                  class="d-block w-100"
-                  alt="..."
-                />
-              </div>
-            </div>
-            <button
-              class="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="prev"
-            >
-              <span
-                class="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button
-              class="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="next"
-            >
-              <span
-                class="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-        </div> -->
         <div
           id="cardContainer"
           class="d-flex col-12 flex-wrap justify-content-center"

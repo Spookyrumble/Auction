@@ -6,7 +6,7 @@ export function triggerCountdown(time, elementToUpdate) {
 
     if (difference <= 0) {
       clearInterval(interval);
-      elementToUpdate.innerText = "Countdown ended";
+      elementToUpdate.innerText = "Auction closed";
       elementToUpdate.classList.add("text-danger");
       return;
     }
@@ -19,7 +19,7 @@ export function triggerCountdown(time, elementToUpdate) {
     const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-    elementToUpdate.innerText = `Ends in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    elementToUpdate.innerText = `Auction ends in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
     elementToUpdate.classList.add("text-success");
   }, 1000);
 }

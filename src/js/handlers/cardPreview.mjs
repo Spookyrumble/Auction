@@ -17,4 +17,14 @@ export function previewInit() {
   urlInput.addEventListener("input", function () {
     document.getElementById("previewImg").src = this.value;
   });
+
+  const created = new Date();
+  document.getElementById("previewCreated").textContent =
+    `Created: ${created.toLocaleDateString()}`;
+
+  const endsAt = document.getElementById("date");
+  endsAt.addEventListener("input", function () {
+    document.getElementById("previewEndsAt").innerText =
+      `Ends At: ${this.value}`;
+  });
 }
