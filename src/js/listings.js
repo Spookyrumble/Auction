@@ -1,30 +1,55 @@
 /* eslint-disable no-unused-vars */
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../scss/styles.scss";
+import { openListingsURL, authListingsURL } from "./API/constants/urls.mjs";
+import { fetchOpenListings } from "./API/fetch/noAuthFetch.mjs";
+import { apiFetch } from "./API/fetch/authorizedFetch.mjs";
+import { createAuctionCards } from "/src/js/cards/createCards.mjs";
+import { logOutStorageClear } from "./API/auth/logout.mjs";
 import * as bootstrap from "bootstrap";
 import Alert from "bootstrap/js/dist/alert";
 import { Tooltip, Toast, Popover } from "bootstrap";
-import { fetchOpenListings } from "./API/fetch/noAuthFetch.mjs";
-import { createAuctionCards } from "/src/js/cards/createCards.mjs";
 import { end } from "@popperjs/core";
 import { previewInit } from "./handlers/cardPreview.mjs";
 
 async function init() {
-  const array = await fetchOpenListings();
-  console.log(array);
+  const token = localStorage.getItem("accessToken");
   const currentDateTime = new Date();
+  if (token) {
+    console.log("token true");
 
-  for (let i = 0; i < array.length; i++) {
-    const endDateTime = new Date(array[i].endsAt);
-    if (
-      array[i].media.length > 0 &&
-      !array[i].title.toLowerCase().includes("test") &&
-      endDateTime > currentDateTime
-    ) {
-      createAuctionCards(array[i]);
+    const array = await apiFetch(authListingsURL, "GET");
+    console.log(array);
+    console.log("Logged in");
+
+    for (let i = 0; i < array.length; i++) {
+      const endDateTime = new Date(array[i].endsAt);
+      if (
+        array[i].media.length > 0 &&
+        !array[i].title.toLowerCase().includes("test") &&
+        endDateTime > currentDateTime
+      ) {
+        createAuctionCards(array[i]);
+      }
+    }
+  } else {
+    const array = await fetchOpenListings();
+    console.log(array);
+    console.log("Not logged in");
+
+    for (let i = 0; i < array.length; i++) {
+      const endDateTime = new Date(array[i].endsAt);
+      if (
+        array[i].media.length > 0 &&
+        !array[i].title.toLowerCase().includes("test") &&
+        endDateTime > currentDateTime
+      ) {
+        createAuctionCards(array[i]);
+      }
     }
   }
 }
 
 init();
 previewInit();
+logOutStorageClear();

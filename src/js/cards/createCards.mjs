@@ -30,7 +30,8 @@ export function createAuctionCards(data) {
       const thumbnail = document.createElement("img");
       thumbnail.src = src;
       thumbnail.className = "img-thumbnail";
-      thumbnail.style.width = "80px";
+      thumbnail.style.width = "50px";
+      thumbnail.style.height = "50px";
       thumbnail.style.cursor = "pointer";
       thumbnail.onclick = function () {
         mainImage.src = src;

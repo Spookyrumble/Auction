@@ -1,14 +1,11 @@
-export async function registerUser(url) {
-  const form = document.getElementById("#registerForm");
-  const userObject = new FormData(form);
-
+export async function registerUser(url, object) {
   try {
     const response = await fetch(url, {
       method: "POST",
       headers: {
         "content-Type": "application/json",
       },
-      body: JSON.stringify(userObject),
+      body: JSON.stringify(object),
     });
 
     const json = await response.json();

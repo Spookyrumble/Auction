@@ -13,15 +13,22 @@ export function formHandler() {
       const data = Object.fromEntries(formData);
       const response = await loginUser(loginURL, data);
       console.log(response, data);
-      window.location.href = "/src/HTML/auction/index.html";
+      if (response.success) {
+        window.location.href = "/src/HTML/auction/index.html";
+      }
     });
   }
 
   if (registerForm) {
     registerForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const response = await registerUser(registerURL);
-      console.log(response);
+      const formData = new FormData(registerForm);
+      const data = Object.fromEntries(formData);
+      const response = await registerUser(registerURL, data);
+      console.log(response, data);
+      if (response.success) {
+        window.location.href = "/src/HTML/auction/index.html";
+      }
     });
   }
 }
