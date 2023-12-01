@@ -6,6 +6,7 @@ import { fetchOpenListings } from "./API/fetch/noAuthFetch.mjs";
 import { apiFetch } from "./API/fetch/authorizedFetch.mjs";
 import { createAuctionCards } from "/src/js/cards/createCards.mjs";
 import { logOutStorageClear } from "./API/auth/logout.mjs";
+import { navUserInfo } from "./handlers/navUserInfo.mjs";
 import * as bootstrap from "bootstrap";
 import Alert from "bootstrap/js/dist/alert";
 import { Tooltip, Toast, Popover } from "bootstrap";
@@ -53,3 +54,4 @@ async function init() {
 init();
 previewInit();
 logOutStorageClear();
+navUserInfo();

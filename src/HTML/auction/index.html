@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Auction listings</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
     <script type="module" src="/src/js/listings.js"></script>
   </head>
   <body>
@@ -83,30 +87,30 @@
                   </div>
                   <div class="d-flex align-self-center">
                     <p id="creditsText" class="mb-0 text-info weight-light">
-                      Credits:<span id="creditsValue" class="text-info"
-                        >900</span
-                      >
+                      Credits:<span id="creditsValue" class="text-info"></span>
                     </p>
                   </div>
                 </div>
               </div>
               <div class="col-8-sm mx-3 m-auto">
                 <form class="form-inline">
-                  <div class="d-flex gap-1">
-                    <label class="form-label m-auto text-white" for="search"
-                      >Search</label
-                    >
-                    <input
-                      class="form-control border-info"
-                      type="text"
-                      name="search"
-                      id="searchInput"
-                    />
+                  <div class="input-group">
+                    <div class="form-control d-flex">
+                      <label class="form-label m-auto me-2" for="searchInput"
+                        >Search</label
+                      >
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="search"
+                        id="searchInput"
+                      />
+                    </div>
                     <button
-                      class="btn btn-primary text-white border-info"
+                      class="input-group-append btn bg-white text-secondary"
                       type="submit"
                     >
-                      Go
+                      <i class="bi bi-search"></i>
                     </button>
                   </div>
                 </form>
@@ -176,21 +180,6 @@
                 <label for="tags">Tag</label>
                 <small id="tagsHelp" class="ms-2 form-text text-muted"
                   >To use multiple tags, separate with commas.</small
-                >
-              </div>
-              <div class="form-floating mb-3">
-                <input
-                  class="form-control border-info"
-                  type="number"
-                  name="tags"
-                  id="tags"
-                  aria-describedby="priceHelp"
-                  placeholder="Starting price"
-                  required
-                />
-                <label for="">Starting price</label>
-                <small id="priceHelp" class="ms-2 form-text text-muted"
-                  >What is the items starting price?</small
                 >
               </div>
               <div class="form-floating mb-3">
@@ -268,8 +257,6 @@
             </div>
           </div>
         </div>
-        <!--  -->
-        <!--  -->
       </div>
     </header>
     <main>
