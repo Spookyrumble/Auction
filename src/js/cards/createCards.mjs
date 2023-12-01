@@ -107,6 +107,21 @@ export function createAuctionCards(data) {
   bidCount.textContent = `Current bids: ${bidCountNr}`;
   bids.append(bidCount);
 
+  const listingTags = document.createElement("div");
+  listingTags.className = "d-flex flex-wrap align-items-center";
+  const tagLabel = document.createElement("small");
+  tagLabel.className = "text-muted";
+  tagLabel.textContent = "Tags: ";
+  listingTags.append(tagLabel);
+
+  const tags = data.tags;
+  tags.forEach((tag) => {
+    const tagElement = document.createElement("span");
+    tagElement.className = "badge bg-secondary m-1";
+    tagElement.textContent = tag;
+    listingTags.append(tagElement);
+  });
+
   const btnContainer = document.createElement("div");
   btnContainer.className = "d-flex justify-content-end";
   const bidBtn = document.createElement("a");
@@ -121,6 +136,7 @@ export function createAuctionCards(data) {
   cardBody.append(priceContainer);
   cardBody.append(countdown);
   cardBody.append(bids);
+  cardBody.append(listingTags);
   cardBody.append(btnContainer);
   card.append(cardBody);
   container.append(card);

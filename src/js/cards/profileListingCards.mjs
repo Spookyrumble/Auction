@@ -91,8 +91,12 @@ export function createListingAuctionCards(data) {
   countdown.append(countdownTimer);
 
   const listingTags = document.createElement("div");
-  listingTags.className = "d-flex flex-wrap";
-  listingTags.textContent = "Tags: ";
+  listingTags.className = "d-flex flex-wrap align-items-center";
+  const tagLabel = document.createElement("small");
+  tagLabel.className = "text-muted";
+  tagLabel.textContent = "Tags: ";
+  listingTags.append(tagLabel);
+
   const tags = data.tags;
   tags.forEach((tag) => {
     const tagElement = document.createElement("span");
