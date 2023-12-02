@@ -6,8 +6,8 @@
   border-radius: 5px;
   transition: all 0.2s ease-in-out;
   &:hover {
-    transform: scale(1.05);
-    box-shadow: 0.1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+    transform: scale(1.03);
+    box-shadow: 0.1rem 0.3rem 0.5rem rgba($info, 0.4);
   }
 }
 
@@ -20,7 +20,7 @@
 .thumbnailContainer {
   margin-top: -55px;
   position: relative;
-  background-color: rgba($info, 0.5);
+  background-color: rgba($info, 0.6);
   padding: 3px 3px 0px 3px;
 }
 

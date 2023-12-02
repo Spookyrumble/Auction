@@ -66,11 +66,13 @@
             </div>
           </nav>
         </div>
-        <div class="row m-auto d-flex">
-          <div class="col-12">
-            <div class="d-flex justify-content-between banner rounded">
-              <div class="col-3 d-flex align-items-center mx-3">
-                <div class="col-2-sm d-flex flex-wrap gap-1">
+        <div class="row m-auto d-flex bg-secondary">
+          <div class="col-12-sm">
+            <div
+              class="d-flex flex-wrap justify-content-between banner rounded"
+            >
+              <div class="col-3 d-flex align-items-center ms-3">
+                <div class="col-2-sm d-flex gap-1">
                   <div>
                     <img
                       id="avatar"
@@ -81,30 +83,30 @@
                   </div>
                   <div class="d-flex align-self-center">
                     <p id="creditsText" class="mb-0 text-info weight-light">
-                      Credits:<span id="creditsValue" class="text-info"
-                        >900</span
-                      >
+                      Credits:<span id="creditsValue" class="text-info"></span>
                     </p>
                   </div>
                 </div>
               </div>
               <div class="col-8-sm mx-3 m-auto">
                 <form class="form-inline">
-                  <div class="d-flex gap-1">
-                    <label class="form-label m-auto text-white" for="search"
-                      >Search</label
-                    >
-                    <input
-                      class="form-control border-info"
-                      type="text"
-                      name="search"
-                      id="searchInput"
-                    />
+                  <div class="input-group">
+                    <div class="form-control d-flex">
+                      <label class="form-label m-auto me-2" for="searchInput"
+                        >Search</label
+                      >
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="search"
+                        id="searchInput"
+                      />
+                    </div>
                     <button
-                      class="btn btn-primary text-white border-info"
+                      class="input-group-append btn bg-white text-secondary"
                       type="submit"
                     >
-                      Go
+                      <i class="bi bi-search"></i>
                     </button>
                   </div>
                 </form>
@@ -119,7 +121,7 @@
         id="offcanvasRight"
         aria-labelledby="offcanvasRightLabel"
       >
-        <div class="offcanvas-header mt-5">
+        <div class="offcanvas-header mt-1">
           <h5 class="offcanvas-title" id="offcanvasRightLabel">
             Add new listing
           </h5>
@@ -132,7 +134,7 @@
         </div>
         <div class="offcanvas-body">
           <form id="newListing" class="needs-validation" novalidate>
-            <div class="">
+            <div>
               <div class="form-floating mb-3">
                 <input
                   class="form-control border-info"
@@ -144,7 +146,6 @@
                   required
                 />
                 <label for="item">Item name</label>
-                <div class="valid-feedback">LGTM</div>
                 <small id="itemHelp" class="ms-2 form-text text-muted"
                   >What it is or what it is called</small
                 >
@@ -180,16 +181,16 @@
               <div class="form-floating mb-3">
                 <input
                   class="form-control border-info"
-                  type="number"
-                  name="tags"
-                  id="tags"
-                  aria-describedby="priceHelp"
-                  placeholder="Starting price"
+                  type="date"
+                  name="date"
+                  id="date"
+                  aria-describedby="dateHelp"
+                  placeholder="Auction end date"
                   required
                 />
-                <label for="">Starting price</label>
-                <small id="priceHelp" class="ms-2 form-text text-muted"
-                  >What is the items starting price?</small
+                <label for="">Auction end date</label>
+                <small id="dateHelp" class="ms-2 form-text text-muted"
+                  >When will this auction end?</small
                 >
               </div>
               <div class="form-floating">
@@ -216,6 +217,41 @@
               </div>
             </div>
           </form>
+          <div>
+            <div class="mt-5">
+              <h4 class="text-center">Listing preview</h4>
+            </div>
+            <div id="listingPreview" class="card scaleDown">
+              <img
+                class="cardImgSizing"
+                id="previewImg"
+                src="https://placeholder.com/150"
+                alt="preview image"
+              />
+              <div class="card-body">
+                <small class="text-muted">Title</small>
+                <h5 id="previewTitle" class="card-title">Title Preview</h5>
+                <small class="text-muted">Description</small>
+                <p id="previewDescription" class="card-text">
+                  Description Preview
+                </p>
+                <div>
+                  <small id="previewCreated"></small>
+                  <div>
+                    <small id="previewEndsAt"></small>
+                  </div>
+                  <div>
+                    <span id="previewPrice"></span>
+                  </div>
+                  <div class="d-flex justify-content-end">
+                    <button class="btn btn-info border-secondary" disabled>
+                      Place bid
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -224,20 +260,21 @@
         <div class="row">
           <div class="col-12-sm d-flex justify-content-center">
             <img
+              id="avatarProfile"
               class="img-fluid rounded-circle"
               src="https://via.placeholder.com/150"
-              alt=""
+              alt="avatar placeholder"
             />
           </div>
           <div class="col-12 d-flex justify-content-center">
-            <h2 class="text-secondary">Username</h2>
+            <h2 id="userName" class="text-secondary">Username</h2>
           </div>
           <div class="col-12 d-flex justify-content-center gap-5">
             <div>
-              <p>Credits:<span>900</span></p>
+              <p>Credits:<span id="credits">0</span></p>
             </div>
             <div>
-              <p>Listings:<span>1</span></p>
+              <p>Listings:<span id="listingNum">0</span></p>
             </div>
           </div>
           <div class="col-12-sm d-flex justify-content-center gap-5">
@@ -299,14 +336,18 @@
               type="button"
               class="btn btn-white border-secondary activeBtn"
             >
-              Listings
+              My Listings
             </button>
             <button type="button" class="btn btn-white border-secondary">
-              Sold
+              Wins
             </button>
           </div>
         </div>
       </div>
+      <section
+        id="container"
+        class="d-flex col-12 flex-wrap justify-content-center mt-5"
+      ></section>
     </main>
     <footer></footer>
   </body>
