@@ -1,12 +1,39 @@
 @import "./variables/fonts";
-@import "./variables/themeColors";
+@import "/src/scss/variables/themeColors";
+@import "/src/scss/variables/container";
 @import "~bootstrap/scss/bootstrap";
 
 .banner {
   background-color: $secondary;
-  height: 80px;
+  height: auto;
+  padding: 15px 0px;
 }
 
 .cover {
   object-fit: cover;
+}
+
+.spacer {
+  margin-top: 12rem;
+}
+
+.active {
+  border-top: 2px solid $primary;
+  border-bottom: 2px solid $primary;
+}
+
+.blur {
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.profileAvatarSmall {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.activeBtn {
+  background-color: $secondary;
+  color: white;
 }
