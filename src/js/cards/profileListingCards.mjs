@@ -12,7 +12,6 @@ export function createListingAuctionCards(data) {
   cardBody.className = "d-flex flex-column justify-content-between card-body";
 
   const imgContainer = document.createElement("div");
-
   const imgArray = data.media;
 
   const thumbnailContainer = document.createElement("div");

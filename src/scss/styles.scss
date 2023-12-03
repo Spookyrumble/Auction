@@ -37,3 +37,15 @@
   background-color: $secondary;
   color: white;
 }
+
+.customHover {
+  &:hover {
+    background-color: $secondary;
+    color: white;
+  }
+}
+
+.activeBtn:hover {
+  background-color: white;
+  color: $secondary;
+}

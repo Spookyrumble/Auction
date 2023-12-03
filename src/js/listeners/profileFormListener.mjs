@@ -1,4 +1,4 @@
-export function containerHandler() {
+export function avatarEditHandler() {
   const containerAvatar = document.getElementById("editContainer");
   const avatarBtn = document.getElementById("editProfileBtn");
 
