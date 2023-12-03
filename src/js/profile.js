@@ -24,7 +24,7 @@ listForm.addEventListener("submit", (e) => {
 navUserInfo();
 previewInit();
 
-async function buildUserPage() {
+export async function buildUserPage() {
   const { avatar, name, listings, credits } = await userFetch();
   console.log(listings);
 
