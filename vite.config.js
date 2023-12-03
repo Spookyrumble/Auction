@@ -7,8 +7,10 @@ export default {
     rollupOptions: {
       input: {
         // Specify your entry points here
+        index: path.resolve(__dirname, "index.html"),
         auction: path.resolve(__dirname, "src/HTML/auction/index.html"),
         profile: path.resolve(__dirname, "src/HTML/profile/index.html"),
+
         // Add other entry points if needed for your HTML files
       },
     },
