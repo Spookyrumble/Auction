@@ -4,6 +4,14 @@ import path from "path";
 export default {
   build: {
     outDir: path.resolve(__dirname, "./dist"), // Specify the output directory here
+    rollupOptions: {
+      input: {
+        // Specify your entry points here
+        auction: path.resolve(__dirname, "src/HTML/auction/index.html"),
+        profile: path.resolve(__dirname, "src/HTML/profile/index.html"),
+        // Add other entry points if needed for your HTML files
+      },
+    },
   },
   resolve: {
     alias: {
