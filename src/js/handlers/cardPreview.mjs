@@ -1,8 +1,8 @@
-export function previewInit() {
-  //   document.addEventListener("DOMContentLoaded", () => {
-  //   const form = document.getElementById("newListing");
+import { createBadge } from "../API/utils/createBadge.mjs";
 
+export function previewInit() {
   const itemInput = document.getElementById("item");
+  const addBtn = document.getElementById("badgeAddBtn");
 
   itemInput.addEventListener("input", function () {
     document.getElementById("previewTitle").textContent = this.value;
@@ -26,5 +26,9 @@ export function previewInit() {
   endsAt.addEventListener("input", function () {
     document.getElementById("previewEndsAt").innerText =
       `Ends At: ${this.value}`;
+  });
+
+  addBtn.addEventListener("click", () => {
+    createBadge();
   });
 }

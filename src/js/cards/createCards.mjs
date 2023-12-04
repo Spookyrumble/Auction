@@ -2,11 +2,13 @@ import { triggerCountdown } from "../API/utils/countdown.mjs";
 import { formatDate } from "../API/utils/timeAndDate.mjs";
 
 export function createAuctionCards(data) {
+  const loader = document.getElementById("loader");
+  loader.classList.add("d-none");
   const container = document.getElementById("cardContainer");
 
   const card = document.createElement("div");
   card.id = data.id;
-  card.className = "card m-3 listingImg col-md-6 col-lg-4 col-xl-3";
+  card.className = "card m-3 listingImg col-md-8 col-lg-8 col-xl-4";
 
   const cardBody = document.createElement("div");
   cardBody.className = "d-flex flex-column justify-content-between card-body";

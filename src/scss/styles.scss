@@ -1,6 +1,7 @@
-@import "./variables/fonts";
+@import "/src/scss/variables/fonts";
 @import "/src/scss/variables/themeColors";
 @import "/src/scss/variables/container";
+@import "/src/scss/variables/spinner";
 @import "~bootstrap/scss/bootstrap";
 
 .banner {
@@ -14,7 +15,7 @@
 }
 
 .spacer {
-  margin-top: 12rem;
+  margin-top: 14rem;
 }
 
 .active {

@@ -29,3 +29,11 @@
   transform: scale(0.6);
   box-shadow: 0.1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
 }
+
+.offCanvasLeft {
+  max-height: 30vh;
+}
+
+.noMute::placeholder {
+  color: black !important;
+}

@@ -6,7 +6,7 @@ export function createListingAuctionCards(data) {
 
   const card = document.createElement("div");
   card.id = data.id;
-  card.className = "card m-3 listingImg col-md-4 col-lg-4 col-xl-3";
+  card.className = "card m-3 listingImg col-md-6 col-lg-4 col-xl-3";
 
   const cardBody = document.createElement("div");
   cardBody.className = "d-flex flex-column justify-content-between card-body";

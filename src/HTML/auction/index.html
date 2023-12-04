@@ -76,7 +76,7 @@
               class="d-flex flex-wrap justify-content-between banner rounded"
             >
               <div class="col-3 d-flex align-items-center ms-3">
-                <div class="col-2-sm d-flex gap-1">
+                <div id="userField" class="col-2-sm d-flex gap-1">
                   <div>
                     <img
                       id="avatar"
@@ -169,17 +169,31 @@
                 >
               </div>
               <div class="form-floating mb-3">
-                <input
-                  class="form-control border-info"
-                  type="text"
-                  name="tags"
-                  id="tags"
-                  aria-describedby="tagsHelp"
-                  placeholder="tag1, tag2, tag3"
-                />
-                <label for="tags">Tag</label>
+                <div class="input-group gap-1">
+                  <input
+                    class="form-control border-info rounded noMute"
+                    type="text"
+                    name="tags"
+                    id="tags"
+                    aria-describedby="tagsHelp"
+                    placeholder="Tags"
+                  />
+                  <div class="input-group-append">
+                    <span
+                      ><button
+                        id="badgeAddBtn"
+                        class="btn btn-outline-info"
+                        type="button"
+                      >
+                        <i class="bi bi-plus-circle-fill px-3"></i></button
+                    ></span>
+                  </div>
+                </div>
+                <!-- <label for="tags">Tag</label> -->
                 <small id="tagsHelp" class="ms-2 form-text text-muted"
-                  >To use multiple tags, separate with commas.</small
+                  ><label for="tags"
+                    >Tags. To add more use add button.</label
+                  ></small
                 >
               </div>
               <div class="form-floating mb-3">
@@ -192,7 +206,7 @@
                   placeholder="Auction end date"
                   required
                 />
-                <label for="">Auction end date</label>
+                <label for="date">Auction end date</label>
                 <small id="dateHelp" class="ms-2 form-text text-muted"
                   >When will this auction end?</small
                 >
@@ -207,16 +221,16 @@
                   placeholder="Image URL"
                 />
                 <small class="ms-2 form-text text-muted"
-                  >Media link/URL. Must be jpg.</small
+                  >Valid image address.</small
                 >
-                <label for="url">Media URL</label>
+                <label for="itemUrl">Media URL</label>
               </div>
               <div class="d-flex justify-content-center">
                 <button
                   class="col-3 btn btn-info text-secondary border-secondary my-3"
                   type="submit"
                 >
-                  create
+                  Create
                 </button>
               </div>
             </div>
@@ -227,7 +241,7 @@
             </div>
             <div id="listingPreview" class="card scaleDown">
               <img
-                class="cardImgSizing"
+                class="cardImgSizing p-3"
                 id="previewImg"
                 src="https://placeholder.com/150"
                 alt="preview image"
@@ -245,7 +259,10 @@
                     <small id="previewEndsAt"></small>
                   </div>
                   <div>
-                    <span id="previewPrice"></span>
+                    <small>Current Bids: #</small>
+                  </div>
+                  <div>
+                    <small id="tagBadges">Tags:</small>
                   </div>
                   <div class="d-flex justify-content-end">
                     <button class="btn btn-info border-secondary" disabled>
@@ -261,13 +278,68 @@
     </header>
     <main>
       <section>
-        <h2 class="spacer mx-4 border-bottom border-secondary">
-          Ongoing auctions
-        </h2>
+        <div class="d-flex justify-content-center">
+          <h2
+            id="auctionHeader"
+            class="spacer mx-4 border-bottom border-secondary"
+          >
+            Ongoing auctions
+          </h2>
+        </div>
+        <div>
+          <button
+            class="btn btn-secondary mx-4"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#settingsCanvas"
+            aria-describedby="settingsCanvas"
+          >
+            <i class="bi bi-sliders"> Filter</i>
+          </button>
+        </div>
+        <div
+          class="offcanvas offcanvas-start bgGradient offCanvasLeft spacer rounded"
+          tabindex="-1"
+          id="settingsCanvas"
+          aria-labelledby="offcanvasLabel"
+          data-bs-scroll="true"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasLabel">Page Settings</h5>
+            <button
+              type="button"
+              class="btn-close text-reset"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <div>
+              <p class="text-center text-muted">
+                Select filter from the dropdown to sort the feed
+              </p>
+            </div>
+            <form>
+              <select
+                id="filterDropdown"
+                class="form-select form-select-lg mb-3"
+                aria-label=".form-select-lg example"
+              >
+                <option selected>All posts</option>
+                <option id="lca" value="1">Ending auctions</option>
+                <option id="obc" value="2">Oldest by creation</option>
+                <option id="ld" value="3">Longest duration</option>
+              </select>
+            </form>
+          </div>
+        </div>
         <div
           id="cardContainer"
           class="d-flex col-12 flex-wrap justify-content-center"
-        ></div>
+        >
+          <div id="loader" class="m-auto d-flex justify-content-center">
+            <span class="loader"></span>
+          </div>
+        </div>
       </section>
     </main>
     <footer></footer>
