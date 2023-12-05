@@ -6,8 +6,11 @@ export function navigationHandler() {
   const token = localStorage.getItem("accessToken");
 
   if (!token) {
-    profile.classList.add("d-none");
-    quickList.classList.add("d-none");
-    signOut.classList.add("d-none");
+    profile.href = "#";
+    profile.setAttribute("data-bs-target", "#loggedInModal");
+    profile.setAttribute("data-bs-toggle", "modal");
+    quickList.setAttribute("data-bs-target", "#loggedInModal");
+    quickList.setAttribute("data-bs-toggle", "modal");
+    signOut.href = "/";
   }
 }
