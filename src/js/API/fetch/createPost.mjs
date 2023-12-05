@@ -33,5 +33,3 @@ export function createPost() {
     tagsInput.value = "";
   });
 }
-
-hello();
