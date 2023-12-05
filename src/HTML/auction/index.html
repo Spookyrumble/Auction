@@ -58,7 +58,7 @@
                     data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRight"
                     aria-controls="offcanvasRight"
-                    >Quick list new item</a
+                    >List New Item</a
                   >
                 </li>
                 <li class="nav-item m-auto">
@@ -199,7 +199,7 @@
               <div class="form-floating mb-3">
                 <input
                   class="form-control border-info"
-                  type="date"
+                  type="datetime-local"
                   name="date"
                   id="date"
                   aria-describedby="dateHelp"
@@ -256,7 +256,7 @@
                 <div>
                   <small id="previewCreated"></small>
                   <div>
-                    <small id="previewEndsAt"></small>
+                    <small id="previewEndsAt"> </small>
                   </div>
                   <div>
                     <small>Current Bids: #</small>
@@ -278,7 +278,12 @@
     </header>
     <main>
       <section>
-        <div id="loggedInModal" class="modal blur" tabindex="-1" role="dialog">
+        <div
+          id="loggedInModal"
+          class="modal blur fade"
+          tabindex="-1"
+          role="dialog"
+        >
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content text-center">
               <div class="modal-header">

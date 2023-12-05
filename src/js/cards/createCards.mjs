@@ -55,8 +55,9 @@ export function createAuctionCards(data) {
     img.alt = "Image";
     imgContainer.append(img);
   } else {
-    const noImageText = document.createElement("p");
-    noImageText.textContent = "No images available.";
+    const noImageText = document.createElement("img");
+    noImageText.className = "d-block cardImgSizing";
+    noImageText.src = "/src/images/placeholder.png";
     imgContainer.append(noImageText);
   }
 

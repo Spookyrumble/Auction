@@ -7,6 +7,7 @@ import { apiFetch } from "./API/fetch/authorizedFetch.mjs";
 import { createAuctionCards } from "/src/js/cards/createCards.mjs";
 import { logOutStorageClear } from "./API/auth/logout.mjs";
 import { navUserInfo } from "./handlers/navUserInfo.mjs";
+import { navigationHandler } from "./handlers/navigation.mjs";
 // import { fetchAllPostsAndFilter } from "./API/fetch/filteredFetch.mjs";
 import * as bootstrap from "bootstrap";
 import Alert from "bootstrap/js/dist/alert";
@@ -27,7 +28,6 @@ async function init() {
     for (let i = 0; i < array.length; i++) {
       const endDateTime = new Date(array[i].endsAt);
       if (
-        array[i].media.length > 0 &&
         !array[i].title.toLowerCase().includes("test") &&
         endDateTime > currentDateTime
       ) {
@@ -42,7 +42,6 @@ async function init() {
     for (let i = 0; i < array.length; i++) {
       const endDateTime = new Date(array[i].endsAt);
       if (
-        array[i].media.length > 0 &&
         !array[i].title.toLowerCase().includes("test") &&
         endDateTime > currentDateTime
       ) {
@@ -56,3 +55,4 @@ init();
 previewInit();
 logOutStorageClear();
 navUserInfo();
+navigationHandler();

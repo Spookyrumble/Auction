@@ -1,4 +1,5 @@
 import { createBadge } from "../API/utils/createBadge.mjs";
+import { triggerCountdown } from "../API/utils/countdown.mjs";
 
 export function previewInit() {
   const itemInput = document.getElementById("item");
@@ -24,8 +25,8 @@ export function previewInit() {
 
   const endsAt = document.getElementById("date");
   endsAt.addEventListener("input", function () {
-    document.getElementById("previewEndsAt").innerText =
-      `Ends At: ${this.value}`;
+    const dateTime = document.getElementById("previewEndsAt");
+    triggerCountdown(this.value, dateTime);
   });
 
   addBtn.addEventListener("click", () => {

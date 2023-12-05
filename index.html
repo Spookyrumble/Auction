@@ -7,12 +7,12 @@
     <script type="module" src="src/js/main.js"></script>
     <script type="module" src="/src/js/modal/registerModal.mjs"></script>
   </head>
-  <body class="bg-secondary">
+  <body>
     <header>
-      <div class="col-12 bg-secondary banner"></div>
+      <div class="bg-secondary banner"></div>
     </header>
-    <main>
-      <div id="loginModal" class="modal blur" tabindex="-1" role="dialog">
+    <main class="bg-secondary col-12 d-flex flex-column">
+      <div id="loginModal" class="modal blur fade" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -38,7 +38,8 @@
                     placeholder="Enter email"
                     autocomplete="email"
                   />
-                  <label for="loginEnput">Email address</label>
+                  <div class="valid-feedback">Looks Correct</div>
+                  <label for="loginInput">Email address</label>
                   <small id="emailHelp" class="form-text text-muted"
                     >We'll never share your email with anyone.</small
                   >
@@ -111,7 +112,7 @@
           </div>
         </div>
       </div>
-      <div class="col-12 d-flex m-auto">
+      <div class="col-12 d-flex">
         <img
           class="img-fluid vh-100 m-auto cover position-relative"
           src="src/images/wesley-tingey-9z9fxr_7Z-k-unsplash_gavel.jpg"
