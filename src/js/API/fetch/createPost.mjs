@@ -1,10 +1,15 @@
-import { apiFetch } from "./authorizedFetch.mjs";
+import { postListing } from "./postListingFetch.mjs";
+
+const form = document.getElementById("newListing");
 
 export function createPost() {
-  const form = document.getElementById("newListing");
   const btn = document.getElementById("submitBtn");
   const addTagBtn = document.getElementById("badgeAddBtn");
   const tagsInput = document.getElementById("tags");
+  const addImageBtn = document.getElementById("addImgBtn");
+  const imageInput = document.getElementById("itemUrl");
+  const addImageBadge = document.getElementById("addBadge");
+  const addTagsBadge = document.getElementById("tagBadge");
 
   btn.addEventListener("click", async (e) => {
     e.preventDefault();
@@ -12,24 +17,77 @@ export function createPost() {
     const title = titleInput.value;
     const descriptionInput = document.getElementById("description");
     const description = descriptionInput.value;
-    const imageInput = document.getElementById("itemUrl");
-    const image = imageInput.value;
     const endsAtInput = document.getElementById("date");
     const endsAt = endsAtInput.value;
-    const endsAtDate = new Date(endsAt);
 
     const listingObject = {
       title,
       description,
       tags,
-      media: [image],
-      endsAtDate,
+      media,
+      endsAt,
     };
+    if (imageInput.value !== "") {
+      media.push(imageInput.value);
+      imageInput.value = "";
+      imgCount++;
+      addImageBadge.textContent = imgCount;
+      addImageBadge.classList.remove("d-none");
+    }
+    if (tagsInput.value !== "") {
+      tags.push(tagsInput.value);
+      tagsInput.value = "";
+      tagCount++;
+      addTagsBadge.textContent = tagCount;
+      addTagsBadge.classList.remove("d-none");
+    }
     console.log(listingObject);
+    postListing(listingObject);
   });
   let tags = [];
+  let tagCount = 0;
+
   addTagBtn.addEventListener("click", () => {
-    tags.push(tagsInput.value);
-    tagsInput.value = "";
+    if (tagsInput.value !== "") {
+      tags.push(tagsInput.value);
+      tagsInput.value = "";
+      tagCount++;
+      addTagsBadge.textContent = tagCount;
+      addTagsBadge.classList.remove("d-none");
+    } else {
+      tags = [];
+      addTagsBadge.classList.add("d-none");
+    }
   });
+
+  let media = [];
+  let imgCount = 0;
+
+  addImageBtn.addEventListener("click", () => {
+    if (imageInput.value !== "") {
+      media.push(imageInput.value);
+      imageInput.value = "";
+      imgCount++;
+      addImageBadge.textContent = imgCount;
+      addImageBadge.classList.remove("d-none");
+    } else {
+      media = [];
+      addImageBadge.classList.add("d-none");
+    }
+  });
+
+  //   if (imageInput.value !== "") {
+  //     media.push(imageInput.value);
+  // imageInput.value = "";
+  // imgCount++;
+  // addImageBadge.textContent = imgCount;
+  // addImageBadge.classList.remove("d-none");
 }
+//   if (tagsInput.value !== "") {
+//     tags.push(tagsInput.value);
+// tagsInput.value = "";
+// tagCount++;
+// addTagsBadge.textContent = tagCount;
+// addTagsBadge.classList.remove("d-none");
+//   }
+// }
