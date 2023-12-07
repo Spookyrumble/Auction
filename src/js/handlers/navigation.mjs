@@ -14,3 +14,16 @@ export function navigationHandler() {
     signOut.href = "/";
   }
 }
+
+document.addEventListener("click", function (event) {
+  const dropdownMenu = document.getElementById("burgerMenu");
+  const dropdownButton = document.getElementById("burgerBtn");
+
+  if (
+    !dropdownMenu.contains(event.target) &&
+    !dropdownButton.contains(event.target) &&
+    dropdownMenu.classList.contains("show")
+  ) {
+    dropdownButton.click();
+  }
+});

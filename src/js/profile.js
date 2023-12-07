@@ -7,23 +7,26 @@ import { userFetch } from "./API/fetch/userFetch.mjs";
 import { createListingAuctionCards } from "./cards/profileListingCards.mjs";
 import { previewInit } from "./handlers/cardPreview.mjs";
 import { userListing } from "./API/fetch/userListingFetch.mjs";
+import { logOutStorageClear } from "./API/auth/logout.mjs";
+import { navigationHandler } from "./handlers/navigation.mjs";
 import { profileViewBtns } from "./handlers/profileViewBtns.mjs";
 import * as bootstrap from "bootstrap";
 import Alert from "bootstrap/js/dist/alert";
 import { Tooltip, Toast, Popover } from "bootstrap";
 
 avatarEditHandler();
-
-const listForm = document.getElementById("newListing");
-listForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const formData = new FormData(listForm);
-  const data = Object.fromEntries(formData.entries());
-  console.log(data);
-});
-
+logOutStorageClear();
 navUserInfo();
 previewInit();
+navigationHandler();
+
+// const listForm = document.getElementById("newListing");
+// listForm.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   const formData = new FormData(listForm);
+//   const data = Object.fromEntries(formData.entries());
+//   console.log(data);
+// });
 
 export async function buildUserPage() {
   const userId = localStorage.getItem("userId");

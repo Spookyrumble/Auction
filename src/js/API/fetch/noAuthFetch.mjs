@@ -2,7 +2,7 @@ const baseURL = "https://api.noroff.dev/api/v1/auction";
 const openListingsURL = `${baseURL}/listings`;
 
 export async function fetchOpenListings() {
-  const response = await fetch(openListingsURL);
+  const response = await fetch(`${openListingsURL}?sort=created`);
   const data = await response.json();
   return data;
 }

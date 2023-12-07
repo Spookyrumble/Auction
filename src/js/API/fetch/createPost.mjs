@@ -1,7 +1,5 @@
 import { postListing } from "./postListingFetch.mjs";
 
-const form = document.getElementById("newListing");
-
 export function createPost() {
   const btn = document.getElementById("submitBtn");
   const addTagBtn = document.getElementById("badgeAddBtn");
@@ -75,19 +73,4 @@ export function createPost() {
       addImageBadge.classList.add("d-none");
     }
   });
-
-  //   if (imageInput.value !== "") {
-  //     media.push(imageInput.value);
-  // imageInput.value = "";
-  // imgCount++;
-  // addImageBadge.textContent = imgCount;
-  // addImageBadge.classList.remove("d-none");
 }
-//   if (tagsInput.value !== "") {
-//     tags.push(tagsInput.value);
-// tagsInput.value = "";
-// tagCount++;
-// addTagsBadge.textContent = tagCount;
-// addTagsBadge.classList.remove("d-none");
-//   }
-// }
