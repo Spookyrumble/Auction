@@ -12,11 +12,14 @@ export function createListingAuctionCards(data) {
   cardBody.className = "d-flex flex-column justify-content-between card-body";
 
   const imgContainer = document.createElement("div");
+  imgContainer.className = "cardImgContainer";
   const imgArray = data.media;
 
   const thumbnailContainer = document.createElement("div");
   thumbnailContainer.className =
     "d-flex justify-content-center thumbnailContainer";
+  const uniqueUrls = new Set(); // Create a set to store unique URLs
+
   if (imgArray.length > 1) {
     const mainImage = document.createElement("img");
     mainImage.id = "mainImage";
@@ -26,16 +29,20 @@ export function createListingAuctionCards(data) {
     imgContainer.append(mainImage);
 
     imgArray.forEach((src) => {
-      const thumbnail = document.createElement("img");
-      thumbnail.src = src;
-      thumbnail.className = "img-thumbnail";
-      thumbnail.style.width = "50px";
-      thumbnail.style.height = "52px";
-      thumbnail.style.cursor = "pointer";
-      thumbnail.onclick = function () {
-        mainImage.src = src;
-      };
-      thumbnailContainer.append(thumbnail);
+      if (!uniqueUrls.has(src)) {
+        uniqueUrls.add(src);
+
+        const thumbnail = document.createElement("img");
+        thumbnail.src = src;
+        thumbnail.className = "img-thumbnail";
+        thumbnail.style.width = "50px";
+        thumbnail.style.height = "52px";
+        thumbnail.style.cursor = "pointer";
+        thumbnail.onclick = function () {
+          mainImage.src = src;
+        };
+        thumbnailContainer.append(thumbnail);
+      }
     });
 
     imgContainer.append(thumbnailContainer);
@@ -46,8 +53,9 @@ export function createListingAuctionCards(data) {
     img.alt = "Image";
     imgContainer.append(img);
   } else {
-    const noImageText = document.createElement("p");
-    noImageText.textContent = "No images available.";
+    const noImageText = document.createElement("img");
+    noImageText.className = "d-block cardImgSizing";
+    noImageText.src = "/src/images/placeholder.png";
     imgContainer.append(noImageText);
   }
 
@@ -89,6 +97,14 @@ export function createListingAuctionCards(data) {
   triggerCountdown(time, countdownTimer);
   countdown.append(countdownTimer);
 
+  const bids = document.createElement("div");
+  const bidCount = document.createElement("small");
+  bidCount.classList = "text-muted";
+  bidCount.className = "card-text";
+  const bidCountNr = data.bids.length;
+  bidCount.textContent = `Current bids: ${bidCountNr}`;
+  bids.append(bidCount);
+
   const listingTags = document.createElement("div");
   listingTags.className = "d-flex flex-wrap align-items-center";
   const tagLabel = document.createElement("small");
@@ -118,6 +134,7 @@ export function createListingAuctionCards(data) {
   cardBody.append(textContainer);
   cardBody.append(priceContainer);
   cardBody.append(countdown);
+  cardBody.append(bids);
   cardBody.append(listingTags);
   cardBody.append(btnContainer);
   card.append(cardBody);

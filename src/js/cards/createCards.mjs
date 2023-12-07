@@ -14,6 +14,7 @@ export function createAuctionCards(data) {
   cardBody.className = "d-flex flex-column justify-content-between card-body";
 
   const imgContainer = document.createElement("div");
+  imgContainer.className = "cardImgContainer";
 
   const imgArray = data.media;
 
@@ -104,7 +105,6 @@ export function createAuctionCards(data) {
   bidCount.classList = "text-muted";
   bidCount.className = "card-text";
   const bidCountNr = data._count.bids;
-
   bidCount.textContent = `Current bids: ${bidCountNr}`;
   bids.append(bidCount);
 

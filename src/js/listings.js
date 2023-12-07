@@ -22,8 +22,8 @@ async function init() {
   const token = localStorage.getItem("accessToken");
   const currentDateTime = new Date();
   if (token) {
-    const array = await apiFetch(authListingsURL, "GET");
-    // console.log(array);
+    const array = await apiFetch(`${authListingsURL}&sort=created`, "GET");
+    console.log(array);
     console.log("Logged in");
 
     for (let i = 0; i < array.length; i++) {

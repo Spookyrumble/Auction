@@ -6,6 +6,7 @@ import { navUserInfo } from "./handlers/navUserInfo.mjs";
 import { userFetch } from "./API/fetch/userFetch.mjs";
 import { createListingAuctionCards } from "./cards/profileListingCards.mjs";
 import { previewInit } from "./handlers/cardPreview.mjs";
+import { userListing } from "./API/fetch/userListingFetch.mjs";
 import { profileViewBtns } from "./handlers/profileViewBtns.mjs";
 import * as bootstrap from "bootstrap";
 import Alert from "bootstrap/js/dist/alert";
@@ -25,8 +26,11 @@ navUserInfo();
 previewInit();
 
 export async function buildUserPage() {
-  const { avatar, name, listings, credits } = await userFetch();
-  console.log(listings);
+  const userId = localStorage.getItem("userId");
+  console.log(userId);
+
+  const { avatar, name, credits } = await userFetch();
+  const listings = await userListing(userId);
 
   const avatarElement = document.getElementById("avatarProfile");
   const nameElement = document.getElementById("userName");
