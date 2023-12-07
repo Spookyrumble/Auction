@@ -1,3 +1,5 @@
+import { updateAvatar } from "../API/fetch/changeAvatar.mjs";
+
 export function avatarEditHandler() {
   const containerAvatar = document.getElementById("editContainer");
   const avatarBtn = document.getElementById("editProfileBtn");
@@ -6,3 +8,5 @@ export function avatarEditHandler() {
     containerAvatar.classList.toggle("collapse");
   });
 }
+
+updateAvatar();
