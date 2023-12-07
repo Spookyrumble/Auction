@@ -2,7 +2,6 @@ import { triggerCountdown } from "../API/utils/countdown.mjs";
 import { formatDate } from "../API/utils/timeAndDate.mjs";
 
 export function createListingAuctionCards(data) {
-  const userName = localStorage.getItem("userId");
   const container = document.getElementById("container");
 
   const card = document.createElement("div");

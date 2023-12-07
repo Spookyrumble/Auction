@@ -22,7 +22,6 @@ navigationHandler();
 
 export async function buildUserPage() {
   const userId = localStorage.getItem("userId");
-  console.log(userId);
 
   const { avatar, name, credits } = await userFetch();
   const listings = await userListing(userId);

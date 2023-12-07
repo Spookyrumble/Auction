@@ -7,7 +7,6 @@ export async function userListing(user) {
       `${userURL}/${user}/listings?_bids=true`,
       "GET"
     );
-    console.log(response);
     return response;
   } catch (error) {
     console.log(error);

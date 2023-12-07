@@ -7,7 +7,7 @@ export async function fetchById(id) {
       `${openListingsURL}/${id}?_bids=true&_seller=true`,
       "GET"
     );
-    console.log(response);
+
     return response;
   } catch (error) {
     console.log(error);

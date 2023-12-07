@@ -1,18 +1,16 @@
 import { apiFetch } from "../API/fetch/authorizedFetch.mjs";
-import { userURL, openListingsURL } from "../API/constants/urls.mjs";
+import { userURL } from "../API/constants/urls.mjs";
 import { createListingAuctionCards } from "../cards/profileListingCards.mjs";
 import { fetchById } from "../API/fetch/fetchListingById.mjs";
 import { buildUserPage } from "../profile.js";
 import { userFetch } from "../API/fetch/userFetch.mjs";
 
-//
-const fakeArray = [
-  "854efa4e-03f6-48ba-ba4a-6f0655f28016",
-  "39ab43a0-31bc-4ce0-9bb4-9f3b0fa9e55e",
-  "9ee04e11-4073-44fc-b1b5-91b5cbfc91c0",
-];
-
-//
+// Testing array for wins history
+// const fakeArray = [
+//   "854efa4e-03f6-48ba-ba4a-6f0655f28016",
+//   "39ab43a0-31bc-4ce0-9bb4-9f3b0fa9e55e",
+//   "9ee04e11-4073-44fc-b1b5-91b5cbfc91c0",
+// ];
 
 export async function profileViewBtns() {
   const username = localStorage.getItem("userId");
