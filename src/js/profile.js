@@ -20,17 +20,8 @@ navUserInfo();
 previewInit();
 navigationHandler();
 
-// const listForm = document.getElementById("newListing");
-// listForm.addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   const formData = new FormData(listForm);
-//   const data = Object.fromEntries(formData.entries());
-//   console.log(data);
-// });
-
 export async function buildUserPage() {
   const userId = localStorage.getItem("userId");
-  console.log(userId);
 
   const { avatar, name, credits } = await userFetch();
   const listings = await userListing(userId);

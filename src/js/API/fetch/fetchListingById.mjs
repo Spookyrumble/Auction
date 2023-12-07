@@ -1,12 +1,13 @@
 import { apiFetch } from "./authorizedFetch.mjs";
-import { userURL } from "../constants/urls.mjs";
+import { openListingsURL } from "../constants/urls.mjs";
 
-export async function userListing(user) {
+export async function fetchById(id) {
   try {
     const response = await apiFetch(
-      `${userURL}/${user}/listings?_bids=true`,
+      `${openListingsURL}/${id}?_bids=true&_seller=true`,
       "GET"
     );
+
     return response;
   } catch (error) {
     console.log(error);
