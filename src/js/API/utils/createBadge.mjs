@@ -6,5 +6,4 @@ export function createBadge() {
   badge.classList.add("badge", "bg-secondary", "m-1");
   badge.textContent = tagInput.value;
   badgeContainer.append(badge);
-  tagInput.value = "";
 }

@@ -55,8 +55,9 @@ export function createAuctionCards(data) {
     img.alt = "Image";
     imgContainer.append(img);
   } else {
-    const noImageText = document.createElement("p");
-    noImageText.textContent = "No images available.";
+    const noImageText = document.createElement("img");
+    noImageText.className = "d-block cardImgSizing";
+    noImageText.src = "/src/images/placeholder.png";
     imgContainer.append(noImageText);
   }
 
@@ -72,7 +73,6 @@ export function createAuctionCards(data) {
   descriptionLabel.className = "text-muted";
   descriptionLabel.textContent = "Description:";
   const textContainer = document.createElement("div");
-  // textContainer.className = "text-end";
   const cardText = document.createElement("p");
   cardText.className = "card-text mb-3";
   cardText.textContent = data.description;
@@ -100,7 +100,6 @@ export function createAuctionCards(data) {
   countdown.append(countdownTimer);
 
   const bids = document.createElement("div");
-  // bids.className = "text-end";
   const bidCount = document.createElement("small");
   bidCount.classList = "text-muted";
   bidCount.className = "card-text";
@@ -130,6 +129,10 @@ export function createAuctionCards(data) {
   bidBtn.className = "btn btn-info border border-secondary mt-5";
   bidBtn.textContent = "Place bid";
   bidBtn.href = "#";
+  if (!localStorage.getItem("accessToken")) {
+    bidBtn.setAttribute("data-bs-toggle", "modal");
+    bidBtn.setAttribute("data-bs-target", "#loggedInModal");
+  }
   btnContainer.append(bidBtn);
 
   cardBody.append(imgContainer);
