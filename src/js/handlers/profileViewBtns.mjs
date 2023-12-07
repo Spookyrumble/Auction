@@ -18,16 +18,14 @@ export function profileViewBtns() {
     const response = await apiFetch(`${userURL}/${username}/bids`, "GET");
     response.forEach(async (element) => {
       const postId = element.id;
-      const auctions = await apiFetch(
-        `${openListingsURL}/${postId}?_seller=true`,
-        "GET"
-      );
-      if (auctions.statusCode === 404) {
-        console.log("The listing with this ID has been deleted");
-        container.textContent = `There are no active bids.`;
-      } else {
-        createListingAuctionCards(auctions);
-      }
+      console.log(postId);
+
+      // if (auctions.statusCode === 404) {
+      //   console.log("The listing with this ID has been deleted");
+      //   container.textContent = `There are no active bids.`;
+      // } else {
+      //   createListingAuctionCards(auctions);
+      // }
     });
   });
 
