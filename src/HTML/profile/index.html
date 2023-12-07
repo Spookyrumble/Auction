@@ -19,6 +19,7 @@
               ><h1>OnlyPineapples</h1></a
             >
             <button
+              id="burgerBtn"
               class="navbar-toggler collapsed"
               type="button"
               data-bs-toggle="collapse"
@@ -58,7 +59,7 @@
                     data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRight"
                     aria-controls="offcanvasRight"
-                    >Quick list new item</a
+                    >List New Item</a
                   >
                 </li>
                 <li class="nav-item m-auto">
@@ -76,7 +77,7 @@
               class="d-flex flex-wrap justify-content-between banner rounded"
             >
               <div class="col-3 d-flex align-items-center ms-3">
-                <div class="col-2-sm d-flex gap-1">
+                <div id="userField" class="col-2-sm d-flex gap-1">
                   <div>
                     <img
                       id="avatar"
@@ -137,102 +138,123 @@
           ></button>
         </div>
         <div class="offcanvas-body">
-          <form id="newListing" class="needs-validation" novalidate>
-            <div>
-              <div class="form-floating mb-3">
+          <form id="newListing">
+            <div class="form-floating mb-3">
+              <input
+                class="form-control border-info"
+                type="text"
+                name="item"
+                id="item"
+                aria-describedby="itemHelp"
+                placeholder="yourname@example.com"
+                required
+              />
+              <label for="item">Item name</label>
+              <small id="itemHelp" class="ms-2 form-text text-muted"
+                >What it is or what it is called</small
+              >
+            </div>
+            <div class="form-floating mb-3">
+              <textarea
+                class="form-control border-info"
+                name="description"
+                id="description"
+                aria-describedby="decribeHelp"
+                placeholder="Leave a description here"
+                required
+              ></textarea>
+              <label for="description">Description</label>
+              <small id="decribeHelp" class="ms-2 form-text text-muted"
+                >A short description of the item.</small
+              >
+            </div>
+            <div class="form-floating mb-3">
+              <div class="input-group gap-1">
                 <input
-                  class="form-control border-info"
+                  class="form-control border-info rounded noMute"
                   type="text"
-                  name="item"
-                  id="item"
-                  aria-describedby="itemHelp"
-                  placeholder="yourname@example.com"
-                  required
+                  name="tags"
+                  id="tags"
+                  aria-describedby="tagsHelp"
+                  placeholder="Tags"
                 />
-                <label for="item">Item name</label>
-                <small id="itemHelp" class="ms-2 form-text text-muted"
-                  >What it is or what it is called</small
-                >
-              </div>
-              <div class="form-floating mb-3">
-                <textarea
-                  class="form-control border-info"
-                  name="description"
-                  id="description"
-                  aria-describedby="decribeHelp"
-                  placeholder="Leave a description here"
-                  required
-                ></textarea>
-                <label for="description">Description</label>
-                <small id="decribeHelp" class="ms-2 form-text text-muted"
-                  >A short description of the item.</small
-                >
-              </div>
-              <div class="form-floating mb-3">
-                <div class="input-group gap-1">
-                  <input
-                    class="form-control border-info rounded noMute"
-                    type="text"
-                    name="tags"
-                    id="tags"
-                    aria-describedby="tagsHelp"
-                    placeholder="Tags"
-                  />
-                  <div class="input-group-append">
-                    <span
-                      ><button
-                        id="badgeAddBtn"
-                        class="btn btn-outline-info"
-                        type="button"
+                <div class="input-group-append">
+                  <span
+                    ><button
+                      id="badgeAddBtn"
+                      class="btn btn-outline-info"
+                      type="button"
+                    >
+                      <i class="bi bi-plus-circle-fill px-3"></i>
+                      <span
+                        id="tagBadge"
+                        class="d-none position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
                       >
-                        <i class="bi bi-plus-circle-fill px-3"></i></button
-                    ></span>
-                  </div>
+                      </span></button
+                  ></span>
                 </div>
-                <!-- <label for="tags">Tag</label> -->
-                <small id="tagsHelp" class="ms-2 form-text text-muted"
-                  ><label for="tags"
-                    >Tags. To add more use add button.</label
-                  ></small
-                >
               </div>
-              <div class="form-floating mb-3">
+              <small id="tagsHelp" class="ms-2 form-text text-muted"
+                ><label for="tags"
+                  >Tags. To add more use + button.</label
+                ></small
+              >
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                class="form-control border-info"
+                type="datetime-local"
+                name="date"
+                id="date"
+                aria-describedby="dateHelp"
+                placeholder="Auction end date"
+                required
+              />
+              <label for="date">Auction end date</label>
+              <small id="dateHelp" class="ms-2 form-text text-muted"
+                >When will this auction end?</small
+              >
+            </div>
+            <div class="form-floating">
+              <div class="input-group gap-1">
                 <input
-                  class="form-control border-info"
-                  type="datetime-local"
-                  name="date"
-                  id="date"
-                  aria-describedby="dateHelp"
-                  placeholder="Auction end date"
-                  required
-                />
-                <label for="date">Auction end date</label>
-                <small id="dateHelp" class="ms-2 form-text text-muted"
-                  >When will this auction end?</small
-                >
-              </div>
-              <div class="form-floating">
-                <input
-                  class="form-control border-info"
+                  class="form-control border-info rounded noMute"
                   type="text"
                   name="url"
                   id="itemUrl"
                   aria-describedby="urlHelp"
-                  placeholder="Image URL"
+                  placeholder="Image address"
                 />
-                <small class="ms-2 form-text text-muted"
-                  >Valid image address.</small
-                >
-                <label for="itemUrl">Media URL</label>
+                <div class="input-group-append">
+                  <span
+                    ><button
+                      id="addImgBtn"
+                      class="btn btn-outline-info"
+                      type="button"
+                    >
+                      <i class="bi bi-plus-circle-fill px-3"></i>
+                      <span
+                        id="addBadge"
+                        class="d-none position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+                      >
+                      </span></button
+                  ></span>
+                </div>
               </div>
-              <div class="d-flex justify-content-center">
-                <button
-                  class="col-3 btn btn-info text-secondary border-secondary my-3"
-                  type="submit"
+              <small class="ms-2 form-text text-muted">
+                <label for="itemUrl"
+                  >Media image address. To add more use + button</label
                 >
-                  Create
-                </button>
-              </div>
+              </small>
+            </div>
+            <div class="d-flex justify-content-center">
+              <button
+                id="submitBtn"
+                class="col-3 btn btn-info text-secondary border-secondary my-3"
+                type="button"
+              >
+                Create
+              </button>
             </div>
           </form>
           <div>
@@ -265,7 +287,7 @@
                     <small id="tagBadges">Tags:</small>
                   </div>
                   <div class="d-flex justify-content-end">
-                    <button class="btn btn-info border-secondary" disabled>
+                    <button class="mt-3 btn btn-info border-secondary" disabled>
                       Place bid
                     </button>
                   </div>
@@ -321,6 +343,7 @@
           <form id="editAvatar">
             <div class="form-floating d-flex flex-column m-auto my-3 col-6">
               <input
+                id="avatarInput"
                 class="form-control border-info"
                 name="avatar"
                 type="text"
@@ -335,10 +358,17 @@
             </div>
             <div class="d-flex justify-content-center">
               <button
+                id="avatarSubmitBtn"
                 class="col-3 btn btn-info text-secondary border-secondary my-1"
-                type="submit"
+                type="button"
               >
-                Submit
+                <span
+                  id="avatarBtnSpinner"
+                  class="visually-hidden spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                <span id="avatarBtnText" class="">Change Avatar</span>
               </button>
             </div>
           </form>
