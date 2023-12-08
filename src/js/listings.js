@@ -9,6 +9,7 @@ import { navUserInfo } from "./handlers/navUserInfo.mjs";
 import { navigationHandler } from "./handlers/navigation.mjs";
 import { createPost } from "./API/fetch/createPost.mjs";
 import { previewInit } from "./handlers/cardPreview.mjs";
+import { sortData } from "./handlers/sortingHandler.mjs";
 /* eslint-disable no-unused-vars */
 import * as bootstrap from "bootstrap";
 import Alert from "bootstrap/js/dist/alert";
@@ -17,43 +18,54 @@ import { end } from "@popperjs/core";
 /* eslint-enable no-unused-vars */
 
 // fetchAllPostsAndFilter();
+// init();
+const sortBySelect = document.getElementById("sortBySelect");
+sortBySelect.addEventListener("change", (event) => {
+  const selectedValue = event.target.value;
+  console.log(selectedValue);
 
-async function init() {
+  init(selectedValue);
+});
+
+async function init(sortBy) {
   const token = localStorage.getItem("accessToken");
   const currentDateTime = new Date();
   if (token) {
-    const array = await apiFetch(`${authListingsURL}&sort=created`, "GET");
+    const array = await apiFetch(`${authListingsURL}`, "GET");
     console.log(array);
     console.log("Logged in");
 
-    for (let i = 0; i < array.length; i++) {
+    let sortedData = sortData(sortBy, array);
+
+    for (let i = 0; i < sortedData.length; i++) {
       const endDateTime = new Date(array[i].endsAt);
       if (
         !array[i].title.toLowerCase().includes("test", "hei") &&
         !array[i].title.toLowerCase().includes("hei") &&
         endDateTime > currentDateTime
       ) {
-        createAuctionCards(array[i]);
+        createAuctionCards(sortedData[i]);
       }
     }
   } else {
     const array = await fetchOpenListings();
+    let sortedData = sortData(sortBy, array);
+
     console.log(array);
     console.log("Not logged in");
 
-    for (let i = 0; i < array.length; i++) {
-      const endDateTime = new Date(array[i].endsAt);
+    for (let i = 0; i < sortedData.length; i++) {
+      const endDateTime = new Date(sortedData[i].endsAt);
       if (
-        !array[i].title.toLowerCase().includes("test") &&
+        !sortedData[i].title.toLowerCase().includes("test") &&
         endDateTime > currentDateTime
       ) {
-        createAuctionCards(array[i]);
+        createAuctionCards(sortedData[i]);
       }
     }
   }
 }
 
-init();
 previewInit();
 logOutStorageClear();
 navUserInfo();
