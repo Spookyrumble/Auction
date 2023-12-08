@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../scss/styles.scss";
-import { openListingsURL, authListingsURL } from "./API/constants/urls.mjs";
+import { authListingsURL } from "./API/constants/urls.mjs";
 import { fetchOpenListings } from "./API/fetch/noAuthFetch.mjs";
 import { apiFetch } from "./API/fetch/authorizedFetch.mjs";
 import { createAuctionCards } from "/src/js/cards/createCards.mjs";
@@ -9,12 +8,13 @@ import { logOutStorageClear } from "./API/auth/logout.mjs";
 import { navUserInfo } from "./handlers/navUserInfo.mjs";
 import { navigationHandler } from "./handlers/navigation.mjs";
 import { createPost } from "./API/fetch/createPost.mjs";
-// import { fetchAllPostsAndFilter } from "./API/fetch/filteredFetch.mjs";
+import { previewInit } from "./handlers/cardPreview.mjs";
+/* eslint-disable no-unused-vars */
 import * as bootstrap from "bootstrap";
 import Alert from "bootstrap/js/dist/alert";
 import { Tooltip, Toast, Popover } from "bootstrap";
 import { end } from "@popperjs/core";
-import { previewInit } from "./handlers/cardPreview.mjs";
+/* eslint-enable no-unused-vars */
 
 // fetchAllPostsAndFilter();
 

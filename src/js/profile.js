@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../scss/styles.scss";
 import { avatarEditHandler } from "./listeners/profileFormListener.mjs";
@@ -9,10 +8,13 @@ import { previewInit } from "./handlers/cardPreview.mjs";
 import { userListing } from "./API/fetch/userListingFetch.mjs";
 import { logOutStorageClear } from "./API/auth/logout.mjs";
 import { navigationHandler } from "./handlers/navigation.mjs";
+
+/* eslint-disable no-unused-vars */
 import { profileViewBtns } from "./handlers/profileViewBtns.mjs";
 import * as bootstrap from "bootstrap";
 import Alert from "bootstrap/js/dist/alert";
 import { Tooltip, Toast, Popover } from "bootstrap";
+/* eslint-enable no-unused-vars */
 
 avatarEditHandler();
 logOutStorageClear();
