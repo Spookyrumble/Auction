@@ -7,17 +7,20 @@ export async function navUserInfo() {
     return;
   } else {
     const userAvatar = document.getElementById("avatar");
+    const loggedInUser = document.getElementById("loggedInUserName");
     const userCredits = document.getElementById("creditsValue");
 
     const userData = await userFetch();
     const pic = userData.avatar;
     const credits = userData.credits;
+    const userName = userData.name;
+    loggedInUser.textContent = userName;
     userAvatar.src = pic;
     userAvatar.alt = "avatar";
     userAvatar.style.cursor = "pointer";
     userAvatar.onclick = function () {
       window.location.href = "/src/HTML/profile/";
     };
-    userCredits.textContent = credits;
+    userCredits.textContent = `${credits} credits`;
   }
 }
