@@ -19,8 +19,6 @@ async function createWinList() {
     return win;
   }
 }
-const win = await createWinList();
-console.log(win);
 
 export async function profileViewBtns() {
   const username = localStorage.getItem("userId");
@@ -80,7 +78,7 @@ export async function profileViewBtns() {
 
 profileViewBtns();
 
-function buildBidsPage(data, amount, created) {
+async function buildBidsPage(data, amount, created) {
   const container = document.getElementById("container");
   const card = document.createElement("div");
   card.id = data.id;
@@ -90,6 +88,9 @@ function buildBidsPage(data, amount, created) {
   const body = document.createElement("div");
   body.className = "card-body";
   card.append(body);
+
+  const win = await createWinList();
+  console.log(win);
 
   const endsAt = document.createElement("div");
   endsAt.className = "mb-3 d-flex justify-content-center";
