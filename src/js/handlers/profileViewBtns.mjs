@@ -4,6 +4,7 @@ import { createListingAuctionCards } from "../cards/profileListingCards.mjs";
 import { fetchById } from "../API/fetch/fetchListingById.mjs";
 import { buildUserPage } from "../profile.js";
 import { userFetch } from "../API/fetch/userFetch.mjs";
+import { triggerCountdown } from "../API/utils/countdown.mjs";
 
 // Testing array for wins history
 // const fakeArray = [
@@ -11,6 +12,15 @@ import { userFetch } from "../API/fetch/userFetch.mjs";
 //   "39ab43a0-31bc-4ce0-9bb4-9f3b0fa9e55e",
 //   "9ee04e11-4073-44fc-b1b5-91b5cbfc91c0",
 // ];
+async function createWinList() {
+  const { wins } = await userFetch();
+  for (let i = 0; i < wins.length; i++) {
+    const win = wins[i];
+    return win;
+  }
+}
+const win = await createWinList();
+console.log(win);
 
 export async function profileViewBtns() {
   const username = localStorage.getItem("userId");
@@ -52,8 +62,8 @@ export async function profileViewBtns() {
     bidsBtn.classList.remove("activeBtn");
     listingsBtn.classList.remove("activeBtn");
     winsBtn.classList.add("activeBtn");
-    const response = await userFetch();
-    const wins = response.wins;
+    const { wins } = await userFetch();
+
     if (wins.length === 0) {
       const noWins = document.createElement("p");
       noWins.textContent = "You haven't won any auctions yet.";
@@ -81,12 +91,25 @@ function buildBidsPage(data, amount, created) {
   body.className = "card-body";
   card.append(body);
 
+  const endsAt = document.createElement("div");
+  endsAt.className = "mb-3 d-flex justify-content-center";
+  body.append(endsAt);
+  const countdown = document.createElement("p");
+  if (win === data.id) {
+    countdown.classList = "text-success fs-1";
+    countdown.textContent = "You won this auction!";
+  } else {
+    countdown.textContent = triggerCountdown(data.endsAt, endsAt);
+  }
+  endsAt.append(countdown);
+
   const idContainer = document.createElement("div");
   idContainer.className = "d-flex justify-content-between";
   body.append(idContainer);
 
   const auctionId = document.createElement("a");
   auctionId.className = "text-muted small text-decoration-none mb-3";
+  auctionId.textContent = `Auction ID: ${data.id} - You won this auction!`;
   auctionId.textContent = `Auction ID: ${data.id}`;
   auctionId.href = "#";
   idContainer.append(auctionId);

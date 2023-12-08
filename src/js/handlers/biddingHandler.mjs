@@ -1,6 +1,6 @@
 import { placeYourBid } from "/src/js/API/fetch/biddingFetch.mjs";
 
-export function populateBiddingModal(data) {
+export function populateBiddingModal(data, inputElement) {
   const biddingInfo = document.getElementById("listingInfoContainer");
   biddingInfo.innerHTML = "";
   const itemIdLabel = document.createElement("small");
@@ -41,9 +41,8 @@ export function populateBiddingModal(data) {
   const placeBid = document.getElementById("biddingBtnText");
   const listingId = data.id;
 
-  placeBid.addEventListener("click", (e) => {
-    e.preventDefault();
-    const bidInput = document.getElementById("bidInput");
+  placeBid.addEventListener("click", () => {
+    const bidInput = document.getElementById(`${inputElement}`);
     const loadIndicator = document.getElementById("biddingBtnSpinner");
     const loaderText = document.getElementById("biddingBtnText");
     const closeBtn = document.getElementById("biddingModalCloseBtn");
@@ -55,6 +54,8 @@ export function populateBiddingModal(data) {
     const bid = {
       amount: parsedAmount,
     };
+    console.log(parsedAmount);
+
     console.log(bid);
     console.log(listingId);
     placeYourBid(listingId, bid);

@@ -29,7 +29,8 @@ async function init() {
     for (let i = 0; i < array.length; i++) {
       const endDateTime = new Date(array[i].endsAt);
       if (
-        !array[i].title.toLowerCase().includes("test") &&
+        !array[i].title.toLowerCase().includes("test", "hei") &&
+        !array[i].title.toLowerCase().includes("hei") &&
         endDateTime > currentDateTime
       ) {
         createAuctionCards(array[i]);
