@@ -355,51 +355,18 @@
             Ongoing auctions
           </h2>
         </div>
-        <div class="d-flex justify-content-end">
-          <button
-            class="btn btn-secondary mx-4"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#settingsCanvas"
-            aria-describedby="settingsCanvas"
-          >
-            <i class="bi bi-sliders"> Sort By</i>
-          </button>
-        </div>
-        <div
-          class="offcanvas offcanvas-end bgGradient offCanvasLeft spacer rounded"
-          tabindex="-1"
-          id="settingsCanvas"
-          aria-labelledby="offcanvasLabel"
-          data-bs-scroll="true"
-        >
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasLabel">Sort Auctions</h5>
-            <button
-              type="button"
-              class="btn-close text-reset"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="offcanvas-body">
-            <div>
-              <p class="text-center text-muted">
-                Select filter from the dropdown to sort the feed
-              </p>
-            </div>
-            <form>
-              <select
-                id="filterDropdown"
-                class="form-select form-select-lg mb-3"
-                aria-label=".form-select-lg example"
-              >
-                <option selected>Created</option>
-                <option id="lca" value="1">Old to new</option>
-                <option id="obc" value="2">Last chance</option>
-                <option id="ld" value="3">Longest duration</option>
-              </select>
-            </form>
-          </div>
+        <div class="d-flex justify-content-end m-3">
+          <form class="form-inline-sm">
+            <label class="fs-6" for="sortBy"
+              >Sorted By<i class="bi bi-sliders mx-1"></i
+            ></label>
+            <select class="btn btn-secondary" name="sortBy" id="sortBySelect">
+              <option value="created">Newest</option>
+              <option value="lastChance">Last Chance</option>
+              <option value="oldNew">Old to New</option>
+              <option value="noBids">No bids</option>
+            </select>
+          </form>
         </div>
         <div
           id="cardContainer"
@@ -409,7 +376,6 @@
             <span class="loader"></span>
           </div>
         </div>
-
         <div
           class="modal fade"
           id="biddingModal"
