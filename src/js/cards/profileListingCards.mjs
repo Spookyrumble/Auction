@@ -1,5 +1,6 @@
 import { triggerCountdown } from "../API/utils/countdown.mjs";
 import { formatDate } from "../API/utils/timeAndDate.mjs";
+import placeholderImage from "/src/images/placeholder.png";
 
 export function createListingAuctionCards(data) {
   const container = document.getElementById("container");
@@ -55,7 +56,7 @@ export function createListingAuctionCards(data) {
   } else {
     const noImageText = document.createElement("img");
     noImageText.className = "d-block cardImgSizing";
-    noImageText.src = "/src/images/placeholder.png";
+    noImageText.src = placeholderImage;
     imgContainer.append(noImageText);
   }
 

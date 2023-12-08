@@ -1,6 +1,7 @@
 import { triggerCountdown } from "../API/utils/countdown.mjs";
 import { formatDate } from "../API/utils/timeAndDate.mjs";
 import { populateBiddingModal } from "../handlers/biddingHandler.mjs";
+import placeholderImage from "/src/images/placeholder.png";
 
 export function createAuctionCards(data) {
   const loader = document.getElementById("loader");
@@ -8,7 +9,6 @@ export function createAuctionCards(data) {
   const container = document.getElementById("cardContainer");
 
   const card = document.createElement("div");
-  // card.id = data.id;
   card.className = "card m-3 listingImg col-md-8 col-lg-8 col-xl-4";
 
   const cardBody = document.createElement("div");
@@ -22,7 +22,7 @@ export function createAuctionCards(data) {
   const thumbnailContainer = document.createElement("div");
   thumbnailContainer.className =
     "d-flex justify-content-center thumbnailContainer";
-  const uniqueUrls = new Set(); // Create a set to store unique URLs
+  const uniqueUrls = new Set();
 
   if (imgArray.length > 1) {
     const mainImage = document.createElement("img");
@@ -59,7 +59,7 @@ export function createAuctionCards(data) {
   } else {
     const noImageText = document.createElement("img");
     noImageText.className = "d-block cardImgSizing";
-    noImageText.src = "/src/images/placeholder.png";
+    noImageText.src = placeholderImage;
     imgContainer.append(noImageText);
   }
 
