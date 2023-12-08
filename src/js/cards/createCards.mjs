@@ -1,5 +1,6 @@
 import { triggerCountdown } from "../API/utils/countdown.mjs";
 import { formatDate } from "../API/utils/timeAndDate.mjs";
+import { populateBiddingModal } from "../handlers/biddingHandler.mjs";
 
 export function createAuctionCards(data) {
   const loader = document.getElementById("loader");
@@ -7,7 +8,7 @@ export function createAuctionCards(data) {
   const container = document.getElementById("cardContainer");
 
   const card = document.createElement("div");
-  card.id = data.id;
+  // card.id = data.id;
   card.className = "card m-3 listingImg col-md-8 col-lg-8 col-xl-4";
 
   const cardBody = document.createElement("div");
@@ -126,15 +127,28 @@ export function createAuctionCards(data) {
   const btnContainer = document.createElement("div");
   btnContainer.className = "d-flex justify-content-end";
   const bidBtn = document.createElement("a");
+  // bidBtn.id = data.id;
   bidBtn.className = "btn btn-info border border-secondary mt-5";
   bidBtn.textContent = "Place bid";
-  bidBtn.href = "#";
   if (!localStorage.getItem("accessToken")) {
     bidBtn.setAttribute("data-bs-toggle", "modal");
     bidBtn.setAttribute("data-bs-target", "#loggedInModal");
+  } else {
+    bidBtn.setAttribute("data-bs-toggle", "modal");
+    bidBtn.setAttribute("data-bs-target", "#biddingModal");
+    const bidInput = document.getElementById("bidInput");
+    bidBtn.addEventListener("click", () => {
+      bidInput.id = data.id;
+      const inputId = bidInput.id;
+      populateBiddingModal(data, inputId);
+    });
+
+    const biddingModal = document.getElementById("biddingModal");
+    biddingModal.addEventListener("hidden.bs.modal", () => {
+      bidInput.value = "";
+    });
   }
   btnContainer.append(bidBtn);
-
   cardBody.append(imgContainer);
   cardBody.append(titleContainer);
   cardBody.append(textContainer);

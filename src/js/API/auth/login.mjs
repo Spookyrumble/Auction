@@ -7,6 +7,7 @@ export async function loginUser(url, data) {
       },
       body: JSON.stringify(data),
     };
+
     const response = await fetch(url, postData);
 
     if (response.ok) {
