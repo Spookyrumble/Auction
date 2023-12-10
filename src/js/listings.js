@@ -17,17 +17,7 @@ import { Tooltip, Toast, Popover } from "bootstrap";
 import { end } from "@popperjs/core";
 /* eslint-enable no-unused-vars */
 
-// fetchAllPostsAndFilter();
-// init();
-const sortBySelect = document.getElementById("sortBySelect");
-sortBySelect.addEventListener("change", (event) => {
-  const selectedValue = event.target.value;
-  console.log(selectedValue);
-
-  init(selectedValue);
-});
-
-async function init(sortBy) {
+export async function init(sortBy) {
   const token = localStorage.getItem("accessToken");
   const currentDateTime = new Date();
   if (token) {
@@ -40,7 +30,7 @@ async function init(sortBy) {
     for (let i = 0; i < sortedData.length; i++) {
       const endDateTime = new Date(array[i].endsAt);
       if (
-        !array[i].title.toLowerCase().includes("test", "hei") &&
+        !array[i].title.toLowerCase().includes("test") &&
         !array[i].title.toLowerCase().includes("hei") &&
         endDateTime > currentDateTime
       ) {
@@ -66,8 +56,26 @@ async function init(sortBy) {
   }
 }
 
+const sortBySelect = document.getElementById("sortBySelect");
+
+sortBySelect.addEventListener("change", (event) => {
+  const selectedValue = event.target.value;
+  console.log(selectedValue);
+  removeCards();
+  init(selectedValue);
+});
+
 previewInit();
 logOutStorageClear();
 navUserInfo();
 navigationHandler();
 createPost();
+let defaultSort = "created";
+init(defaultSort);
+function removeCards() {
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach((card) => {
+    card.remove();
+  });
+}
