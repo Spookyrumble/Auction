@@ -40,7 +40,7 @@ export async function fetchAllPosts() {
       // eslint-disable-next-line no-constant-condition
       while (true) {
         const response = await fetch(
-          `${authListingsURL}&limit=${limit}&offset=${offset}`,
+          `${authListingsURL}&limit=${limit}&offset=${offset}&sort=created`,
           {
             headers: {
               "Content-Type": "application/json",

@@ -8,6 +8,10 @@ import { navigationHandler } from "./handlers/navigation.mjs";
 import { createPost } from "./API/fetch/createPost.mjs";
 import { previewInit } from "./handlers/cardPreview.mjs";
 import { sortData } from "./handlers/sortingHandler.mjs";
+import {
+  initializeBackToTopButton,
+  scrollToTop,
+} from "./handlers/backToTopBtn.mjs";
 
 /* eslint-disable no-unused-vars */
 import * as bootstrap from "bootstrap";
@@ -59,10 +63,13 @@ export async function init(sortBy) {
 }
 
 const sortBySelect = document.getElementById("sortBySelect");
+const pinnedBadgeContainer = document.getElementById("pinnedBadgeContainer");
 
 sortBySelect.addEventListener("change", (event) => {
   const loader = document.getElementById("loader");
   const selectedValue = event.target.value;
+  pinnedBadgeContainer.textContent = "";
+
   removeCards();
   loader.classList.remove("d-none");
   init(selectedValue);
@@ -83,3 +90,6 @@ function removeCards() {
     card.remove();
   });
 }
+
+initializeBackToTopButton();
+document.getElementById("backToTopBtn").addEventListener("click", scrollToTop);
