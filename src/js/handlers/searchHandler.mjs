@@ -83,13 +83,20 @@ export function searchHandler() {
   });
 
   const togglePinnedTag = (clickedTag) => {
-    const existingPinnedTag = pinnedTagsContainer.querySelector(
-      `.badge-${clickedTag}`
-    );
+    let existingPinnedTag = null;
+    const pinnedTags = pinnedTagsContainer.getElementsByClassName("badge");
+
+    for (let tag of pinnedTags) {
+      if (tag.textContent.toLowerCase() === clickedTag) {
+        existingPinnedTag = tag;
+        break;
+      }
+    }
+
     if (existingPinnedTag) {
       existingPinnedTag.remove();
-      searchInput.value = ""; // Clear search input when removing pinned tag
-      filterCards(""); // Update card filtering when removing pinned tag
+      searchInput.value = "";
+      filterCards("");
     } else {
       createPinnedTag(clickedTag);
     }
