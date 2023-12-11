@@ -1,21 +1,59 @@
-// export function searchHandler() {
-//   const searchInput = document.getElementById("searchInput");
+/**
+ * Handles the search functionality.
+ */
+export function searchHandler() {
+  const searchInput = document.getElementById("searchInput");
+  const cardContainer = document.getElementById("cardContainer");
 
-//   searchInput.addEventListener("keyup", (event) => {
-//     const searchValue = event.target.value.toLowerCase();
-//     console.log(searchValue);
-//     const items = resultsContainer.getElementsByTagName("p");
+  searchInput.addEventListener("keyup", (event) => {
+    const searchValue = event.target.value.toLowerCase();
+    filterCards(searchValue);
+  });
 
-//     // Loop through each item to check if it matches the search value
-//     Array.from(items).forEach((item) => {
-//       const textContent = item.textContent.toLowerCase(); // Get the text content of each item and convert to lowercase
+  const filterCards = (searchValue) => {
+    const cards = cardContainer.querySelectorAll(".cardTarget");
 
-//       // If the search value is found in the text content, show the item; otherwise, hide it
-//       if (textContent.includes(searchValue)) {
-//         item.style.display = "block"; // Show the item
-//       } else {
-//         item.style.display = "none"; // Hide the item
-//       }
-//     });
-//   });
-// }
+    cards.forEach((card) => {
+      const title = card.querySelector(".card-title").textContent.toLowerCase();
+      const description = card
+        .querySelector(".card-text")
+        .textContent.toLowerCase();
+      const tags = Array.from(card.querySelectorAll(".badge")).map((tag) =>
+        tag.textContent.toLowerCase()
+      );
+
+      if (
+        title.includes(searchValue) ||
+        description.includes(searchValue) ||
+        tags.some((tag) => tag.includes(searchValue))
+      ) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  };
+
+  cardContainer.addEventListener("click", (event) => {
+    if (event.target.classList.contains("badge")) {
+      const clickedTag = event.target.textContent.toLowerCase();
+      filterByTag(clickedTag);
+    }
+  });
+
+  const filterByTag = (clickedTag) => {
+    const cards = cardContainer.querySelectorAll(".cardTarget");
+
+    cards.forEach((card) => {
+      const tags = Array.from(card.querySelectorAll(".badge")).map((tag) =>
+        tag.textContent.toLowerCase()
+      );
+
+      if (tags.includes(clickedTag)) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  };
+}

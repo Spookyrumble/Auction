@@ -8,7 +8,7 @@ import { navigationHandler } from "./handlers/navigation.mjs";
 import { createPost } from "./API/fetch/createPost.mjs";
 import { previewInit } from "./handlers/cardPreview.mjs";
 import { sortData } from "./handlers/sortingHandler.mjs";
-// import { searchHandler } from "./handlers/searchHandler.mjs";
+
 /* eslint-disable no-unused-vars */
 import * as bootstrap from "bootstrap";
 import Alert from "bootstrap/js/dist/alert";
@@ -47,6 +47,9 @@ export async function init(sortBy) {
       const endDateTime = new Date(sortedData[i].endsAt);
       if (
         !sortedData[i].title.toLowerCase().includes("test") &&
+        !array[i].title.toLowerCase().includes("example") &&
+        !array[i].title.toLowerCase().includes("tester") &&
+        !array[i].title.toLowerCase().includes("hei") &&
         endDateTime > currentDateTime
       ) {
         createAuctionCards(sortedData[i]);
@@ -70,7 +73,6 @@ logOutStorageClear();
 navUserInfo();
 navigationHandler();
 createPost();
-// searchHandler();
 
 let defaultSort = "created";
 init(defaultSort);

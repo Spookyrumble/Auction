@@ -10,6 +10,7 @@ export function sortData(selectedValue, data) {
 
   switch (selectedValue) {
     case "created":
+      containerHeader.textContent = "Newest Auctions";
       console.log("Sorting by created");
       sortedData.sort((a, b) => {
         return new Date(b.created) - new Date(a.created);

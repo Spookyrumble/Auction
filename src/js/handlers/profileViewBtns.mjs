@@ -27,7 +27,7 @@ export async function profileViewBtns() {
   const winsBtn = document.getElementById("myWinsBtn");
 
   bidsBtn.addEventListener("click", async () => {
-    const container = document.getElementById("container");
+    const container = document.getElementById("cardContainer");
     container.textContent = "";
     bidsBtn.classList.add("activeBtn");
     listingsBtn.classList.remove("activeBtn");
@@ -48,13 +48,13 @@ export async function profileViewBtns() {
     bidsBtn.classList.remove("activeBtn");
     listingsBtn.classList.add("activeBtn");
     winsBtn.classList.remove("activeBtn");
-    const container = document.getElementById("container");
+    const container = document.getElementById("cardContainer");
     container.innerHTML = "";
     buildUserPage();
   });
 
   winsBtn.addEventListener("click", async () => {
-    const container = document.getElementById("container");
+    const container = document.getElementById("cardContainer");
     container.textContent = "";
     bidsBtn.classList.remove("activeBtn");
     listingsBtn.classList.remove("activeBtn");
@@ -78,11 +78,11 @@ export async function profileViewBtns() {
 profileViewBtns();
 
 async function buildBidsPage(data, amount, created) {
-  const container = document.getElementById("container");
+  const bidsContainer = document.getElementById("cardContainer");
   const card = document.createElement("div");
   card.id = data.id;
-  card.className = "card border border-info m-3 col-10 d-flex flex-column";
-  container.append(card);
+  card.className = "card border border-info m-3 col-8-sm d-flex flex-column";
+  bidsContainer.append(card);
 
   const body = document.createElement("div");
   body.className = "card-body";
