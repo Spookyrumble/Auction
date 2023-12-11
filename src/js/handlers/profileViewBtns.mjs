@@ -14,11 +14,11 @@ import { triggerCountdown } from "../API/utils/countdown.mjs";
 // ];
 async function createWinList() {
   const { wins } = await userFetch();
-  for (let i = 0; i < wins.length; i++) {
-    const win = wins[i];
-    return win;
-  }
+  // console.log(wins);
+  return wins;
 }
+const winList = await createWinList();
+console.log(winList);
 
 export async function profileViewBtns() {
   const username = localStorage.getItem("userId");
@@ -27,7 +27,7 @@ export async function profileViewBtns() {
   const winsBtn = document.getElementById("myWinsBtn");
 
   bidsBtn.addEventListener("click", async () => {
-    const container = document.getElementById("container");
+    const container = document.getElementById("cardContainer");
     container.textContent = "";
     bidsBtn.classList.add("activeBtn");
     listingsBtn.classList.remove("activeBtn");
@@ -36,7 +36,6 @@ export async function profileViewBtns() {
       `${userURL}/${username}/bids?_listings=true`,
       "GET"
     );
-
     for (let i = 0; i < response.length; i++) {
       const listing = response[i].listing;
       const amount = response[i].amount;
@@ -49,13 +48,13 @@ export async function profileViewBtns() {
     bidsBtn.classList.remove("activeBtn");
     listingsBtn.classList.add("activeBtn");
     winsBtn.classList.remove("activeBtn");
-    const container = document.getElementById("container");
+    const container = document.getElementById("cardContainer");
     container.innerHTML = "";
     buildUserPage();
   });
 
   winsBtn.addEventListener("click", async () => {
-    const container = document.getElementById("container");
+    const container = document.getElementById("cardContainer");
     container.textContent = "";
     bidsBtn.classList.remove("activeBtn");
     listingsBtn.classList.remove("activeBtn");
@@ -69,7 +68,7 @@ export async function profileViewBtns() {
     } else {
       for (let i = 0; i < wins.length; i++) {
         const data = await fetchById(wins[i]);
-        console.log(data);
+        // console.log(data);
         createListingAuctionCards(data);
       }
     }
@@ -79,29 +78,35 @@ export async function profileViewBtns() {
 profileViewBtns();
 
 async function buildBidsPage(data, amount, created) {
-  const container = document.getElementById("container");
+  const bidsContainer = document.getElementById("cardContainer");
   const card = document.createElement("div");
   card.id = data.id;
-  card.className = "card border border-info m-3 col-10 d-flex flex-column";
-  container.append(card);
+  card.className = "card border border-info m-3 col-8-sm d-flex flex-column";
+  bidsContainer.append(card);
 
   const body = document.createElement("div");
   body.className = "card-body";
   card.append(body);
 
-  const win = await createWinList();
-  console.log(win);
-
   const endsAt = document.createElement("div");
   endsAt.className = "mb-3 d-flex justify-content-center";
   body.append(endsAt);
+
+  let wonAuction = false;
+  winList.forEach((element) => {
+    if (element === data.id) {
+      wonAuction = true;
+    }
+  });
+
   const countdown = document.createElement("p");
-  if (win === data.id) {
+  if (wonAuction) {
     countdown.classList = "text-success fs-1";
     countdown.textContent = "You won this auction!";
   } else {
     countdown.textContent = triggerCountdown(data.endsAt, endsAt);
   }
+
   endsAt.append(countdown);
 
   const idContainer = document.createElement("div");

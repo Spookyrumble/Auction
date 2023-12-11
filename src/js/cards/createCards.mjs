@@ -2,14 +2,18 @@ import { triggerCountdown } from "../API/utils/countdown.mjs";
 import { formatDate } from "../API/utils/timeAndDate.mjs";
 import { populateBiddingModal } from "../handlers/biddingHandler.mjs";
 import placeholderImage from "/src/images/placeholder.png";
+import { searchHandler } from "../handlers/searchHandler.mjs";
+
+const container = document.getElementById("cardContainer");
+
+searchHandler(container);
 
 export function createAuctionCards(data) {
   const loader = document.getElementById("loader");
   loader.classList.add("d-none");
-  const container = document.getElementById("cardContainer");
 
   const card = document.createElement("div");
-  card.className = "card m-3 listingImg col-md-8 col-lg-8 col-xl-4";
+  card.className = "card m-3 listingImg col-md-8 col-lg-8 col-xl-4 cardTarget";
 
   const cardBody = document.createElement("div");
   cardBody.className = "d-flex flex-column justify-content-between card-body";
@@ -117,17 +121,21 @@ export function createAuctionCards(data) {
   listingTags.append(tagLabel);
 
   const tags = data.tags;
-  tags.forEach((tag) => {
-    const tagElement = document.createElement("span");
-    tagElement.className = "badge bg-secondary m-1";
-    tagElement.textContent = tag;
-    listingTags.append(tagElement);
-  });
+  if (tags.length === 0) {
+    tagLabel.textContent = `Tags: No tags`;
+  } else {
+    tags.forEach((tag) => {
+      const tagElement = document.createElement("span");
+      tagElement.className = "badge bg-secondary m-1";
+      tagElement.style.cursor = "pointer";
+      tagElement.textContent = tag;
+      listingTags.append(tagElement);
+    });
+  }
 
   const btnContainer = document.createElement("div");
   btnContainer.className = "d-flex justify-content-end";
   const bidBtn = document.createElement("a");
-  // bidBtn.id = data.id;
   bidBtn.className = "btn btn-info border border-secondary mt-5";
   bidBtn.textContent = "Place bid";
   if (!localStorage.getItem("accessToken")) {
@@ -160,3 +168,5 @@ export function createAuctionCards(data) {
   card.append(cardBody);
   container.append(card);
 }
+
+searchHandler();

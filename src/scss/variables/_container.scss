@@ -27,14 +27,17 @@
 
 .thumbnailContainer {
   display: flex;
-  flex-direction: column;
+  height: auto;
+  overflow: hidden;
+  align-items: center;
+  justify-content: flex-end;
   padding: 5px 5px;
   border-radius: 5px;
   gap: 5px;
-  transform: translateY(-17rem);
-  position: relative;
+  position: absolute;
+  right: 0;
+  bottom: 0;
   background-color: rgba($info, 0.6);
-  float: right;
 }
 
 .thumbnailContainer img {

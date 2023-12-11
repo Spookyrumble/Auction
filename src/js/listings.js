@@ -1,14 +1,18 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../scss/styles.scss";
-import { authListingsURL } from "./API/constants/urls.mjs";
-import { fetchOpenListings } from "./API/fetch/noAuthFetch.mjs";
-import { apiFetch } from "./API/fetch/authorizedFetch.mjs";
+import { fetchAllPosts } from "./API/fetch/fetchAllposts.mjs";
 import { createAuctionCards } from "/src/js/cards/createCards.mjs";
 import { logOutStorageClear } from "./API/auth/logout.mjs";
 import { navUserInfo } from "./handlers/navUserInfo.mjs";
 import { navigationHandler } from "./handlers/navigation.mjs";
 import { createPost } from "./API/fetch/createPost.mjs";
 import { previewInit } from "./handlers/cardPreview.mjs";
+import { sortData } from "./handlers/sortingHandler.mjs";
+import {
+  initializeBackToTopButton,
+  scrollToTop,
+} from "./handlers/backToTopBtn.mjs";
+
 /* eslint-disable no-unused-vars */
 import * as bootstrap from "bootstrap";
 import Alert from "bootstrap/js/dist/alert";
@@ -16,46 +20,76 @@ import { Tooltip, Toast, Popover } from "bootstrap";
 import { end } from "@popperjs/core";
 /* eslint-enable no-unused-vars */
 
-// fetchAllPostsAndFilter();
-
-async function init() {
+export async function init(sortBy) {
   const token = localStorage.getItem("accessToken");
   const currentDateTime = new Date();
   if (token) {
-    const array = await apiFetch(`${authListingsURL}&sort=created`, "GET");
-    console.log(array);
+    const array = await fetchAllPosts();
     console.log("Logged in");
 
-    for (let i = 0; i < array.length; i++) {
-      const endDateTime = new Date(array[i].endsAt);
-      if (
-        !array[i].title.toLowerCase().includes("test", "hei") &&
-        !array[i].title.toLowerCase().includes("hei") &&
-        endDateTime > currentDateTime
-      ) {
-        createAuctionCards(array[i]);
-      }
-    }
-  } else {
-    const array = await fetchOpenListings();
-    console.log(array);
-    console.log("Not logged in");
+    let sortedData = sortData(sortBy, array);
+    console.log(sortedData);
 
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < sortedData.length; i++) {
       const endDateTime = new Date(array[i].endsAt);
       if (
         !array[i].title.toLowerCase().includes("test") &&
+        !array[i].title.toLowerCase().includes("example") &&
+        !array[i].title.toLowerCase().includes("tester") &&
+        !array[i].title.toLowerCase().includes("hei") &&
         endDateTime > currentDateTime
       ) {
-        createAuctionCards(array[i]);
+        createAuctionCards(sortedData[i]);
+      }
+    }
+  } else {
+    const array = await fetchAllPosts();
+    let sortedData = sortData(sortBy, array);
+    console.log("Not logged in");
+
+    for (let i = 0; i < sortedData.length; i++) {
+      const endDateTime = new Date(sortedData[i].endsAt);
+      if (
+        !sortedData[i].title.toLowerCase().includes("test") &&
+        !array[i].title.toLowerCase().includes("example") &&
+        !array[i].title.toLowerCase().includes("tester") &&
+        !array[i].title.toLowerCase().includes("hei") &&
+        endDateTime > currentDateTime
+      ) {
+        createAuctionCards(sortedData[i]);
       }
     }
   }
 }
 
-init();
+const sortBySelect = document.getElementById("sortBySelect");
+const pinnedBadgeContainer = document.getElementById("pinnedBadgeContainer");
+
+sortBySelect.addEventListener("change", (event) => {
+  const loader = document.getElementById("loader");
+  const selectedValue = event.target.value;
+  pinnedBadgeContainer.textContent = "";
+
+  removeCards();
+  loader.classList.remove("d-none");
+  init(selectedValue);
+});
+
 previewInit();
 logOutStorageClear();
 navUserInfo();
 navigationHandler();
 createPost();
+
+let defaultSort = "created";
+init(defaultSort);
+
+function removeCards() {
+  const cards = document.querySelectorAll(".cardTarget");
+  cards.forEach((card) => {
+    card.remove();
+  });
+}
+
+initializeBackToTopButton();
+document.getElementById("backToTopBtn").addEventListener("click", scrollToTop);

@@ -1,13 +1,14 @@
 import { triggerCountdown } from "../API/utils/countdown.mjs";
 import { formatDate } from "../API/utils/timeAndDate.mjs";
 import placeholderImage from "/src/images/placeholder.png";
+import { searchHandler } from "../handlers/searchHandler.mjs";
 
 export function createListingAuctionCards(data) {
-  const container = document.getElementById("container");
+  const container = document.getElementById("cardContainer");
 
   const card = document.createElement("div");
   card.id = data.id;
-  card.className = "card m-3 listingImg col-md-6 col-lg-4 col-xl-3";
+  card.className = "card m-3 listingImg col-md-6 col-lg-4 col-xl-3 cardTarget";
 
   const cardBody = document.createElement("div");
   cardBody.className = "d-flex flex-column justify-content-between card-body";
@@ -117,6 +118,7 @@ export function createListingAuctionCards(data) {
   tags.forEach((tag) => {
     const tagElement = document.createElement("span");
     tagElement.className = "badge bg-secondary m-1";
+    tagElement.style.cursor = "pointer";
     tagElement.textContent = tag;
     listingTags.append(tagElement);
   });
@@ -141,3 +143,5 @@ export function createListingAuctionCards(data) {
   card.append(cardBody);
   container.append(card);
 }
+
+searchHandler();
