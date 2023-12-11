@@ -14,11 +14,11 @@ import { triggerCountdown } from "../API/utils/countdown.mjs";
 // ];
 async function createWinList() {
   const { wins } = await userFetch();
-  for (let i = 0; i < wins.length; i++) {
-    const win = wins[i];
-    return win;
-  }
+  // console.log(wins);
+  return wins;
 }
+const winList = await createWinList();
+console.log(winList);
 
 export async function profileViewBtns() {
   const username = localStorage.getItem("userId");
@@ -36,7 +36,6 @@ export async function profileViewBtns() {
       `${userURL}/${username}/bids?_listings=true`,
       "GET"
     );
-
     for (let i = 0; i < response.length; i++) {
       const listing = response[i].listing;
       const amount = response[i].amount;
@@ -69,7 +68,7 @@ export async function profileViewBtns() {
     } else {
       for (let i = 0; i < wins.length; i++) {
         const data = await fetchById(wins[i]);
-        console.log(data);
+        // console.log(data);
         createListingAuctionCards(data);
       }
     }
@@ -89,19 +88,25 @@ async function buildBidsPage(data, amount, created) {
   body.className = "card-body";
   card.append(body);
 
-  const win = await createWinList();
-  console.log(win);
-
   const endsAt = document.createElement("div");
   endsAt.className = "mb-3 d-flex justify-content-center";
   body.append(endsAt);
+
+  let wonAuction = false;
+  winList.forEach((element) => {
+    if (element === data.id) {
+      wonAuction = true;
+    }
+  });
+
   const countdown = document.createElement("p");
-  if (win === data.id) {
+  if (wonAuction) {
     countdown.classList = "text-success fs-1";
     countdown.textContent = "You won this auction!";
   } else {
     countdown.textContent = triggerCountdown(data.endsAt, endsAt);
   }
+
   endsAt.append(countdown);
 
   const idContainer = document.createElement("div");

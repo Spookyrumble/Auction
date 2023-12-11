@@ -43,8 +43,7 @@ export function sortData(selectedValue, data) {
     case "noBids":
       containerHeader.textContent = "No Bid Auctions";
       console.log("Sorting by noBids");
-      sortedData = sortedData.filter((item) => item.bids.length === 0);
-      break;
+      return sortedData.filter((item) => item.bids.length === 0);
     default:
       console.log("Sorting by default");
       sortedData.sort((a, b) => {

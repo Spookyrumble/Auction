@@ -1,8 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../scss/styles.scss";
-import { authListingsURL } from "./API/constants/urls.mjs";
-import { fetchOpenListings } from "./API/fetch/noAuthFetch.mjs";
-import { apiFetch } from "./API/fetch/authorizedFetch.mjs";
+import { fetchAllPosts } from "./API/fetch/fetchAllposts.mjs";
 import { createAuctionCards } from "/src/js/cards/createCards.mjs";
 import { logOutStorageClear } from "./API/auth/logout.mjs";
 import { navUserInfo } from "./handlers/navUserInfo.mjs";
@@ -10,6 +8,7 @@ import { navigationHandler } from "./handlers/navigation.mjs";
 import { createPost } from "./API/fetch/createPost.mjs";
 import { previewInit } from "./handlers/cardPreview.mjs";
 import { sortData } from "./handlers/sortingHandler.mjs";
+// import { searchHandler } from "./handlers/searchHandler.mjs";
 /* eslint-disable no-unused-vars */
 import * as bootstrap from "bootstrap";
 import Alert from "bootstrap/js/dist/alert";
@@ -21,16 +20,18 @@ export async function init(sortBy) {
   const token = localStorage.getItem("accessToken");
   const currentDateTime = new Date();
   if (token) {
-    const array = await apiFetch(`${authListingsURL}`, "GET");
-    console.log(array);
+    const array = await fetchAllPosts();
     console.log("Logged in");
 
     let sortedData = sortData(sortBy, array);
+    console.log(sortedData);
 
     for (let i = 0; i < sortedData.length; i++) {
       const endDateTime = new Date(array[i].endsAt);
       if (
         !array[i].title.toLowerCase().includes("test") &&
+        !array[i].title.toLowerCase().includes("example") &&
+        !array[i].title.toLowerCase().includes("tester") &&
         !array[i].title.toLowerCase().includes("hei") &&
         endDateTime > currentDateTime
       ) {
@@ -38,10 +39,8 @@ export async function init(sortBy) {
       }
     }
   } else {
-    const array = await fetchOpenListings();
+    const array = await fetchAllPosts();
     let sortedData = sortData(sortBy, array);
-
-    console.log(array);
     console.log("Not logged in");
 
     for (let i = 0; i < sortedData.length; i++) {
@@ -59,9 +58,10 @@ export async function init(sortBy) {
 const sortBySelect = document.getElementById("sortBySelect");
 
 sortBySelect.addEventListener("change", (event) => {
+  const loader = document.getElementById("loader");
   const selectedValue = event.target.value;
-  console.log(selectedValue);
   removeCards();
+  loader.classList.remove("d-none");
   init(selectedValue);
 });
 
@@ -70,11 +70,13 @@ logOutStorageClear();
 navUserInfo();
 navigationHandler();
 createPost();
+// searchHandler();
+
 let defaultSort = "created";
 init(defaultSort);
-function removeCards() {
-  const cards = document.querySelectorAll(".card");
 
+function removeCards() {
+  const cards = document.querySelectorAll(".cardTarget");
   cards.forEach((card) => {
     card.remove();
   });

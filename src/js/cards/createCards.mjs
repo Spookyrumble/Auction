@@ -9,7 +9,7 @@ export function createAuctionCards(data) {
   const container = document.getElementById("cardContainer");
 
   const card = document.createElement("div");
-  card.className = "card m-3 listingImg col-md-8 col-lg-8 col-xl-4";
+  card.className = "card m-3 listingImg col-md-8 col-lg-8 col-xl-4 cardTarget";
 
   const cardBody = document.createElement("div");
   cardBody.className = "d-flex flex-column justify-content-between card-body";
