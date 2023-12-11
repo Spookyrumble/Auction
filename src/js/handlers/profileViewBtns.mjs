@@ -14,11 +14,9 @@ import { triggerCountdown } from "../API/utils/countdown.mjs";
 // ];
 async function createWinList() {
   const { wins } = await userFetch();
-  // console.log(wins);
   return wins;
 }
-const winList = await createWinList();
-console.log(winList);
+const winList = createWinList();
 
 export async function profileViewBtns() {
   const username = localStorage.getItem("userId");
