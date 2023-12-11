@@ -16,7 +16,6 @@ async function createWinList() {
   const { wins } = await userFetch();
   return wins;
 }
-const winList = createWinList();
 
 export async function profileViewBtns() {
   const username = localStorage.getItem("userId");
@@ -76,6 +75,7 @@ export async function profileViewBtns() {
 profileViewBtns();
 
 async function buildBidsPage(data, amount, created) {
+  const winList = await createWinList();
   const bidsContainer = document.getElementById("cardContainer");
   const card = document.createElement("div");
   card.id = data.id;
