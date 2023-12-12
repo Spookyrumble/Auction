@@ -1,9 +1,14 @@
 import { fetchById } from "../API/fetch/fetchListingById.mjs";
 import { triggerCountdown } from "../API/utils/countdown.mjs";
+import { userFetch } from "../API/fetch/userFetch.mjs";
+import { createAndPlaceBid } from "./biddingHandler.mjs";
 
 export async function buildViewModal(postID) {
+  const placeBidBtn = document.getElementById("submitBidBtn");
+  const bidInput = document.getElementById("bidAmountInput");
+
+  const { credits } = await userFetch();
   const listingData = await fetchById(postID);
-  console.log(listingData);
   const headerText = document.getElementById("listingByIdHeader");
   const bodyContainer = document.getElementById("listingByIdBody");
   bodyContainer.innerHTML = "";
@@ -154,7 +159,15 @@ export async function buildViewModal(postID) {
       const hour = bidDate.getHours();
       const minute = bidDate.getMinutes();
       const bidder = document.createElement("li");
-      bidder.classList.add("mx-4", "fs-6", "border-bottom", "mb-2", "border-1");
+      bidder.classList.add(
+        "mx-4",
+        "fs-6",
+        "border-bottom",
+        "mb-2",
+        "border-1",
+        "d-flex",
+        "justify-content-between"
+      );
       bidder.textContent = `${element.bidderName}: ${element.amount} Credit.`;
       bids.append(bidder);
       const bidPlacedDate = document.createElement("small");
@@ -188,6 +201,9 @@ export async function buildViewModal(postID) {
     bodyContainer.append(leaderContainer);
   }
 
+  const currentFounds = document.getElementById("availableFunds");
+  currentFounds.textContent = credits;
+
   const biddingEndLabel = document.createElement("small");
   biddingEndLabel.className = "text-muted";
   biddingEndLabel.textContent = "Countdown:";
@@ -201,4 +217,18 @@ export async function buildViewModal(postID) {
   bodyContainer.append(biddingEnd);
   bodyContainer.append(bidsLabel);
   bodyContainer.append(bids);
+
+  placeBidBtn.addEventListener("click", (e) => {
+    const spinner = document.getElementById("bidBtnSpinner");
+    e.preventDefault();
+
+    spinner.classList.remove("visually-hidden");
+    createAndPlaceBid(postID, bidInput);
+
+    spinner.classList.add("visually-hidden");
+    placeBidBtn.textContent = "Success!";
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  });
 }

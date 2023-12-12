@@ -1,6 +1,5 @@
 import { triggerCountdown } from "../API/utils/countdown.mjs";
 import { formatDate } from "../API/utils/timeAndDate.mjs";
-import { populateBiddingModal } from "../handlers/biddingHandler.mjs";
 import placeholderImage from "/src/images/placeholder.png";
 import { searchHandler } from "../handlers/searchHandler.mjs";
 import { buildViewModal } from "../handlers/viewMoreModal.mjs";
@@ -14,10 +13,7 @@ export function createAuctionCards(data) {
   loader.classList.add("d-none");
 
   const card = document.createElement("a");
-  // card.setAttribute("data-bs-target", "#listingByIdModal");
-  // card.setAttribute("data-bs-toggle", "modal");
   card.className = "card m-3 listingImg col-md-8 col-lg-8 col-xl-4 cardTarget";
-  // card.style.cursor = "pointer";
   card.style.textDecoration = "none";
 
   const cardBody = document.createElement("div");
@@ -146,31 +142,11 @@ export function createAuctionCards(data) {
 
   const btnContainer = document.createElement("div");
   btnContainer.className = "d-flex justify-content-end gap-2";
-  const bidBtn = document.createElement("a");
-  bidBtn.className = "btn btn-info border border-secondary mt-5 text-white";
-  bidBtn.textContent = "Place bid";
-  if (!localStorage.getItem("accessToken")) {
-    bidBtn.setAttribute("data-bs-toggle", "modal");
-    bidBtn.setAttribute("data-bs-target", "#loggedInModal");
-  } else {
-    bidBtn.setAttribute("data-bs-toggle", "modal");
-    bidBtn.setAttribute("data-bs-target", "#biddingModal");
-    const bidInput = document.getElementById("bidInput");
-    bidBtn.addEventListener("click", () => {
-      bidInput.id = data.id;
-      const inputId = bidInput.id;
-      populateBiddingModal(data, inputId);
-    });
 
-    const biddingModal = document.getElementById("biddingModal");
-    biddingModal.addEventListener("hidden.bs.modal", () => {
-      bidInput.value = "";
-    });
-  }
   const viewMoreBtn = document.createElement("a");
   viewMoreBtn.className =
     "btn btn-info border border-secondary mt-5 ms-2 text-white";
-  viewMoreBtn.textContent = "View more";
+  viewMoreBtn.textContent = "View Bids";
   viewMoreBtn.setAttribute("data-bs-toggle", "modal");
   viewMoreBtn.setAttribute("data-bs-target", "#listingByIdModal");
   viewMoreBtn.addEventListener("click", () => {
@@ -178,7 +154,6 @@ export function createAuctionCards(data) {
   });
 
   btnContainer.append(viewMoreBtn);
-  btnContainer.append(bidBtn);
   cardBody.append(imgContainer);
   cardBody.append(titleContainer);
   cardBody.append(textContainer);

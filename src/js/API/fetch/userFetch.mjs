@@ -19,6 +19,7 @@ export async function userFetch() {
       },
     });
     const json = await response.json();
+
     return json;
   }
 }
