@@ -51,7 +51,7 @@ export function searchHandler() {
       existingPinnedTag.textContent.toLowerCase() !== searchValue
     ) {
       const pinnedTag = document.createElement("div");
-      pinnedTag.className = `badge bg-secondary mx-2 fs-6 fw-normal`;
+      pinnedTag.className = `badge bg-secondary mx-2 fs-6 fw-normal position-fixed`;
       pinnedTag.textContent = `${searchValue}`;
 
       const closeButton = document.createElement("i");
