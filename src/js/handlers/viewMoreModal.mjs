@@ -13,8 +13,20 @@ export async function buildViewModal(postID) {
   const bodyContainer = document.getElementById("listingByIdBody");
   bodyContainer.innerHTML = "";
 
-  headerText.textContent = listingData.title;
-  headerText.classList.add("text-center", "fs-3");
+  const titleContainer = document.createElement("div");
+  titleContainer.className = "w-100 d-flex flex-column justify-content-center";
+
+  const headerTextLabel = document.createElement("small");
+  headerTextLabel.className = "text-center text-primary bg-info";
+  headerTextLabel.textContent = "Title:";
+
+  const headerTitle = document.createElement("h2");
+  headerTitle.className = "text-center";
+  headerTitle.textContent = listingData.title;
+
+  titleContainer.append(headerTextLabel);
+  titleContainer.append(headerTitle);
+  headerText.append(titleContainer);
 
   const sellerInfo = document.createElement("div");
   sellerInfo.className = "my-2";
@@ -190,10 +202,9 @@ export async function buildViewModal(postID) {
     highestBidderName.classList.add(
       "text-center",
       "fs-3",
-      "bg-info",
+      "bg-primary",
       "text-secondary",
-      "round",
-      "p-3"
+      "rounded"
     );
     highestBidderName.textContent = highestBidder;
     leaderContainer.append(leaderBoard);
