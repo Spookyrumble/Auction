@@ -3,6 +3,7 @@ import { formatDate } from "../API/utils/timeAndDate.mjs";
 import { populateBiddingModal } from "../handlers/biddingHandler.mjs";
 import placeholderImage from "/src/images/placeholder.png";
 import { searchHandler } from "../handlers/searchHandler.mjs";
+import { buildViewModal } from "../handlers/viewMoreModal.mjs";
 
 const container = document.getElementById("cardContainer");
 
@@ -12,8 +13,12 @@ export function createAuctionCards(data) {
   const loader = document.getElementById("loader");
   loader.classList.add("d-none");
 
-  const card = document.createElement("div");
+  const card = document.createElement("a");
+  // card.setAttribute("data-bs-target", "#listingByIdModal");
+  // card.setAttribute("data-bs-toggle", "modal");
   card.className = "card m-3 listingImg col-md-8 col-lg-8 col-xl-4 cardTarget";
+  // card.style.cursor = "pointer";
+  card.style.textDecoration = "none";
 
   const cardBody = document.createElement("div");
   cardBody.className = "d-flex flex-column justify-content-between card-body";
@@ -34,6 +39,9 @@ export function createAuctionCards(data) {
     mainImage.className = "d-block cardImgSizing";
     mainImage.src = imgArray[0];
     mainImage.alt = "Main Image";
+    mainImage.onerror = function () {
+      mainImage.src = placeholderImage;
+    };
     imgContainer.append(mainImage);
 
     imgArray.forEach((src) => {
@@ -50,6 +58,9 @@ export function createAuctionCards(data) {
           mainImage.src = src;
         };
         thumbnailContainer.append(thumbnail);
+        thumbnail.onerror = function () {
+          thumbnail.src = placeholderImage;
+        };
       }
     });
 
@@ -134,9 +145,9 @@ export function createAuctionCards(data) {
   }
 
   const btnContainer = document.createElement("div");
-  btnContainer.className = "d-flex justify-content-end";
+  btnContainer.className = "d-flex justify-content-end gap-2";
   const bidBtn = document.createElement("a");
-  bidBtn.className = "btn btn-info border border-secondary mt-5";
+  bidBtn.className = "btn btn-info border border-secondary mt-5 text-white";
   bidBtn.textContent = "Place bid";
   if (!localStorage.getItem("accessToken")) {
     bidBtn.setAttribute("data-bs-toggle", "modal");
@@ -156,6 +167,17 @@ export function createAuctionCards(data) {
       bidInput.value = "";
     });
   }
+  const viewMoreBtn = document.createElement("a");
+  viewMoreBtn.className =
+    "btn btn-info border border-secondary mt-5 ms-2 text-white";
+  viewMoreBtn.textContent = "View more";
+  viewMoreBtn.setAttribute("data-bs-toggle", "modal");
+  viewMoreBtn.setAttribute("data-bs-target", "#listingByIdModal");
+  viewMoreBtn.addEventListener("click", () => {
+    buildViewModal(data.id);
+  });
+
+  btnContainer.append(viewMoreBtn);
   btnContainer.append(bidBtn);
   cardBody.append(imgContainer);
   cardBody.append(titleContainer);

@@ -11,16 +11,16 @@
     <script type="module" src="/src/js/listings.js"></script>
   </head>
   <body>
-    <header class="container-fluid m-auto fixed-top bg-white">
+    <header class="container-fluid m-auto fixed-top bg-info">
       <div class="row">
         <div class="col-12">
           <nav class="navbar navbar-expand-lg">
-            <a id="logoLink" class="navbar-brand text-secondary m-2"
+            <a id="logoLink" class="navbar-brand text-primary m-2"
               ><h1>OnlyPineapples</h1></a
             >
             <button
               id="burgerBtn"
-              class="navbar-toggler collapsed"
+              class="navbar-toggler collapsed text-info"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#burgerMenu"
@@ -31,14 +31,14 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div
-              class="collapse navbar-collapse justify-content-between bg-white"
+              class="collapse navbar-collapse justify-content-between bg-info"
               id="burgerMenu"
             >
               <ul class="navbar-nav text-center m-auto">
                 <li class="nav-item m-auto">
                   <a
                     id="profileNavLink"
-                    class="nav-link text-secondary m-4"
+                    class="nav-link text-white m-4"
                     href="/src/HTML/profile/index.html"
                     >Profile</a
                   >
@@ -46,7 +46,7 @@
                 <li class="nav-item m-auto">
                   <a
                     id="feedNavLink"
-                    class="nav-link text-secondary m-4 active"
+                    class="nav-link text-white m-4 active"
                     href="/src/HTML/auction/index.html"
                     >Listings</a
                   >
@@ -54,7 +54,7 @@
                 <li class="nav-item m-auto">
                   <a
                     id="newListing"
-                    class="nav-link text-secondary m-4"
+                    class="nav-link text-white m-4"
                     href="#"
                     data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRight"
@@ -63,7 +63,7 @@
                   >
                 </li>
                 <li class="nav-item m-auto">
-                  <a id="signOut" class="nav-link text-secondary m-4" href="#"
+                  <a id="signOut" class="nav-link text-white m-4" href="#"
                     >Sign out</a
                   >
                 </li>
@@ -90,38 +90,30 @@
                     <div>
                       <p
                         id="loggedInUserName"
-                        class="mb-0 text-info weight-light"
+                        class="mb-0 text-primary weight-light"
                       ></p>
                       <small
                         id="creditsText"
-                        class="mb-0 text-info weight-light"
+                        class="mb-0 text-primary weight-light"
                       >
-                        <span id="creditsValue" class="text-info"></span>
+                        <span id="creditsValue" class="text-primary"></span>
                       </small>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="col-8-sm mx-3 m-auto">
-                <form class="form-inline">
-                  <div class="input-group">
-                    <div class="form-control d-flex">
-                      <label class="form-label m-auto me-2" for="searchInput"
-                        >Search</label
-                      >
-                      <input
-                        class="form-control"
-                        type="text"
-                        name="search"
-                        id="searchInput"
-                      />
-                    </div>
-                    <button
-                      class="input-group-append btn bg-white text-secondary"
-                      type="submit"
-                    >
-                      <i class="bi bi-search"></i>
-                    </button>
+                <form class="form-inline custom-search-form">
+                  >
+                  <div class="search-input-container">
+                    <input
+                      type="text"
+                      name="search"
+                      id="searchInput"
+                      placeholder="Search..."
+                      aria-label="Search field"
+                    />
+                    <i class="bi bi-search"></i>
                   </div>
                 </form>
               </div>
@@ -370,8 +362,56 @@
         </div>
         <div
           id="pinnedBadgeContainer"
-          class="d-flex justify-content-end my-1"
+          class="d-flex justify-content-end mt-1 mb-4"
         ></div>
+        <!--  -->
+        <!--  -->
+        <div
+          id="listingByIdModal"
+          class="modal blur fade"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="listingByIdModal"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <small class="text-muted text-center mt-2">Title:</small>
+              <div
+                id="listingByIdHeader"
+                class="modal-header d-flex justify-content-center"
+              >
+                <h5 class="modal-title">Modal title</h5>
+                <button
+                  type="button"
+                  class="close bg-secondary rounded text-white"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div id="listingByIdBody" class="modal-body"></div>
+              <div class="modal-footer">
+                <button
+                  id="listingByIdBidBtnbs-"
+                  type="button"
+                  class="btn btn-info text-black"
+                >
+                  Place Bid
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--  -->
         <div
           id="cardContainer"
           class="d-flex col-12 flex-wrap justify-content-center"
@@ -395,9 +435,8 @@
                   Make your offer
                 </h5>
                 <button
-                  class="bg-secondary rounded text-white"
+                  class="close bg-secondary rounded text-white"
                   type="button"
-                  class="close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                 >

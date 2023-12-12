@@ -67,3 +67,28 @@
 .noMute::placeholder {
   color: black !important;
 }
+
+.custom-search-form .search-input-container {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid $primary; /* Bottom border */
+  padding-bottom: 5px;
+}
+
+.custom-search-form .search-input-container input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background-color: $secondary;
+  color: $primary;
+}
+
+.custom-search-form .search-input-container input::placeholder {
+  color: $primary;
+}
+
+.custom-search-form .search-input-container i {
+  color: $primary;
+  margin-left: 10px;
+}
