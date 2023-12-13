@@ -3,32 +3,30 @@ import { loginUser } from "../API/auth/login.mjs";
 import { registerUser } from "../API/auth/registerUser.mjs";
 
 export function formHandler() {
-  const loginForm = document.querySelector("#loginForm");
-  const registerForm = document.querySelector("#registerForm");
+  const loginForm = document.getElementById("loginForm");
+  const username = document.getElementById("username");
+  const loader = document.getElementById("registerBtnSpinner");
+  const btn = document.getElementById("submitBtn");
 
-  if (loginForm) {
-    loginForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const formData = new FormData(loginForm);
-      const data = Object.fromEntries(formData);
+  loginForm.addEventListener("submit", async (e) => {
+    loader.classList.remove("visually-hidden");
+    e.preventDefault();
+    const formData = new FormData(loginForm);
+    const data = Object.fromEntries(formData);
+    if (username.classList.contains("collapse")) {
       const response = await loginUser(loginURL, data);
-      console.log(response, data);
       if (response.success) {
+        loader.classList.add("visually-hidden");
+        btn.textContent = "Success!";
         window.location.href = "/src/HTML/auction/index.html";
       }
-    });
-  }
-
-  if (registerForm) {
-    registerForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const formData = new FormData(registerForm);
-      const data = Object.fromEntries(formData);
+    } else {
       const response = await registerUser(registerURL, data);
-      console.log(response, data);
       if (response.success) {
+        loader.classList.add("visually-hidden");
+        btn.textContent = "Success!";
         window.location.href = "/src/HTML/auction/index.html";
       }
-    });
-  }
+    }
+  });
 }

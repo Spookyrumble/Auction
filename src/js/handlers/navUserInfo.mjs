@@ -3,7 +3,9 @@ import { userFetch } from "../API/fetch/userFetch.mjs";
 export async function navUserInfo() {
   if (!localStorage.getItem("accessToken")) {
     const userField = document.getElementById("userField");
+    const signOutBtn = document.getElementById("signOut");
     userField.classList.add("d-none");
+    signOutBtn.textContent = "Sign in";
     return;
   } else {
     const userAvatar = document.getElementById("avatar");

@@ -40,7 +40,7 @@ export async function fetchAllPosts() {
 
       allPostsArray = [...allPostsArray, ...posts];
       if (allPostsArray.length > maxPosts) {
-        allPostsArray = allPostsArray.slice(0, maxPosts); // Cut off any excess posts
+        allPostsArray = allPostsArray.slice(0, maxPosts);
         break;
       }
       offset += limit;
