@@ -9,6 +9,7 @@ export async function loginUser(url, data) {
     };
 
     const response = await fetch(url, postData);
+    const btnLoader = document.getElementById("registerBtnSpinner");
 
     if (response.ok) {
       const json = await response.json();
@@ -19,6 +20,10 @@ export async function loginUser(url, data) {
       return { success: true, data: json };
     } else {
       console.error("Login failed:", response.status);
+      alert(
+        "Login failed, please check your username and password and try again."
+      );
+      btnLoader.classList.add("visually-hidden");
       return { success: false };
     }
   } catch (error) {

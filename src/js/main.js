@@ -13,7 +13,7 @@ formHandler();
 justBrowse();
 
 function denyIndexIfLoggedIn() {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("accessToken");
   if (token) {
     window.location.href = "/src/HTML/auction/index.html";
   }
