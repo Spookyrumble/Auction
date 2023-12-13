@@ -28,7 +28,8 @@
 .thumbnailContainer {
   display: flex;
   height: auto;
-  overflow: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
   align-items: center;
   justify-content: flex-end;
   padding: 5px 5px;
@@ -41,6 +42,7 @@
 }
 
 .thumbnailContainer img {
+  flex: 0 0 auto;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -91,4 +93,8 @@
 .custom-search-form .search-input-container i {
   color: $primary;
   margin-left: 10px;
+}
+
+.highIndex {
+  z-index: 1000;
 }

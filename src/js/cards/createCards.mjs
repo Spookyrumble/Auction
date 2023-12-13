@@ -13,7 +13,8 @@ export function createAuctionCards(data) {
   loader.classList.add("d-none");
 
   const card = document.createElement("a");
-  card.className = "card m-3 listingImg col-md-8 col-lg-8 col-xl-4 cardTarget";
+  card.className =
+    "card m-3 listingImg col-sm-10 col-md-8 col-lg-6 col-xl-4 cardTarget";
   card.style.textDecoration = "none";
 
   const cardBody = document.createElement("div");
@@ -23,6 +24,9 @@ export function createAuctionCards(data) {
   imgContainer.className = "cardImgContainer";
 
   const imgArray = data.media;
+  imgArray.onerror = function () {
+    imgArray.src = placeholderImage;
+  };
 
   const thumbnailContainer = document.createElement("div");
   thumbnailContainer.className =

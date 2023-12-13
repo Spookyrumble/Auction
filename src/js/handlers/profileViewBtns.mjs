@@ -79,16 +79,18 @@ async function buildBidsPage(data, amount, created) {
   const bidsContainer = document.getElementById("cardContainer");
   const card = document.createElement("div");
   card.id = data.id;
-  card.className = "card border border-info m-3 col-8-sm d-flex flex-column";
-  bidsContainer.append(card);
+  card.className =
+    "card p-3 border border-info m-3 col-sm-8 col-md-6 d-flex flex-column";
+  // bidsContainer.append(card);
 
-  const body = document.createElement("div");
-  body.className = "card-body";
-  card.append(body);
+  // // const body = document.createElement("div");
+  // // body.className = "card-body";
+  // // card.append(body);
+  // bidsContainer.append(card);
 
   const endsAt = document.createElement("div");
   endsAt.className = "mb-3 d-flex justify-content-center";
-  body.append(endsAt);
+  card.append(endsAt);
 
   let wonAuction = false;
   winList.forEach((element) => {
@@ -109,7 +111,7 @@ async function buildBidsPage(data, amount, created) {
 
   const idContainer = document.createElement("div");
   idContainer.className = "d-flex justify-content-between";
-  body.append(idContainer);
+  card.append(idContainer);
 
   const auctionId = document.createElement("a");
   auctionId.className = "text-muted small text-decoration-none mb-3";
@@ -121,43 +123,44 @@ async function buildBidsPage(data, amount, created) {
   const title = document.createElement("small");
   title.className = "text-muted";
   title.textContent = "Title:";
-  body.append(title);
+  card.append(title);
 
   const titleText = document.createElement("h5");
   titleText.className = "card-title";
   titleText.textContent = data.title;
-  body.append(titleText);
+  card.append(titleText);
 
   const description = document.createElement("small");
   description.className = "text-muted";
   description.textContent = "Description:";
-  body.append(description);
+  card.append(description);
 
   const descriptionText = document.createElement("p");
   descriptionText.className = "card-text mb-3";
   descriptionText.textContent = data.description;
-  body.append(descriptionText);
+  card.append(descriptionText);
 
   const bidLabel = document.createElement("small");
   bidLabel.className = "text-muted";
   bidLabel.textContent = "Bid amount:";
-  body.append(bidLabel);
+  card.append(bidLabel);
   const bidCount = document.createElement("p");
   bidCount.classList = "";
   bidCount.className = "card-text";
   const bidCountNr = amount;
   bidCount.textContent = `${bidCountNr} Credits`;
-  body.append(bidCount);
+  card.append(bidCount);
 
   const createdAt = document.createElement("small");
   createdAt.className = "text-muted";
   createdAt.textContent = "Bid placed at: ";
-  body.append(createdAt);
+  card.append(createdAt);
 
   const formattedDate = Date(created);
   const createdAtDate = document.createElement("p");
   createdAtDate.classList = "";
   createdAtDate.className = "card-text";
   createdAtDate.textContent = formattedDate;
-  body.append(createdAtDate);
+  card.append(createdAtDate);
+  bidsContainer.append(card);
 }

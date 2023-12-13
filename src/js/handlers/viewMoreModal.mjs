@@ -11,6 +11,7 @@ export async function buildViewModal(postID) {
   const listingData = await fetchById(postID);
   const headerText = document.getElementById("listingByIdHeader");
   const bodyContainer = document.getElementById("listingByIdBody");
+  headerText.innerHTML = "";
   bodyContainer.innerHTML = "";
 
   const titleContainer = document.createElement("div");
