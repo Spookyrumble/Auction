@@ -5,6 +5,8 @@ import { navUserInfo } from "./handlers/navUserInfo.mjs";
 import { userFetch } from "./API/fetch/userFetch.mjs";
 import { createListingAuctionCards } from "./cards/profileListingCards.mjs";
 import { previewInit } from "./handlers/cardPreview.mjs";
+import { createPost } from "./API/fetch/createPost.mjs";
+
 import { userListing } from "./API/fetch/userListingFetch.mjs";
 import { logOutStorageClear } from "./API/auth/logout.mjs";
 import { navigationHandler } from "./handlers/navigation.mjs";
@@ -21,6 +23,7 @@ logOutStorageClear();
 navUserInfo();
 previewInit();
 navigationHandler();
+createPost();
 
 export async function buildUserPage() {
   const userId = localStorage.getItem("userId");

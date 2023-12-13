@@ -28,7 +28,6 @@ export async function init(sortBy) {
     console.log("Logged in");
 
     let sortedData = sortData(sortBy, array);
-    console.log(sortedData);
 
     for (let i = 0; i < sortedData.length; i++) {
       const endDateTime = new Date(array[i].endsAt);

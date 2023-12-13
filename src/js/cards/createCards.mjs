@@ -147,14 +147,24 @@ export function createAuctionCards(data) {
   const btnContainer = document.createElement("div");
   btnContainer.className = "d-flex justify-content-end gap-2";
 
+  const token = localStorage.getItem("accessToken");
   const viewMoreBtn = document.createElement("a");
   viewMoreBtn.className =
     "btn btn-info border border-secondary mt-5 ms-2 text-white";
   viewMoreBtn.textContent = "View Bids";
-  viewMoreBtn.setAttribute("data-bs-toggle", "modal");
-  viewMoreBtn.setAttribute("data-bs-target", "#listingByIdModal");
+  if (token) {
+    viewMoreBtn.setAttribute("data-bs-target", "#listingByIdModal");
+    viewMoreBtn.setAttribute("data-bs-toggle", "modal");
+  } else {
+    viewMoreBtn.setAttribute("data-bs-target", "#loggedInModal");
+    viewMoreBtn.setAttribute("data-bs-toggle", "modal");
+  }
   viewMoreBtn.addEventListener("click", () => {
-    buildViewModal(data.id);
+    if (token) {
+      buildViewModal(data.id);
+    } else {
+      viewMoreBtn.click();
+    }
   });
 
   btnContainer.append(viewMoreBtn);
