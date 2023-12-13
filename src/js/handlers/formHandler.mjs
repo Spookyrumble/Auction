@@ -17,15 +17,35 @@ export function formHandler() {
       const response = await loginUser(loginURL, data);
       if (response.success) {
         loader.classList.add("visually-hidden");
-        btn.textContent = "Success!";
+        btn.textContent = " Success!";
         window.location.href = "/src/HTML/auction/index.html";
       }
     } else {
+      loader.classList.remove("visually-hidden");
+      btn.textContent = " Wait";
       const response = await registerUser(registerURL, data);
-      if (response.success) {
+
+      if (response.id) {
         loader.classList.add("visually-hidden");
         btn.textContent = "Success!";
-        window.location.href = "/src/HTML/auction/index.html";
+        loader.classList.remove("visually-hidden");
+        btn.textContent = " Logging in...";
+        const password = document.getElementById("passwordInput").value;
+        const newUser = {
+          email: response.email,
+          password: password,
+        };
+        console.log(newUser);
+
+        const loginResponse = await loginUser(loginURL, newUser);
+        if (loginResponse.success) {
+          loader.classList.add("visually-hidden");
+          btn.textContent = " Success!";
+          window.location.href = "/src/HTML/auction/index.html";
+        } else {
+          loader.classList.add("visually-hidden");
+          btn.textContent = " Login failed";
+        }
       }
     }
   });
