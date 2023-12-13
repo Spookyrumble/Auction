@@ -11,3 +11,11 @@ import { Tooltip, Toast, Popover } from "bootstrap";
 
 formHandler();
 justBrowse();
+
+function denyIndexIfLoggedIn() {
+  const token = localStorage.getItem("token");
+  if (token) {
+    window.location.href = "/src/HTML/auction/index.html";
+  }
+}
+denyIndexIfLoggedIn();
