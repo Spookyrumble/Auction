@@ -78,6 +78,7 @@ export function createAuctionCards(data) {
     const noImageText = document.createElement("img");
     noImageText.className = "d-block cardImgSizing";
     noImageText.src = placeholderImage;
+    noImageText.alt = "No Image placeholder";
     imgContainer.append(noImageText);
   }
 
