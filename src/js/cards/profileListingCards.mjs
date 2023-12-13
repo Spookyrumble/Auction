@@ -30,6 +30,10 @@ export function createListingAuctionCards(data) {
     mainImage.className = "d-block cardImgSizing";
     mainImage.src = imgArray[0];
     mainImage.alt = "Main Image";
+    mainImage.onerror = function () {
+      mainImage.src = placeholderImage;
+      mainImage.alt = "Main Image Placeholder";
+    };
     imgContainer.append(mainImage);
 
     imgArray.forEach((src) => {
@@ -38,14 +42,20 @@ export function createListingAuctionCards(data) {
 
         const thumbnail = document.createElement("img");
         thumbnail.src = src;
+        thumbnail.alt = "Thumbnail Image";
         thumbnail.className = "img-thumbnail";
         thumbnail.style.width = "50px";
         thumbnail.style.height = "52px";
         thumbnail.style.cursor = "pointer";
         thumbnail.onclick = function () {
           mainImage.src = src;
+          mainImage.alt = "Main Image";
         };
         thumbnailContainer.append(thumbnail);
+        thumbnail.onerror = function () {
+          thumbnail.src = placeholderImage;
+          thumbnail.alt = "Thumbnail Placeholder";
+        };
       }
     });
 

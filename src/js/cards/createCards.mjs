@@ -41,6 +41,7 @@ export function createAuctionCards(data) {
     mainImage.alt = "Main Image";
     mainImage.onerror = function () {
       mainImage.src = placeholderImage;
+      mainImage.alt = "Main Image Placeholder";
     };
     imgContainer.append(mainImage);
 
@@ -50,6 +51,7 @@ export function createAuctionCards(data) {
 
         const thumbnail = document.createElement("img");
         thumbnail.src = src;
+        thumbnail.alt = "Thumbnail Image";
         thumbnail.className = "img-thumbnail";
         thumbnail.style.width = "50px";
         thumbnail.style.height = "52px";
@@ -60,6 +62,7 @@ export function createAuctionCards(data) {
         thumbnailContainer.append(thumbnail);
         thumbnail.onerror = function () {
           thumbnail.src = placeholderImage;
+          thumbnail.alt = "Thumbnail Placeholder";
         };
       }
     });
