@@ -51,7 +51,7 @@ export function searchHandler() {
       existingPinnedTag.textContent.toLowerCase() !== searchValue
     ) {
       const pinnedTag = document.createElement("div");
-      pinnedTag.className = `badge bg-secondary mx-2 fs-6 fw-normal position-fixed`;
+      pinnedTag.className = `badge bg-secondary mx-2 fs-6 fw-normal position-fixed highIndex`;
       pinnedTag.textContent = `${searchValue}`;
 
       const closeButton = document.createElement("i");
@@ -64,9 +64,9 @@ export function searchHandler() {
         filterCards("");
       });
 
-      pinnedTag.appendChild(closeButton);
+      pinnedTag.append(closeButton);
       pinnedTagsContainer.innerHTML = ""; // Remove any existing pinned tags
-      pinnedTagsContainer.appendChild(pinnedTag);
+      pinnedTagsContainer.append(pinnedTag);
       filterByTag(searchValue); // Search by pinned tag when created
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {

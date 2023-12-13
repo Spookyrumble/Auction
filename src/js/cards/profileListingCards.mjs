@@ -2,13 +2,15 @@ import { triggerCountdown } from "../API/utils/countdown.mjs";
 import { formatDate } from "../API/utils/timeAndDate.mjs";
 import placeholderImage from "/src/images/placeholder.png";
 import { searchHandler } from "../handlers/searchHandler.mjs";
+import { deleteListing } from "../API/fetch/deletePost.mjs";
 
 export function createListingAuctionCards(data) {
   const container = document.getElementById("cardContainer");
 
   const card = document.createElement("div");
   card.id = data.id;
-  card.className = "card m-3 listingImg col-md-6 col-lg-4 col-xl-3 cardTarget";
+  card.className =
+    "card m-3 listingImg col-sm-10 col-md-8 col-lg-6 col-xl-4 cardTarget";
 
   const cardBody = document.createElement("div");
   cardBody.className = "d-flex flex-column justify-content-between card-body";
@@ -124,13 +126,34 @@ export function createListingAuctionCards(data) {
   });
 
   const btnContainer = document.createElement("div");
-  btnContainer.className = "d-flex justify-content-end";
-  const editBtn = document.createElement("a");
-  editBtn.className = "btn btn-info border border-secondary mt-5";
-  editBtn.textContent = "Edit";
-  editBtn.href = "#";
-  editBtn.disabled = true;
-  btnContainer.append(editBtn);
+  btnContainer.className = "btn-group dropup d-flex justify-content-end";
+  const cogIcon = document.createElement("i");
+  cogIcon.className = "bi bi-gear-fill fs-4 dropdown-toggle";
+  cogIcon.style.cursor = "pointer";
+  cogIcon.setAttribute("aria-label", "Edit");
+  cogIcon.setAttribute("data-bs-toggle", "dropdown"); // For Bootstrap 4
+  cogIcon.setAttribute("aria-bs-haspopup", "true");
+  cogIcon.setAttribute("aria-bs-expanded", "false");
+
+  const dropdownMenu = document.createElement("div");
+  dropdownMenu.className = "dropdown-menu dropdown-menu-end";
+  const dropdownMenuItems = document.createElement("a");
+  dropdownMenuItems.className = "dropdown-item text-danger text-center";
+  dropdownMenuItems.href = "#";
+  dropdownMenuItems.textContent = "Delete";
+  btnContainer.append(cogIcon);
+  dropdownMenu.append(dropdownMenuItems);
+  btnContainer.append(dropdownMenu);
+
+  dropdownMenuItems.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (window.confirm("Are you sure you want to delete this listing?")) {
+      deleteListing(data.id);
+      window.location.reload();
+    } else {
+      window.alert("Listing not deleted.");
+    }
+  });
 
   cardBody.append(imgContainer);
   cardBody.append(titleContainer);

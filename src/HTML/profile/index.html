@@ -11,16 +11,16 @@
     <script type="module" src="/src/js/profile.js"></script>
   </head>
   <body>
-    <header class="container-fluid m-auto fixed-top bg-white">
+    <header class="container-fluid m-auto fixed-top bg-info">
       <div class="row">
         <div class="col-12">
           <nav class="navbar navbar-expand-lg">
-            <a id="logoLink" class="navbar-brand text-secondary m-2"
+            <a id="logoLink" class="navbar-brand text-seconprimarydary m-2"
               ><h1>OnlyPineapples</h1></a
             >
             <button
               id="burgerBtn"
-              class="navbar-toggler collapsed"
+              class="navbar-toggler collapsed text-secondary bg-primary rounded-pill"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#burgerMenu"
@@ -31,14 +31,14 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div
-              class="collapse navbar-collapse justify-content-between bg-white"
+              class="collapse navbar-collapse justify-content-between bg-info"
               id="burgerMenu"
             >
               <ul class="navbar-nav text-center m-auto">
                 <li class="nav-item m-auto">
                   <a
                     id="profileNavLink"
-                    class="nav-link text-secondary m-4 active"
+                    class="nav-link text-white m-4 active"
                     href="/src/HTML/profile/index.html"
                     >Profile</a
                   >
@@ -46,7 +46,7 @@
                 <li class="nav-item m-auto">
                   <a
                     id="feedNavLink"
-                    class="nav-link text-secondary m-4"
+                    class="nav-link text-white m-4"
                     href="/src/HTML/auction/index.html"
                     >Listings</a
                   >
@@ -54,7 +54,7 @@
                 <li class="nav-item m-auto">
                   <a
                     id="newListing"
-                    class="nav-link text-secondary m-4"
+                    class="nav-link text-white m-4"
                     href="#"
                     data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRight"
@@ -63,7 +63,7 @@
                   >
                 </li>
                 <li class="nav-item m-auto">
-                  <a id="signOut" class="nav-link text-secondary m-4" href="#"
+                  <a id="signOut" class="nav-link text-white m-4" href="#"
                     >Sign out</a
                   >
                 </li>
@@ -71,13 +71,11 @@
             </div>
           </nav>
         </div>
-        <div class="row m-auto d-flex bg-secondary">
-          <div class="col-12-sm">
-            <div
-              class="d-flex flex-wrap justify-content-between banner rounded"
-            >
-              <div class="col-3 d-flex align-items-center ms-3">
-                <div id="userField" class="col-2-sm d-flex">
+        <div class="p-0 w-100 row m-auto bg-secondary">
+          <div class="w-100">
+            <div class="w-100 d-flex flex-wrap justify-content-between banner">
+              <div>
+                <div id="userField" class="d-flex">
                   <div>
                     <img
                       id="avatar"
@@ -86,40 +84,35 @@
                       alt="User avatar"
                     />
                   </div>
-                  <div>
+                  <div
+                    class="d-flex flex-column flex-nowrap align-items-center ms-2 mt-1"
+                  >
                     <p
                       id="loggedInUserName"
-                      class="mb-0 text-primary weight-light"
+                      class="m-0 text-primary weight-light"
                     ></p>
-                    <small
-                      id="creditsText"
-                      class="mb-0 text-primary weight-light"
-                    >
-                      <span id="creditsValue" class="text-primary"></span>
-                    </small>
+                    <div class="d-flex flex-nowrap">
+                      <small
+                        id="creditsText"
+                        class="m-0 text-primary weight-light"
+                      >
+                        <span id="creditsValue" class="text-primary"></span>
+                      </small>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="col-8-sm mx-3 m-auto">
-                <form class="form-inline">
-                  <div class="input-group">
-                    <div class="form-control d-flex">
-                      <label class="form-label m-auto me-2" for="searchInput"
-                        >Search</label
-                      >
-                      <input
-                        class="form-control"
-                        type="text"
-                        name="search"
-                        id="searchInput"
-                      />
-                    </div>
-                    <button
-                      class="input-group-append btn bg-white text-secondary"
-                      type="submit"
-                    >
-                      <i class="bi bi-search"></i>
-                    </button>
+              <div class="my-auto">
+                <form class="form-inline custom-search-form m-auto">
+                  <div class="search-input-container">
+                    <input
+                      type="text"
+                      name="search"
+                      id="searchInput"
+                      placeholder="Search..."
+                      aria-label="Search field"
+                    />
+                    <i class="bi bi-search"></i>
                   </div>
                 </form>
               </div>
@@ -321,23 +314,23 @@
           </div>
           <div class="col-12 d-flex justify-content-center gap-5">
             <div>
-              <p>Credits:<span id="credits">0</span></p>
+              <p>Credits: <span id="credits">0</span></p>
             </div>
             <div>
-              <p>Listings:<span id="listingNum">0</span></p>
+              <p>Listings: <span id="listingNum">0</span></p>
             </div>
           </div>
           <div class="col-12-sm d-flex justify-content-center gap-5">
             <button
               id="editProfileBtn"
-              class="col-3 btn btn-info text-secondary border-secondary"
+              class="col-3 btn btn-info text-white border-secondary"
               data-bs-target="#editContainer"
             >
               Avatar
             </button>
             <button
               id="newListingBtn"
-              class="col-3 btn btn-info text-secondary border-secondary"
+              class="col-3 btn btn-info text-white border-secondary"
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasRight"
               aria-controls="offcanvasRight"
@@ -357,10 +350,10 @@
                 aria-describedby="urlHelp"
                 placeholder="Image URL"
                 data-bs-toggle="collapse"
+                required
               />
-              <label class="form-label text-secondary" for="">Avatar URL</label>
-              <small id="urlHelp" class="form-text text-muted"
-                >Paste image .jpg address</small
+              <label class="form-label text-secondary ms-4" for=""
+                >Post Avatar Image Address</label
               >
             </div>
             <div class="d-flex justify-content-center">
@@ -375,7 +368,7 @@
                   role="status"
                   aria-hidden="true"
                 ></span>
-                <span id="avatarBtnText" class="">Change Avatar</span>
+                <span id="avatarBtnText" class="text-white">Change Avatar</span>
               </button>
             </div>
           </form>
@@ -414,11 +407,16 @@
         id="pinnedBadgeContainer"
         class="d-flex justify-content-end my-1"
       ></div>
-
       <section
         id="cardContainer"
-        class="d-flex col-12 flex-wrap justify-content-center mt-5"
+        class="d-flex col-lx-12 flex-wrap justify-content-center mt-5"
       ></section>
+      <button
+        id="backToTopBtn"
+        class="btn rounded-pill bg-secondary text-primary"
+      >
+        <i class="bi bi-arrow-up"></i>
+      </button>
     </main>
     <footer></footer>
   </body>
