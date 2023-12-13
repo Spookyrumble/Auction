@@ -152,7 +152,7 @@ export function createAuctionCards(data) {
   btnContainer.className = "d-flex justify-content-end gap-2";
 
   const token = localStorage.getItem("accessToken");
-  const viewMoreBtn = document.createElement("a");
+  const viewMoreBtn = document.createElement("button");
   viewMoreBtn.className =
     "btn btn-info border border-secondary mt-5 ms-2 text-white";
   viewMoreBtn.textContent = "View Bids";
