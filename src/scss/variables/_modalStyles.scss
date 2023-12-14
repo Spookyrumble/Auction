@@ -1,9 +1,8 @@
-.custom-indicators li {
-  color: red;
-  background-color: white !important;
-  list-style-type: none;
+.custom-indicators {
+  background-color: rgba($secondary, 0.4) !important;
 }
 
-.carousel-item {
-  transition-duration: 3s; /* Adjust the duration as needed */
+.custom-indicators li {
+  background-color: $primary !important;
+  list-style-type: none;
 }

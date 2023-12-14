@@ -100,7 +100,8 @@ export async function buildViewModal(postID) {
     carouselNext.append(carouselNextText);
 
     const carouselIndicators = document.createElement("ol");
-    carouselIndicators.className = "carousel-indicators  custom-indicators";
+    carouselIndicators.className =
+      "carousel-indicators custom-indicators rounded";
 
     listingData.media.forEach((_, index) => {
       const carouselIndicator = document.createElement("li");
