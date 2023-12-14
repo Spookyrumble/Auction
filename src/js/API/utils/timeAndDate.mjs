@@ -1,3 +1,8 @@
+/**
+ * Formats a given time string into a date format.
+ * @param {string} timeString - The time string to be formatted.
+ * @returns {string} - The formatted date string in the format "dd.mm.yyyy".
+ */
 export function formatDate(timeString) {
   const date = new Date(timeString);
 

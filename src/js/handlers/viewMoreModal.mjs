@@ -3,6 +3,12 @@ import { triggerCountdown } from "../API/utils/countdown.mjs";
 import { userFetch } from "../API/fetch/userFetch.mjs";
 import { createAndPlaceBid } from "./biddingHandler.mjs";
 
+/**
+ * Builds and displays a view modal for a specific post.
+ *
+ * @param {string} postID - The ID of the post to view.
+ * @returns {Promise<void>} - A promise that resolves when the view modal is built and displayed.
+ */
 export async function buildViewModal(postID) {
   const placeBidBtn = document.getElementById("submitBidBtn");
   const bidInput = document.getElementById("bidAmountInput");
@@ -45,7 +51,6 @@ export async function buildViewModal(postID) {
   const carouselInner = document.createElement("div");
   carouselInner.className = "carousel-inner";
 
-  // Adding images to the carousel
   listingData.media.forEach((mediaUrl, index) => {
     const carouselItem = document.createElement("div");
     carouselItem.className = `carousel-item ${index === 0 ? "active" : ""}`;
@@ -59,7 +64,6 @@ export async function buildViewModal(postID) {
     carouselInner.append(carouselItem);
   });
 
-  // Only add controls if more than one image
   if (listingData.media.length > 1) {
     const carouselPrev = document.createElement("button");
     carouselPrev.className = "carousel-control-prev";

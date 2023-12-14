@@ -1,3 +1,9 @@
+/**
+ * Logs in a user by sending a POST request to the specified URL with the provided data.
+ * @param {string} url - The URL to send the POST request to.
+ * @param {object} data - The data to be sent in the request body.
+ * @returns {Promise<{ success: boolean, data?: object }>} - A promise that resolves to an object indicating the success of the login operation and optionally containing additional data.
+ */
 export async function loginUser(url, data) {
   try {
     const postData = {

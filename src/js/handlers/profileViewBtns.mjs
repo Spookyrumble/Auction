@@ -6,6 +6,10 @@ import { buildUserPage } from "../profile.js";
 import { userFetch } from "../API/fetch/userFetch.mjs";
 import { triggerCountdown } from "../API/utils/countdown.mjs";
 
+/**
+ * Creates a list of user's wins.
+ * @returns {Promise<Array>} A promise that resolves to an array of user's wins.
+ */
 async function createWinList() {
   const { wins } = await userFetch();
   return wins;
@@ -13,6 +17,10 @@ async function createWinList() {
 
 const container = document.getElementById("cardContainer");
 
+/**
+ * Handles the click events for the profile view buttons.
+ * Retrieves user data based on the clicked button and updates the UI accordingly.
+ */
 export async function profileViewBtns() {
   const username = localStorage.getItem("userId");
   const bidsBtn = document.getElementById("myBidsBtn");

@@ -1,6 +1,12 @@
 import { authListingsURL } from "/src/js/API/constants/urls.mjs";
 import placeholderImage from "/src/images/placeholder.png"; // Ensure this path is correct
 
+/**
+ * Fetches all posts from the server maxPost limit set to 500. Can be adjusted if needed.
+ *
+ * @returns {Promise<Array>} A promise that resolves to an array of posts.
+ * @throws {Error} If there is an error fetching the data.
+ */
 export async function fetchAllPosts() {
   const token = localStorage.getItem("accessToken");
 

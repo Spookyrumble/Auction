@@ -8,6 +8,10 @@ const container = document.getElementById("cardContainer");
 
 searchHandler(container);
 
+/**
+ * Creates auction cards based on the provided data.
+ * @param {Object} data - The data used to populate the auction cards.
+ */
 export function createAuctionCards(data) {
   const loader = document.getElementById("loader");
   loader.classList.add("d-none");

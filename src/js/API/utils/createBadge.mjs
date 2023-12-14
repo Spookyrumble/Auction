@@ -1,3 +1,6 @@
+/**
+ * Creates a badge element and appends it to the badge container.
+ */
 export function createBadge() {
   const badgeContainer = document.getElementById("tagBadges");
   const tagInput = document.getElementById("tags");

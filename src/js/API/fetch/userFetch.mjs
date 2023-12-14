@@ -1,5 +1,9 @@
 import { userURL } from "../constants/urls.mjs";
 
+/**
+ * Fetches user data from the server.
+ * @returns {Promise<Object>} The user data as a JSON object.
+ */
 export async function userFetch() {
   const userField = document.getElementById("userField");
   if (!localStorage.getItem("accessToken")) {
