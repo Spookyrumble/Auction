@@ -79,3 +79,8 @@
     transform: translateY(-5px); /* Jump height */
   }
 }
+
+.badge:hover {
+  background-color: $secondary;
+  color: white;
+}
