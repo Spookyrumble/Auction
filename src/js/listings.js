@@ -41,6 +41,7 @@ export async function init(sortBy) {
         !array[i].title.toLowerCase().includes("example") &&
         !array[i].title.toLowerCase().includes("tester") &&
         !array[i].title.toLowerCase().includes("hei") &&
+        !array[i].title.toLowerCase().includes("drizzy") &&
         endDateTime > currentDateTime
       ) {
         createAuctionCards(sortedData[i]);
