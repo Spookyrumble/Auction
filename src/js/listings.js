@@ -31,7 +31,6 @@ export async function init(sortBy) {
   const currentDateTime = new Date();
   if (token) {
     const array = await fetchAllPosts();
-    console.log("Logged in");
 
     let sortedData = sortData(sortBy, array);
 
@@ -50,7 +49,6 @@ export async function init(sortBy) {
   } else {
     const array = await fetchAllPosts();
     let sortedData = sortData(sortBy, array);
-    console.log("Not logged in");
 
     for (let i = 0; i < sortedData.length; i++) {
       const endDateTime = new Date(sortedData[i].endsAt);
