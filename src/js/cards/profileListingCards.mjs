@@ -83,7 +83,7 @@ export function createListingAuctionCards(data) {
   const titleLabel = document.createElement("small");
   titleLabel.className = "text-muted";
   titleLabel.textContent = "Title:";
-  const cardTitle = document.createElement("h5");
+  const cardTitle = document.createElement("h3");
   cardTitle.className = "card-title";
   cardTitle.textContent = data.title;
   const descriptionLabel = document.createElement("small");
@@ -140,36 +140,6 @@ export function createListingAuctionCards(data) {
     listingTags.append(tagElement);
   });
 
-  const btnContainer = document.createElement("div");
-  btnContainer.className = "btn-group dropup d-flex justify-content-end";
-  const cogIcon = document.createElement("i");
-  cogIcon.className = "bi bi-gear-fill fs-4 dropdown-toggle";
-  cogIcon.style.cursor = "pointer";
-  cogIcon.setAttribute("aria-label", "Edit");
-  cogIcon.setAttribute("data-bs-toggle", "dropdown"); // For Bootstrap 4
-  cogIcon.setAttribute("aria-bs-haspopup", "true");
-  cogIcon.setAttribute("aria-bs-expanded", "false");
-
-  const dropdownMenu = document.createElement("div");
-  dropdownMenu.className = "dropdown-menu dropdown-menu-end";
-  const dropdownMenuItems = document.createElement("a");
-  dropdownMenuItems.className = "dropdown-item text-danger text-center";
-  dropdownMenuItems.href = "#";
-  dropdownMenuItems.textContent = "Delete";
-  btnContainer.append(cogIcon);
-  dropdownMenu.append(dropdownMenuItems);
-  btnContainer.append(dropdownMenu);
-
-  dropdownMenuItems.addEventListener("click", (e) => {
-    e.preventDefault();
-    if (window.confirm("Are you sure you want to delete this listing?")) {
-      deleteListing(data.id);
-      window.location.reload();
-    } else {
-      window.alert("Listing not deleted.");
-    }
-  });
-
   cardBody.append(imgContainer);
   cardBody.append(titleContainer);
   cardBody.append(textContainer);
@@ -177,7 +147,40 @@ export function createListingAuctionCards(data) {
   cardBody.append(countdown);
   cardBody.append(bids);
   cardBody.append(listingTags);
-  cardBody.append(btnContainer);
+
+  if (!data.seller) {
+    const btnContainer = document.createElement("div");
+    btnContainer.className = "btn-group dropup d-flex justify-content-end";
+    const cogIcon = document.createElement("i");
+    cogIcon.className = "bi bi-gear-fill fs-4 dropdown-toggle";
+    cogIcon.style.cursor = "pointer";
+    cogIcon.setAttribute("aria-label", "Edit");
+    cogIcon.setAttribute("data-bs-toggle", "dropdown"); // For Bootstrap 4
+    cogIcon.setAttribute("aria-bs-haspopup", "true");
+    cogIcon.setAttribute("aria-bs-expanded", "false");
+
+    const dropdownMenu = document.createElement("div");
+    dropdownMenu.className = "dropdown-menu dropdown-menu-end";
+    const dropdownMenuItems = document.createElement("a");
+    dropdownMenuItems.className = "dropdown-item text-danger text-center";
+    dropdownMenuItems.href = "#";
+    dropdownMenuItems.textContent = "Delete";
+    btnContainer.append(cogIcon);
+    dropdownMenu.append(dropdownMenuItems);
+    btnContainer.append(dropdownMenu);
+
+    dropdownMenuItems.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (window.confirm("Are you sure you want to delete this listing?")) {
+        deleteListing(data.id);
+        window.location.reload();
+      } else {
+        window.alert("Listing not deleted.");
+      }
+    });
+    cardBody.append(btnContainer);
+  }
+
   card.append(cardBody);
   container.append(card);
 }

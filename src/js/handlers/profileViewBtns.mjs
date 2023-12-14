@@ -67,6 +67,7 @@ export async function profileViewBtns() {
       for (let winId of wins) {
         try {
           const data = await fetchById(winId);
+
           if (data && !data.error) {
             createListingAuctionCards(data);
           }
