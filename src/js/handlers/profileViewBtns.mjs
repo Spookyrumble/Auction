@@ -6,16 +6,12 @@ import { buildUserPage } from "../profile.js";
 import { userFetch } from "../API/fetch/userFetch.mjs";
 import { triggerCountdown } from "../API/utils/countdown.mjs";
 
-// Testing array for wins history
-// const fakeArray = [
-//   "854efa4e-03f6-48ba-ba4a-6f0655f28016",
-//   "39ab43a0-31bc-4ce0-9bb4-9f3b0fa9e55e",
-//   "9ee04e11-4073-44fc-b1b5-91b5cbfc91c0",
-// ];
 async function createWinList() {
   const { wins } = await userFetch();
   return wins;
 }
+
+const container = document.getElementById("cardContainer");
 
 export async function profileViewBtns() {
   const username = localStorage.getItem("userId");
@@ -24,8 +20,7 @@ export async function profileViewBtns() {
   const winsBtn = document.getElementById("myWinsBtn");
 
   bidsBtn.addEventListener("click", async () => {
-    const container = document.getElementById("cardContainer");
-    container.textContent = "";
+    container.textContent = "Loading..";
     bidsBtn.classList.add("activeBtn");
     listingsBtn.classList.remove("activeBtn");
     winsBtn.classList.remove("activeBtn");
@@ -33,6 +28,7 @@ export async function profileViewBtns() {
       `${userURL}/${username}/bids?_listings=true`,
       "GET"
     );
+    container.textContent = "";
     for (let i = 0; i < response.length; i++) {
       const listing = response[i].listing;
       const amount = response[i].amount;
@@ -42,16 +38,13 @@ export async function profileViewBtns() {
   });
 
   listingsBtn.addEventListener("click", () => {
+    container.textContent = "";
     bidsBtn.classList.remove("activeBtn");
     listingsBtn.classList.add("activeBtn");
     winsBtn.classList.remove("activeBtn");
-    const container = document.getElementById("cardContainer");
-    container.innerHTML = "";
     buildUserPage();
   });
-
   winsBtn.addEventListener("click", async () => {
-    const container = document.getElementById("cardContainer");
     container.textContent = "";
     bidsBtn.classList.remove("activeBtn");
     listingsBtn.classList.remove("activeBtn");
@@ -63,13 +56,37 @@ export async function profileViewBtns() {
       noWins.textContent = "You haven't won any auctions yet.";
       container.append(noWins);
     } else {
-      for (let i = 0; i < wins.length; i++) {
-        const data = await fetchById(wins[i]);
-        // console.log(data);
-        createListingAuctionCards(data);
+      for (let winId of wins) {
+        try {
+          const data = await fetchById(winId);
+          if (data && !data.error) {
+            createListingAuctionCards(data);
+          }
+        } catch (error) {
+          console.error(`Fetch failed for win ID: ${winId}`, error);
+        }
       }
     }
   });
+  // winsBtn.addEventListener("click", async () => {
+  //   container.textContent = "";
+  //   bidsBtn.classList.remove("activeBtn");
+  //   listingsBtn.classList.remove("activeBtn");
+  //   winsBtn.classList.add("activeBtn");
+  //   const { wins } = await userFetch();
+
+  //   if (wins.length === 0) {
+  //     const noWins = document.createElement("p");
+  //     noWins.textContent = "You haven't won any auctions yet.";
+  //     container.append(noWins);
+  //   } else {
+  //     for (let i = 0; i < wins.length; i++) {
+  //       const data = await fetchById(wins[i]);
+  //       // console.log(data);
+  //       createListingAuctionCards(data);
+  //     }
+  //   }
+  // });
 }
 
 profileViewBtns();

@@ -15,7 +15,7 @@
       <div class="row">
         <div class="col-12">
           <nav class="navbar navbar-expand-lg">
-            <a id="logoLink" class="navbar-brand text-seconprimarydary m-2"
+            <a id="logoLink" class="navbar-brand text-primary m-2"
               ><h1>OnlyPineapples</h1></a
             >
             <button
@@ -109,7 +109,7 @@
                       type="text"
                       name="search"
                       id="searchInput"
-                      placeholder="Search..."
+                      placeholder="Search my listings.."
                       aria-label="Search field"
                     />
                     <i class="bi bi-search"></i>
@@ -250,7 +250,7 @@
             <div class="d-flex justify-content-center">
               <button
                 id="submitBtn"
-                class="btn btn-info text-secondary border-secondary my-3"
+                class="btn btn-info text-white border-secondary my-3"
                 type="button"
               >
                 <span
@@ -271,7 +271,7 @@
               <img
                 class="cardImgSizing p-3"
                 id="previewImg"
-                src="https://placeholder.com/150"
+                src="/src/images/placeholder.png"
                 alt="preview image"
               />
               <div class="card-body">
@@ -307,11 +307,11 @@
     <main>
       <div class="container spacer">
         <div class="row">
-          <div class="col-12-sm d-flex justify-content-center">
+          <div class="profileImgContainer d-flex justify-content-center">
             <img
               id="avatarProfile"
-              class="img-fluid rounded-circle"
-              src="https://via.placeholder.com/150"
+              class="mainImage"
+              src="/src/images/placeholder.png"
               alt="avatar placeholder"
             />
           </div>
@@ -420,6 +420,7 @@
       <button
         id="backToTopBtn"
         class="btn rounded-pill bg-secondary text-primary"
+        aria-label="Back to top button"
       >
         <i class="bi bi-arrow-up"></i>
       </button>
