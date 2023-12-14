@@ -3,7 +3,7 @@
  */
 export function navigationHandler() {
   const profile = document.getElementById("profileNavLink");
-  const quickList = document.getElementById("newListing");
+  const quickList = document.getElementById("newListingLink");
   const signOut = document.getElementById("signOut");
   const token = localStorage.getItem("accessToken");
 
