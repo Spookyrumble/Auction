@@ -22,7 +22,6 @@ export async function loginUser(url, data) {
       const { accessToken, name } = json;
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("userId", name);
-      console.log(json);
       return { success: true, data: json };
     } else {
       console.error("Login failed:", response.status);

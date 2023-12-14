@@ -38,7 +38,6 @@ export function formHandler() {
           email: response.email,
           password: password,
         };
-        console.log(newUser);
 
         const loginResponse = await loginUser(loginURL, newUser);
         if (loginResponse.success) {

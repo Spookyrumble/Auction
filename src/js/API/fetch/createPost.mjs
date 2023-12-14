@@ -42,7 +42,6 @@ export function createPost() {
       addTagsBadge.textContent = tagCount;
       addTagsBadge.classList.remove("d-none");
     }
-    console.log(listingObject);
     postListing(listingObject);
   });
   let tags = [];

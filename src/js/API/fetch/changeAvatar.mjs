@@ -17,13 +17,11 @@ export function updateAvatar() {
     const profileImg = {
       avatar: avatarImg.value,
     };
-    console.log("clicked");
 
     if (profileImg.avatar !== "") {
       try {
         spinner.classList.remove("visually-hidden");
         spinnerText.textContent = "Updating..";
-        console.log(profileImg);
 
         const response = await apiFetch(
           `${userURL}/${user}/media`,
