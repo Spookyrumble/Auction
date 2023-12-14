@@ -18,7 +18,7 @@ export function createAuctionCards(data) {
 
   const card = document.createElement("div");
   card.className =
-    "card m-3 listingImg col-sm-10 col-md-8 col-lg-6 col-xl-4 cardTarget";
+    "card m-3 listingImg col-sm-8 col-md-6 col-lg-5 col-xl-3 cardTarget";
   card.style.textDecoration = "none";
 
   const cardBody = document.createElement("div");
@@ -43,8 +43,8 @@ export function createAuctionCards(data) {
     mainImage.className = "d-block cardImgSizing";
     mainImage.src = imgArray[0];
     mainImage.loading = "lazy";
-    mainImage.style.width = "360px";
-    mainImage.style.height = "360px";
+    mainImage.style.width = "640px";
+    mainImage.style.height = "320px";
     mainImage.alt = `Main Image ${imgArray[0]}`;
     mainImage.onerror = function () {
       mainImage.src = placeholderImage;
@@ -81,8 +81,8 @@ export function createAuctionCards(data) {
     const img = document.createElement("img");
     img.className = "d-block cardImgSizing";
     img.src = imgArray[0];
-    img.style.width = "360px";
-    img.style.height = "360px";
+    img.style.width = "640px";
+    img.style.height = "320px";
     img.loading = "lazy";
     img.alt = `Image ${imgArray[0]}`;
     img.onerror = function () {
