@@ -38,6 +38,7 @@ export function createAuctionCards(data) {
     mainImage.id = "mainImage";
     mainImage.className = "d-block cardImgSizing";
     mainImage.src = imgArray[0];
+    mainImage.loading = "lazy";
     mainImage.alt = `Main Image ${imgArray[0]}`;
     mainImage.onerror = function () {
       mainImage.src = placeholderImage;
@@ -51,6 +52,7 @@ export function createAuctionCards(data) {
 
         const thumbnail = document.createElement("img");
         thumbnail.src = src;
+        thumbnail.loading = "lazy";
         thumbnail.alt = `Thumbnail ${src}`;
         thumbnail.className = "img-thumbnail";
         thumbnail.style.width = "50px";
@@ -62,6 +64,7 @@ export function createAuctionCards(data) {
         thumbnailContainer.append(thumbnail);
         thumbnail.onerror = function () {
           thumbnail.src = placeholderImage;
+          thumbnail.loading = "lazy";
           thumbnail.alt = "Thumbnail Placeholder";
         };
       }
@@ -72,12 +75,19 @@ export function createAuctionCards(data) {
     const img = document.createElement("img");
     img.className = "d-block cardImgSizing";
     img.src = imgArray[0];
+    img.loading = "lazy";
     img.alt = `Image ${imgArray[0]}`;
+    img.onerror = function () {
+      img.src = placeholderImage;
+      img.alt = "Image Placeholder";
+      img.loading = "lazy";
+    };
     imgContainer.append(img);
   } else {
     const noImageText = document.createElement("img");
     noImageText.className = "d-block cardImgSizing";
     noImageText.src = placeholderImage;
+    noImageText.loading = "lazy";
     noImageText.alt = "No Image placeholder";
     imgContainer.append(noImageText);
   }
