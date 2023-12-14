@@ -8,6 +8,9 @@ const spinner = document.getElementById("avatarBtnSpinner");
 const spinnerText = document.getElementById("avatarBtnText");
 const user = localStorage.getItem("userId");
 
+/**
+ * Updates the user's avatar.
+ */
 export function updateAvatar() {
   submitBtn.addEventListener("click", async (e) => {
     e.preventDefault();

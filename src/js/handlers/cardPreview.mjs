@@ -1,6 +1,9 @@
 import { createBadge } from "../API/utils/createBadge.mjs";
 import { triggerCountdown } from "../API/utils/countdown.mjs";
 
+/**
+ * Initializes the preview functionality for the auction card.
+ */
 export function previewInit() {
   const itemInput = document.getElementById("item");
   const addBtn = document.getElementById("badgeAddBtn");

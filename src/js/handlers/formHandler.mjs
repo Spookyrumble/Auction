@@ -2,6 +2,9 @@ import { loginURL, registerURL } from "../API/constants/urls.mjs";
 import { loginUser } from "../API/auth/login.mjs";
 import { registerUser } from "../API/auth/registerUser.mjs";
 
+/**
+ * Handles the form submission for login and registration.
+ */
 export function formHandler() {
   const loginForm = document.getElementById("loginForm");
   const username = document.getElementById("username");

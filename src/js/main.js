@@ -12,6 +12,9 @@ import { Tooltip, Toast, Popover } from "bootstrap";
 formHandler();
 justBrowse();
 
+/**
+ * Redirects the user to the auction index page if they are logged in.
+ */
 function denyIndexIfLoggedIn() {
   const token = localStorage.getItem("accessToken");
   if (token) {

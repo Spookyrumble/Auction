@@ -4,6 +4,11 @@ import placeholderImage from "/src/images/placeholder.png";
 import { searchHandler } from "../handlers/searchHandler.mjs";
 import { deleteListing } from "../API/fetch/deletePost.mjs";
 
+/**
+ * Creates listing auction cards based on the provided data.
+ *
+ * @param {Object} data - The data used to populate the card.
+ */
 export function createListingAuctionCards(data) {
   const container = document.getElementById("cardContainer");
 

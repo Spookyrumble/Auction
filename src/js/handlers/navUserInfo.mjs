@@ -1,5 +1,11 @@
 import { userFetch } from "../API/fetch/userFetch.mjs";
 
+/**
+ * Updates the user information in the navigation bar.
+ * If the user is not logged in, it hides the user field and sets the sign out button text to "Sign in".
+ * If the user is logged in, it retrieves the user data, updates the avatar, username, and credits in the navigation bar.
+ * @returns {Promise<void>} A promise that resolves when the user information is updated.
+ */
 export async function navUserInfo() {
   if (!localStorage.getItem("accessToken")) {
     const userField = document.getElementById("userField");

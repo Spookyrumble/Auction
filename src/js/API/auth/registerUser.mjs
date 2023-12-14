@@ -1,3 +1,9 @@
+/**
+ * Registers a user by sending a POST request to the specified URL with the provided object data.
+ * @param {string} url - The URL to send the POST request to.
+ * @param {object} object - The data object to be sent in the request body.
+ * @returns {Promise<object>} - A promise that resolves to the JSON response from the server, or rejects with an error.
+ */
 export async function registerUser(url, object) {
   try {
     const response = await fetch(url, {

@@ -20,6 +20,12 @@ import { Tooltip, Toast, Popover } from "bootstrap";
 import { end } from "@popperjs/core";
 /* eslint-enable no-unused-vars */
 
+/**
+ * Initializes the auction listings.
+ *
+ * @param {string} sortBy - The sorting criteria for the listings.
+ * @returns {Promise<void>} - A promise that resolves when the initialization is complete.
+ */
 export async function init(sortBy) {
   const token = localStorage.getItem("accessToken");
   const currentDateTime = new Date();
@@ -83,6 +89,9 @@ createPost();
 let defaultSort = "created";
 init(defaultSort);
 
+/**
+ * Removes all cards with the class "cardTarget" from the DOM.
+ */
 function removeCards() {
   const cards = document.querySelectorAll(".cardTarget");
   cards.forEach((card) => {

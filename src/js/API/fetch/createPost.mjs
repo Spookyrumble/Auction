@@ -1,5 +1,8 @@
 import { postListing } from "./postListingFetch.mjs";
 
+/**
+ * Creates a post by gathering input values from the DOM and sending a POST request.
+ */
 export function createPost() {
   const btn = document.getElementById("submitBtn");
   const addTagBtn = document.getElementById("badgeAddBtn");

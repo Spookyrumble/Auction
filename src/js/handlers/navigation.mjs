@@ -1,5 +1,7 @@
+/**
+ * Handles the navigation logic.
+ */
 export function navigationHandler() {
-  //Listens to nav elements and prevents profile, quick list new item and signOut if no user is logged in
   const profile = document.getElementById("profileNavLink");
   const quickList = document.getElementById("newListing");
   const signOut = document.getElementById("signOut");

@@ -25,6 +25,10 @@ previewInit();
 navigationHandler();
 createPost();
 
+/**
+ * Builds the user page by fetching user data and populating the page with the retrieved information.
+ * @returns {Promise<void>} A promise that resolves when the user page is built.
+ */
 export async function buildUserPage() {
   const userId = localStorage.getItem("userId");
 
