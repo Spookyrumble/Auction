@@ -185,6 +185,7 @@
                       id="badgeAddBtn"
                       class="btn btn-outline-info"
                       type="button"
+                      aria-label="Add tag button"
                     >
                       <i class="bi bi-plus-circle-fill px-3"></i>
                       <span
@@ -208,7 +209,6 @@
                 name="date"
                 id="date"
                 aria-describedby="dateHelp"
-                placeholder="Auction end date"
                 required
               />
               <label for="date">Auction end date</label>
@@ -223,7 +223,6 @@
                   type="text"
                   name="url"
                   id="itemUrl"
-                  aria-describedby="urlHelp"
                   placeholder="Image address"
                 />
                 <div class="input-group-append">
@@ -232,6 +231,7 @@
                       id="addImgBtn"
                       class="btn btn-outline-info"
                       type="button"
+                      aria-label="Add image button"
                     >
                       <i class="bi bi-plus-circle-fill px-3"></i>
                       <span
@@ -354,12 +354,12 @@
                 class="form-control border-info"
                 name="avatar"
                 type="text"
-                aria-describedby="urlHelp"
+                aria-label="Avatar image address"
                 placeholder="Image URL"
                 data-bs-toggle="collapse"
                 required
               />
-              <label class="form-label text-secondary ms-4" for=""
+              <label class="form-label text-secondary ms-4" for="avatarInput"
                 >Post Avatar Image Address</label
               >
             </div>

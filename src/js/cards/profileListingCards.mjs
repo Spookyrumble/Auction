@@ -47,7 +47,7 @@ export function createListingAuctionCards(data) {
 
         const thumbnail = document.createElement("img");
         thumbnail.src = src;
-        thumbnail.alt = "Thumbnail Image";
+        thumbnail.alt = `Thumbnail  ${src}`;
         thumbnail.className = "img-thumbnail";
         thumbnail.style.width = "50px";
         thumbnail.style.height = "52px";
@@ -59,7 +59,7 @@ export function createListingAuctionCards(data) {
         thumbnailContainer.append(thumbnail);
         thumbnail.onerror = function () {
           thumbnail.src = placeholderImage;
-          thumbnail.alt = "Thumbnail Placeholder";
+          thumbnail.alt = `Thumbnail ${src}`;
         };
       }
     });
