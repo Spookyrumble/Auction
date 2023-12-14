@@ -67,6 +67,7 @@ export async function profileViewBtns() {
       for (let winId of wins) {
         try {
           const data = await fetchById(winId);
+
           if (data && !data.error) {
             createListingAuctionCards(data);
           }
@@ -76,25 +77,6 @@ export async function profileViewBtns() {
       }
     }
   });
-  // winsBtn.addEventListener("click", async () => {
-  //   container.textContent = "";
-  //   bidsBtn.classList.remove("activeBtn");
-  //   listingsBtn.classList.remove("activeBtn");
-  //   winsBtn.classList.add("activeBtn");
-  //   const { wins } = await userFetch();
-
-  //   if (wins.length === 0) {
-  //     const noWins = document.createElement("p");
-  //     noWins.textContent = "You haven't won any auctions yet.";
-  //     container.append(noWins);
-  //   } else {
-  //     for (let i = 0; i < wins.length; i++) {
-  //       const data = await fetchById(wins[i]);
-  //       // console.log(data);
-  //       createListingAuctionCards(data);
-  //     }
-  //   }
-  // });
 }
 
 profileViewBtns();
@@ -106,12 +88,6 @@ async function buildBidsPage(data, amount, created) {
   card.id = data.id;
   card.className =
     "card p-3 border border-info m-3 col-sm-8 col-md-6 d-flex flex-column";
-  // bidsContainer.append(card);
-
-  // // const body = document.createElement("div");
-  // // body.className = "card-body";
-  // // card.append(body);
-  // bidsContainer.append(card);
 
   const endsAt = document.createElement("div");
   endsAt.className = "mb-3 d-flex justify-content-center";

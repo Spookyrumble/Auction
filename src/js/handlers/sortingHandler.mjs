@@ -11,7 +11,6 @@ export function sortData(selectedValue, data) {
   switch (selectedValue) {
     case "created":
       containerHeader.textContent = "Newest Auctions";
-      console.log("Sorting by created");
       sortedData.sort((a, b) => {
         return new Date(b.created) - new Date(a.created);
       });
@@ -19,7 +18,6 @@ export function sortData(selectedValue, data) {
       break;
     case "endsAt":
       containerHeader.textContent = "Ending Auctions";
-      console.log("Sorting by endsAt (excluding ended listings)");
       sortedData = sortedData.filter((listing) => {
         const endsAtDate = new Date(listing.endsAt);
         return endsAtDate > new Date();
@@ -36,17 +34,14 @@ export function sortData(selectedValue, data) {
     case "oldNew":
       containerHeader.textContent = "Old Auctions";
 
-      console.log("Sorting by oldNew");
       sortedData.sort((a, b) => {
         return new Date(a.created) - new Date(b.created);
       });
       break;
     case "noBids":
       containerHeader.textContent = "No Bid Auctions";
-      console.log("Sorting by noBids");
       return sortedData.filter((item) => item.bids.length === 0);
     default:
-      console.log("Sorting by default");
       sortedData.sort((a, b) => {
         return new Date(b.created) - new Date(a.created);
       });

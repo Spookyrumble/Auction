@@ -128,9 +128,9 @@
         aria-labelledby="offcanvasRightLabel"
       >
         <div class="offcanvas-header mt-1">
-          <h5 class="offcanvas-title" id="offcanvasRightLabel">
+          <h3 class="offcanvas-title" id="offcanvasRightLabel">
             Add new listing
-          </h5>
+          </h3>
           <button
             type="button"
             class="btn-close"
@@ -185,6 +185,7 @@
                       id="badgeAddBtn"
                       class="btn btn-outline-info"
                       type="button"
+                      aria-label="Add tag button"
                     >
                       <i class="bi bi-plus-circle-fill px-3"></i>
                       <span
@@ -208,7 +209,6 @@
                 name="date"
                 id="date"
                 aria-describedby="dateHelp"
-                placeholder="Auction end date"
                 required
               />
               <label for="date">Auction end date</label>
@@ -223,7 +223,6 @@
                   type="text"
                   name="url"
                   id="itemUrl"
-                  aria-describedby="urlHelp"
                   placeholder="Image address"
                 />
                 <div class="input-group-append">
@@ -232,6 +231,7 @@
                       id="addImgBtn"
                       class="btn btn-outline-info"
                       type="button"
+                      aria-label="Add image button"
                     >
                       <i class="bi bi-plus-circle-fill px-3"></i>
                       <span
@@ -266,18 +266,19 @@
           </form>
           <div>
             <div class="mt-5">
-              <h4 class="text-center">Listing preview</h4>
+              <h3 class="text-center">Listing preview</h3>
             </div>
             <div id="listingPreview" class="card scaleDown">
               <img
                 class="cardImgSizing p-3"
+                loading="lazy"
                 id="previewImg"
                 src="/src/images/placeholder.png"
                 alt="preview image"
               />
               <div class="card-body">
                 <small class="text-muted">Title</small>
-                <h5 id="previewTitle" class="card-title">Title Preview</h5>
+                <h4 id="previewTitle" class="card-title">Title Preview</h4>
                 <small class="text-muted">Description</small>
                 <p id="previewDescription" class="card-text">
                   Description Preview
@@ -354,12 +355,12 @@
                 class="form-control border-info"
                 name="avatar"
                 type="text"
-                aria-describedby="urlHelp"
+                aria-label="Avatar image address"
                 placeholder="Image URL"
                 data-bs-toggle="collapse"
                 required
               />
-              <label class="form-label text-secondary ms-4" for=""
+              <label class="form-label text-secondary ms-4" for="avatarInput"
                 >Post Avatar Image Address</label
               >
             </div>

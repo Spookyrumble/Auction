@@ -35,22 +35,22 @@
   border-radius: 50%;
 }
 
-.activeBtn {
-  background-color: $secondary;
-  color: white;
-}
-
 .customHover {
+  background-color: $primary;
   &:hover {
     background-color: $secondary;
     color: white;
   }
 }
 
-.activeBtn:hover {
-  background-color: white;
-  color: $secondary;
+.activeBtn {
+  background-color: $secondary;
+  color: white;
 }
+// .activeBtn:hover {
+//   background-color: $primary;
+//   color: $secondary;
+// }
 
 #backToTopBtn {
   display: none;
@@ -78,4 +78,9 @@
   100% {
     transform: translateY(-5px); /* Jump height */
   }
+}
+
+.badge:hover {
+  background-color: $secondary;
+  color: white;
 }
