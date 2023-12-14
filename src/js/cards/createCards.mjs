@@ -43,6 +43,8 @@ export function createAuctionCards(data) {
     mainImage.className = "d-block cardImgSizing";
     mainImage.src = imgArray[0];
     mainImage.loading = "lazy";
+    mainImage.style.width = "360px";
+    mainImage.style.height = "360px";
     mainImage.alt = `Main Image ${imgArray[0]}`;
     mainImage.onerror = function () {
       mainImage.src = placeholderImage;
@@ -79,6 +81,8 @@ export function createAuctionCards(data) {
     const img = document.createElement("img");
     img.className = "d-block cardImgSizing";
     img.src = imgArray[0];
+    img.style.width = "360px";
+    img.style.height = "360px";
     img.loading = "lazy";
     img.alt = `Image ${imgArray[0]}`;
     img.onerror = function () {
