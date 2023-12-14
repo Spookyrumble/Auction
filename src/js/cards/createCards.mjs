@@ -12,7 +12,7 @@ export function createAuctionCards(data) {
   const loader = document.getElementById("loader");
   loader.classList.add("d-none");
 
-  const card = document.createElement("a");
+  const card = document.createElement("div");
   card.className =
     "card m-3 listingImg col-sm-10 col-md-8 col-lg-6 col-xl-4 cardTarget";
   card.style.textDecoration = "none";
@@ -38,7 +38,7 @@ export function createAuctionCards(data) {
     mainImage.id = "mainImage";
     mainImage.className = "d-block cardImgSizing";
     mainImage.src = imgArray[0];
-    mainImage.alt = "Main Image";
+    mainImage.alt = `Main Image ${imgArray[0]}`;
     mainImage.onerror = function () {
       mainImage.src = placeholderImage;
       mainImage.alt = "Main Image Placeholder";
@@ -51,7 +51,7 @@ export function createAuctionCards(data) {
 
         const thumbnail = document.createElement("img");
         thumbnail.src = src;
-        thumbnail.alt = "Thumbnail Image";
+        thumbnail.alt = `Thumbnail ${src}`;
         thumbnail.className = "img-thumbnail";
         thumbnail.style.width = "50px";
         thumbnail.style.height = "52px";
@@ -72,12 +72,13 @@ export function createAuctionCards(data) {
     const img = document.createElement("img");
     img.className = "d-block cardImgSizing";
     img.src = imgArray[0];
-    img.alt = "Image";
+    img.alt = `Image ${imgArray[0]}`;
     imgContainer.append(img);
   } else {
     const noImageText = document.createElement("img");
     noImageText.className = "d-block cardImgSizing";
     noImageText.src = placeholderImage;
+    noImageText.alt = "No Image placeholder";
     imgContainer.append(noImageText);
   }
 
@@ -86,9 +87,14 @@ export function createAuctionCards(data) {
   const titleLabel = document.createElement("small");
   titleLabel.className = "text-muted";
   titleLabel.textContent = "Title:";
-  const cardTitle = document.createElement("h5");
+  const cardTitle = document.createElement("h3");
   cardTitle.className = "card-title";
   cardTitle.textContent = data.title;
+  if (data.title === "") {
+    cardTitle.textContent = "No title";
+  }
+  cardTitle.textContent = `${data.title.substring(0, 20)}...`;
+
   const descriptionLabel = document.createElement("small");
   descriptionLabel.className = "text-muted";
   descriptionLabel.textContent = "Description:";
@@ -151,7 +157,7 @@ export function createAuctionCards(data) {
   btnContainer.className = "d-flex justify-content-end gap-2";
 
   const token = localStorage.getItem("accessToken");
-  const viewMoreBtn = document.createElement("a");
+  const viewMoreBtn = document.createElement("button");
   viewMoreBtn.className =
     "btn btn-info border border-secondary mt-5 ms-2 text-white";
   viewMoreBtn.textContent = "View Bids";

@@ -22,7 +22,7 @@ export async function buildViewModal(postID) {
   headerTextLabel.textContent = "Title:";
 
   const headerTitle = document.createElement("h2");
-  headerTitle.className = "text-center";
+  headerTitle.className = "text-center text-primary";
   headerTitle.textContent = listingData.title;
 
   titleContainer.append(headerTextLabel);
