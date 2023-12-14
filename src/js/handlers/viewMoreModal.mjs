@@ -51,18 +51,44 @@ export async function buildViewModal(postID) {
   const carouselInner = document.createElement("div");
   carouselInner.className = "carousel-inner";
 
-  listingData.media.forEach((mediaUrl, index) => {
-    const carouselItem = document.createElement("div");
-    carouselItem.className = `carousel-item ${index === 0 ? "active" : ""}`;
+  // listingData.media.forEach((mediaUrl, index) => {
+  //   const carouselItem = document.createElement("div");
+  //   carouselItem.className = `carousel-item ${index === 0 ? "active" : ""}`;
 
-    const carouselImg = document.createElement("img");
-    carouselImg.className = "cardImgSizing d-block w-100";
-    carouselImg.src = mediaUrl;
-    carouselImg.alt = `Slide ${index + 1}`;
+  //   const carouselImg = document.createElement("img");
+  //   carouselImg.className = "cardImgSizing d-block w-100";
+  //   carouselImg.src = mediaUrl;
+  //   carouselImg.alt = `Slide ${index + 1}`;
 
-    carouselItem.append(carouselImg);
-    carouselInner.append(carouselItem);
-  });
+  //   carouselItem.append(carouselImg);
+  //   carouselInner.append(carouselItem);
+  // });
+
+  if (listingData.media && listingData.media.length > 0) {
+    listingData.media.forEach((mediaUrl, index) => {
+      const carouselItem = document.createElement("div");
+      carouselItem.className = `carousel-item ${index === 0 ? "active" : ""}`;
+
+      const carouselImg = document.createElement("img");
+      carouselImg.className = "cardImgSizing d-block w-100";
+      carouselImg.src = mediaUrl;
+      carouselImg.alt = `Slide ${index + 1}`;
+
+      carouselItem.append(carouselImg);
+      carouselInner.append(carouselItem);
+    });
+  } else {
+    const placeholderItem = document.createElement("div");
+    placeholderItem.className = "carousel-item active";
+
+    const placeholderImg = document.createElement("img");
+    placeholderImg.className = "cardImgSizing d-block w-100";
+    placeholderImg.src = "/src/images/placeholder.png";
+    placeholderImg.alt = "Placeholder Image";
+
+    placeholderItem.append(placeholderImg);
+    carouselInner.append(placeholderItem);
+  }
 
   if (listingData.media.length > 1) {
     const carouselPrev = document.createElement("button");
