@@ -1,10 +1,23 @@
-import { defineConfig } from "cypress";
+/* eslint-disable no-undef */
+const { defineConfig } = require("cypress");
 
-export default defineConfig({
+module.exports = defineConfig({
+  env: {
+    correctEmail: "spooky@noroff.no",
+    correctPassword: "auctionhouse",
+    wrongEmail: "wrongEmail@wrong.wrong",
+    wrongPassword: "wrongPassword",
+    shortPassword: "short",
+  },
   e2e: {
     // eslint-disable-next-line no-unused-vars
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      on("task", {
+        log(message) {
+          console.log(message);
+          return null;
+        },
+      });
     },
   },
 });
