@@ -10,6 +10,7 @@ import { createPost } from "./API/fetch/createPost.mjs";
 import { userListing } from "./API/fetch/userListingFetch.mjs";
 import { logOutStorageClear } from "./API/auth/logout.mjs";
 import { navigationHandler } from "./handlers/navigation.mjs";
+import placeholderImage from "/src/images/placeholder.png";
 
 /* eslint-disable no-unused-vars */
 import { profileViewBtns } from "./handlers/profileViewBtns.mjs";
@@ -40,7 +41,18 @@ export async function buildUserPage() {
   const creditsElement = document.getElementById("credits");
   const listingsElement = document.getElementById("listingNum");
 
-  avatarElement.src = avatar;
+  if (!avatar) {
+    avatarElement.src = placeholderImage;
+    avatarElement.alt = "Avatar Placeholder";
+    avatarElement.style.width = "150px";
+    avatarElement.style.height = "150px";
+    avatarElement.classList.add("rounded-circle");
+  } else {
+    avatarElement.src = avatar;
+    avatarElement.alt = "Avatar profile picture";
+    avatarElement.style.width = "150px";
+    avatarElement.style.height = "150px";
+  }
   nameElement.textContent = name;
   creditsElement.innerText = credits;
   listingsElement.innerText = listings.length;

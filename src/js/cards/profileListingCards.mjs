@@ -15,7 +15,7 @@ export function createListingAuctionCards(data) {
   const card = document.createElement("div");
   card.id = data.id;
   card.className =
-    "card m-3 listingImg col-sm-10 col-md-8 col-lg-6 col-xl-4 cardTarget";
+    "card m-3 listingImg col-sm-8 col-md-6 col-lg-5 col-xl-3 cardTarget";
 
   const cardBody = document.createElement("div");
   cardBody.className = "d-flex flex-column justify-content-between card-body";
@@ -169,11 +169,12 @@ export function createListingAuctionCards(data) {
     const btnContainer = document.createElement("div");
     btnContainer.className = "btn-group dropup d-flex justify-content-end";
     const cogIcon = document.createElement("i");
-    cogIcon.className = "bi bi-gear-fill fs-4 dropdown-toggle";
+    cogIcon.className = "bi bi-gear-fill fs-4";
     cogIcon.style.cursor = "pointer";
+    cogIcon.setAttribute("aria-label", "Delete listing");
     cogIcon.setAttribute("data-bs-toggle", "dropdown"); // For Bootstrap 4
-    cogIcon.setAttribute("aria-bs-haspopup", "true");
-    cogIcon.setAttribute("aria-bs-expanded", "false");
+    // cogIcon.setAttribute("aria-bs-haspopup", "true");
+    // cogIcon.setAttribute("aria-bs-expanded", "false");
 
     const dropdownMenu = document.createElement("div");
     dropdownMenu.className = "dropdown-menu dropdown-menu-end";

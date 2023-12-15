@@ -166,7 +166,7 @@ export function createAuctionCards(data) {
 
   const tags = data.tags;
   if (tags.length === 0) {
-    tagLabel.textContent = `Tags: No tags`;
+    tagLabel.textContent = `Tags:`;
   } else {
     tags.forEach((tag) => {
       const tagElement = document.createElement("span");
