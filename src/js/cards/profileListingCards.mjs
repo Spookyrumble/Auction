@@ -168,10 +168,10 @@ export function createListingAuctionCards(data) {
   if (!data.seller) {
     const btnContainer = document.createElement("div");
     btnContainer.className = "btn-group dropup d-flex justify-content-end";
+    btnContainer.setAttribute("aria-label", "Delete listing");
     const cogIcon = document.createElement("i");
     cogIcon.className = "bi bi-gear-fill fs-4 dropdown-toggle";
     cogIcon.style.cursor = "pointer";
-    cogIcon.setAttribute("aria-label", "Edit");
     cogIcon.setAttribute("data-bs-toggle", "dropdown"); // For Bootstrap 4
     cogIcon.setAttribute("aria-bs-haspopup", "true");
     cogIcon.setAttribute("aria-bs-expanded", "false");
