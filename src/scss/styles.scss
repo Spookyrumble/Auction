@@ -1,1 +1,86 @@
+@import "/src/scss/variables/fonts";
+@import "/src/scss/variables/themeColors";
+@import "/src/scss/variables/container";
+@import "/src/scss/variables/spinner";
+@import "/src/scss/variables/modalStyles";
 @import "~bootstrap/scss/bootstrap";
+
+.banner {
+  background-color: $secondary;
+  height: auto;
+  padding: 10px 0px;
+}
+
+.cover {
+  object-fit: cover;
+}
+
+.spacer {
+  margin-top: 14rem;
+}
+
+.active {
+  border-top: 2px solid $primary;
+  border-bottom: 2px solid $primary;
+}
+
+.blur {
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.profileAvatarSmall {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.customHover {
+  background-color: $primary;
+  &:hover {
+    background-color: $secondary;
+    color: white;
+  }
+}
+
+.activeBtn {
+  background-color: $secondary;
+  color: white;
+}
+// .activeBtn:hover {
+//   background-color: $primary;
+//   color: $secondary;
+// }
+
+#backToTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+#backToTopBtn:hover {
+  box-shadow: 0 0 10px $info; /* Adjust the color and spread as needed */
+  animation: jump 0.2s infinite alternate; /* Use the jump animation */
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0); /* Initial position */
+  }
+  100% {
+    transform: translateY(-5px); /* Jump height */
+  }
+}
+
+.badge:hover {
+  background-color: $secondary;
+  color: white;
+}

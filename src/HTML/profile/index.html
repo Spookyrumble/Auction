@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="OnlyPineapples profile page. Keep track of your credits, check your bids, listings and wins."
+    />
+    <title>Profile Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+    <script type="module" src="/src/js/profile.js"></script>
+  </head>
+  <body>
+    <header class="container-fluid m-auto fixed-top bg-info">
+      <div class="row">
+        <div class="col-12">
+          <nav class="navbar navbar-expand-lg">
+            <a id="logoLink" class="navbar-brand text-primary m-2"
+              ><h1>OnlyPineapples</h1></a
+            >
+            <button
+              id="burgerBtn"
+              class="navbar-toggler collapsed text-secondary bg-primary rounded-pill"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#burgerMenu"
+              aria-controls="burgerMenu"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+              class="collapse navbar-collapse justify-content-between bg-info"
+              id="burgerMenu"
+            >
+              <ul class="navbar-nav text-center m-auto">
+                <li class="nav-item m-auto">
+                  <a
+                    id="profileNavLink"
+                    class="nav-link text-white m-4 active"
+                    href="/src/HTML/profile/index.html"
+                    >Profile</a
+                  >
+                </li>
+                <li class="nav-item m-auto">
+                  <a
+                    id="feedNavLink"
+                    class="nav-link text-white m-4"
+                    href="/src/HTML/auction/index.html"
+                    >Listings</a
+                  >
+                </li>
+                <li class="nav-item m-auto">
+                  <a
+                    id="newListingLink"
+                    class="nav-link text-white m-4"
+                    href="#"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight"
+                    >List New Item</a
+                  >
+                </li>
+                <li class="nav-item m-auto">
+                  <a id="signOut" class="nav-link text-white m-4" href="#"
+                    >Sign out</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div class="p-0 w-100 row m-auto bg-secondary">
+          <div class="w-100">
+            <div class="w-100 d-flex flex-wrap justify-content-between banner">
+              <div>
+                <div id="userField" class="d-flex">
+                  <div>
+                    <img
+                      id="avatar"
+                      class="profileAvatarSmall"
+                      src="/src/images/placeholder.png"
+                      alt="User avatar"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div
+                    class="d-flex flex-column flex-nowrap align-items-center ms-2 mt-1"
+                  >
+                    <p
+                      id="loggedInUserName"
+                      class="m-0 text-primary weight-light"
+                    ></p>
+                    <div class="d-flex flex-nowrap">
+                      <small
+                        id="creditsText"
+                        class="m-0 text-primary weight-light"
+                      >
+                        <span id="creditsValue" class="text-primary"></span>
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="my-auto">
+                <form class="form-inline custom-search-form m-auto">
+                  <div class="search-input-container">
+                    <input
+                      type="text"
+                      name="search"
+                      id="searchInput"
+                      placeholder="Search my listings.."
+                      aria-label="Search field"
+                    />
+                    <i class="bi bi-search"></i>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="offcanvas offcanvas-end bgGradient"
+        tabindex="-1"
+        id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel"
+      >
+        <div class="offcanvas-header mt-1">
+          <h3 class="offcanvas-title" id="offcanvasRightLabel">
+            Add new listing
+          </h3>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <form id="newListing">
+            <div class="form-floating mb-3">
+              <input
+                class="form-control border-info"
+                type="text"
+                name="item"
+                id="item"
+                aria-describedby="itemHelp"
+                placeholder="yourname@example.com"
+                required
+              />
+              <label for="item">Item name</label>
+              <small id="itemHelp" class="ms-2 form-text text-muted"
+                >What it is or what it is called</small
+              >
+            </div>
+            <div class="form-floating mb-3">
+              <textarea
+                class="form-control border-info"
+                name="description"
+                id="description"
+                aria-describedby="decribeHelp"
+                placeholder="Leave a description here"
+                required
+              ></textarea>
+              <label for="description">Description</label>
+              <small id="decribeHelp" class="ms-2 form-text text-muted"
+                >A short description of the item.</small
+              >
+            </div>
+            <div class="form-floating mb-3">
+              <div class="input-group gap-1">
+                <input
+                  class="form-control border-info rounded noMute"
+                  type="text"
+                  name="tags"
+                  id="tags"
+                  aria-describedby="tagsHelp"
+                  placeholder="Tags"
+                />
+                <div class="input-group-append">
+                  <span
+                    ><button
+                      id="badgeAddBtn"
+                      class="btn btn-outline-info"
+                      type="button"
+                      aria-label="Add tag button"
+                    >
+                      <i class="bi bi-plus-circle-fill px-3"></i>
+                      <span
+                        id="tagBadge"
+                        class="d-none position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+                      >
+                      </span></button
+                  ></span>
+                </div>
+              </div>
+              <small id="tagsHelp" class="ms-2 form-text text-muted"
+                ><label for="tags"
+                  >Tags. To add more use + button.</label
+                ></small
+              >
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                class="form-control border-info"
+                type="datetime-local"
+                name="date"
+                id="date"
+                aria-describedby="dateHelp"
+                required
+              />
+              <label for="date">Auction end date</label>
+              <small id="dateHelp" class="ms-2 form-text text-muted"
+                >When will this auction end?</small
+              >
+            </div>
+            <div class="form-floating">
+              <div class="input-group gap-1">
+                <input
+                  class="form-control border-info rounded noMute"
+                  type="text"
+                  name="url"
+                  id="itemUrl"
+                  placeholder="Image address"
+                />
+                <div class="input-group-append">
+                  <span
+                    ><button
+                      id="addImgBtn"
+                      class="btn btn-outline-info"
+                      type="button"
+                      aria-label="Add image button"
+                    >
+                      <i class="bi bi-plus-circle-fill px-3"></i>
+                      <span
+                        id="addBadge"
+                        class="d-none position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+                      >
+                      </span></button
+                  ></span>
+                </div>
+              </div>
+              <small class="ms-2 form-text text-muted">
+                <label for="itemUrl"
+                  >Media image address. To add more use + button</label
+                >
+              </small>
+            </div>
+            <div class="d-flex justify-content-center">
+              <button
+                id="submitBtn"
+                class="btn btn-info text-white border-secondary my-3"
+                type="button"
+              >
+                <span
+                  id="previewBtnSpinner"
+                  class="visually-hidden mx-2 spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                Create
+              </button>
+            </div>
+          </form>
+          <div>
+            <div class="mt-5">
+              <h3 class="text-center">Listing preview</h3>
+            </div>
+            <div id="listingPreview" class="card scaleDown">
+              <img
+                class="cardImgSizing p-3"
+                loading="lazy"
+                id="previewImg"
+                src="/src/images/placeholder.png"
+                alt="preview image"
+              />
+              <div class="card-body">
+                <small class="text-muted">Title</small>
+                <h4 id="previewTitle" class="card-title">Title Preview</h4>
+                <small class="text-muted">Description</small>
+                <p id="previewDescription" class="card-text">
+                  Description Preview
+                </p>
+                <div>
+                  <small id="previewCreated"></small>
+                  <div>
+                    <small id="previewEndsAt"> </small>
+                  </div>
+                  <div>
+                    <small>Current Bids: #</small>
+                  </div>
+                  <div>
+                    <small id="tagBadges">Tags:</small>
+                  </div>
+                  <div class="d-flex justify-content-end">
+                    <button class="mt-3 btn btn-info border-secondary" disabled>
+                      Place bid
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="container spacer">
+        <div class="row">
+          <div class="profileImgContainer d-flex justify-content-center">
+            <img
+              id="avatarProfile"
+              class="mainImage"
+              src="/src/images/placeholder.png"
+              alt="avatar placeholder"
+            />
+          </div>
+          <div class="col-12 d-flex justify-content-center">
+            <h2 id="userName" class="text-secondary">Username</h2>
+          </div>
+          <div class="col-12 d-flex justify-content-center gap-5">
+            <div>
+              <p>Credits: <span id="credits">0</span></p>
+            </div>
+            <div>
+              <p>Listings: <span id="listingNum">0</span></p>
+            </div>
+          </div>
+          <div class="col-12-sm d-flex justify-content-center gap-5">
+            <button
+              id="editProfileBtn"
+              class="btn btn-info text-white border-secondary"
+              data-bs-target="#editContainer"
+            >
+              Change Avatar
+            </button>
+          </div>
+        </div>
+        <div id="editContainer" data-bs-toggle="collapse" class="collapse">
+          <form id="editAvatar">
+            <div class="form-floating d-flex flex-column m-auto my-3 col-6">
+              <input
+                id="avatarInput"
+                class="form-control border-info"
+                name="avatar"
+                type="text"
+                aria-label="Avatar image address"
+                placeholder="Image URL"
+                data-bs-toggle="collapse"
+                required
+              />
+              <label class="form-label text-secondary ms-4" for="avatarInput"
+                >Post Avatar Image Address</label
+              >
+            </div>
+            <div class="d-flex justify-content-center">
+              <button
+                id="avatarSubmitBtn"
+                class="col-3 btn btn-primary border-secondary my-1"
+                type="button"
+              >
+                <span
+                  id="avatarBtnSpinner"
+                  class="visually-hidden spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                <span id="avatarBtnText" class="text-secondary"
+                  >Change Avatar</span
+                >
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="row">
+          <div
+            class="btn-group mt-5"
+            role="group"
+            aria-label="page load buttons"
+          >
+            <button
+              id="myBidsBtn"
+              type="button"
+              class="btn btn-white border-secondary customHover"
+            >
+              Bids
+            </button>
+            <button
+              id="myListingsBtn"
+              type="button"
+              class="btn btn-white border-secondary customHover activeBtn"
+            >
+              My Listings
+            </button>
+            <button
+              id="myWinsBtn"
+              type="button"
+              class="btn btn-white border-secondary customHover"
+            >
+              Wins
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        id="pinnedBadgeContainer"
+        class="d-flex justify-content-end my-1"
+      ></div>
+      <section
+        id="cardContainer"
+        class="d-flex col-lx-12 flex-wrap justify-content-center mt-5"
+      ></section>
+      <button
+        id="backToTopBtn"
+        class="btn rounded-pill bg-secondary text-primary"
+        aria-label="Back to top button"
+      >
+        <i class="bi bi-arrow-up"></i>
+      </button>
+    </main>
+    <footer>
+      <p class="d-none text-secondary text-center m-auto">
+        &copy; By HMA - All rights reserved. <br />
+        <small>Powered by Noroff API</small>
+      </p>
+    </footer>
+  </body>
+</html>

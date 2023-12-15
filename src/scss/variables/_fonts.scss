@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto+Flex:opsz,wght@8..144,100;8..144,300;8..144,400;8..144,700&display=swap");
+
+$font-family-base: "Roboto Flex", sans-serif;
+$headers: "Merriweather", serif;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $headers;
+}

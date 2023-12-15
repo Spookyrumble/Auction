@@ -1,0 +1,16 @@
+// $text: #010e18;
+// $background: #dedede;
+// $primary: #055e99;
+// $secondary: #041020;
+// $info: #ce9300;
+
+//New color theme because I felt like I was getting straight copied at this point.
+$text: #010e18;
+$background: #ffefe5;
+$primary: #ffb953;
+$secondary: #391b1b;
+$info: #264323;
+
+.bgGradient {
+  background: linear-gradient(to bottom, white 0%, white 50%, $secondary 100%);
+}
