@@ -1,6 +1,6 @@
 describe("the clearing of stored token from storage", () => {
   it("should allow a valid user to log out and clear the token", () => {
-    cy.visit("https://statuesque-swan-d1d5d8.netlify.app/");
+    cy.visit("https://hma-sp2-onlypineapples.netlify.app/");
     cy.wait(500);
     cy.get("#landingLoginBtn").contains("Login").click();
     cy.wait(500);

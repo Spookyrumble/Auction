@@ -1,6 +1,6 @@
 describe("login entry flow", () => {
   it("should deny empty input submit", () => {
-    cy.visit("https://statuesque-swan-d1d5d8.netlify.app/");
+    cy.visit("https://hma-sp2-onlypineapples.netlify.app/");
     cy.wait(500);
     cy.get("#landingLoginBtn").contains("Login").click();
     cy.wait(500);
@@ -15,7 +15,7 @@ describe("login entry flow", () => {
   });
 
   it("should deny empty password input", () => {
-    cy.visit("https://statuesque-swan-d1d5d8.netlify.app/");
+    cy.visit("https://hma-sp2-onlypineapples.netlify.app/");
     cy.wait(500);
     cy.get("#landingLoginBtn").contains("Login").click();
     cy.wait(500);
@@ -35,7 +35,7 @@ describe("login entry flow", () => {
       "loginRequest",
     );
 
-    cy.visit("https://statuesque-swan-d1d5d8.netlify.app/");
+    cy.visit("https://hma-sp2-onlypineapples.netlify.app/");
     cy.wait(500);
     cy.get("#landingLoginBtn").contains("Login").click();
     cy.wait(500);
@@ -53,7 +53,7 @@ describe("login entry flow", () => {
   });
 
   it("should deny wrong password", () => {
-    cy.visit("https://statuesque-swan-d1d5d8.netlify.app/");
+    cy.visit("https://hma-sp2-onlypineapples.netlify.app/");
     cy.wait(500);
     cy.get("#landingLoginBtn").contains("Login").click();
     cy.wait(500);
@@ -73,7 +73,7 @@ describe("login entry flow", () => {
     cy.intercept("POST", "https://api.noroff.dev/api/v1/auction/auth/login").as(
       "loginRequest",
     );
-    cy.visit("https://statuesque-swan-d1d5d8.netlify.app/");
+    cy.visit("https://hma-sp2-onlypineapples.netlify.app/");
     cy.wait(500);
     cy.get("#landingLoginBtn").contains("Login").click();
     cy.wait(500);
