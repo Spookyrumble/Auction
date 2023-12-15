@@ -70,6 +70,8 @@ export function createAuctionCards(data) {
         thumbnailContainer.append(thumbnail);
         thumbnail.onerror = function () {
           thumbnail.src = placeholderImage;
+          thumbnail.style.width = "50px";
+          thumbnail.style.height = "52px";
           thumbnail.loading = "lazy";
           thumbnail.alt = "Thumbnail Placeholder";
         };
@@ -88,6 +90,8 @@ export function createAuctionCards(data) {
     img.onerror = function () {
       img.src = placeholderImage;
       img.alt = "Image Placeholder";
+      img.style.width = "640px";
+      img.style.height = "320px";
       img.loading = "lazy";
     };
     imgContainer.append(img);
@@ -96,6 +100,8 @@ export function createAuctionCards(data) {
     noImageText.className = "d-block cardImgSizing";
     noImageText.src = placeholderImage;
     noImageText.loading = "lazy";
+    noImageText.style.width = "640px";
+    noImageText.style.height = "320px";
     noImageText.alt = "No Image placeholder";
     imgContainer.append(noImageText);
   }

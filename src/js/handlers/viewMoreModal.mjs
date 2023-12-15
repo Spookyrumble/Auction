@@ -61,6 +61,7 @@ export async function buildViewModal(postID) {
       carouselImg.className = "cardImgSizing d-block w-100";
       carouselImg.src = mediaUrl;
       carouselImg.alt = `Slide ${index + 1}`;
+      carouselImg.loading = "lazy";
 
       carouselItem.append(carouselImg);
       carouselInner.append(carouselItem);
@@ -73,6 +74,7 @@ export async function buildViewModal(postID) {
     placeholderImg.className = "cardImgSizing d-block w-100";
     placeholderImg.src = placeholderImage;
     placeholderImg.alt = "Placeholder Image";
+    placeholderImg.loading = "lazy";
 
     placeholderItem.append(placeholderImg);
     carouselInner.append(placeholderItem);
