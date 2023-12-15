@@ -335,19 +335,10 @@
           <div class="col-12-sm d-flex justify-content-center gap-5">
             <button
               id="editProfileBtn"
-              class="col-3 btn btn-info text-white border-secondary"
+              class="btn btn-info text-white border-secondary"
               data-bs-target="#editContainer"
             >
-              Avatar
-            </button>
-            <button
-              id="newListingBtn"
-              class="col-3 btn btn-info text-white border-secondary"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasRight"
-              aria-controls="offcanvasRight"
-            >
-              New Listing
+              Change Avatar
             </button>
           </div>
         </div>
@@ -371,7 +362,7 @@
             <div class="d-flex justify-content-center">
               <button
                 id="avatarSubmitBtn"
-                class="col-3 btn btn-info text-secondary border-secondary my-1"
+                class="col-3 btn btn-primary border-secondary my-1"
                 type="button"
               >
                 <span
@@ -380,7 +371,9 @@
                   role="status"
                   aria-hidden="true"
                 ></span>
-                <span id="avatarBtnText" class="text-white">Change Avatar</span>
+                <span id="avatarBtnText" class="text-secondary"
+                  >Change Avatar</span
+                >
               </button>
             </div>
           </form>
@@ -432,8 +425,9 @@
       </button>
     </main>
     <footer>
-      <p class="text-secondary m-auto mx-3 mt-4">
-        &copy; By HMA - All rights reserved. Powered by Noroff API
+      <p class="d-none text-secondary text-center m-auto">
+        &copy; By HMA - All rights reserved. <br />
+        <small>Powered by Noroff API</small>
       </p>
     </footer>
   </body>
