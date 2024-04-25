@@ -1,6 +1,6 @@
 # Semester Project 2. OnlyPineapples, an auction house place
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/99c42bd6-3b56-4835-a6dd-4e16ad474fda/deploy-status)](https://app.netlify.com/sites/statuesque-swan-d1d5d8/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/47f1f3be-a42b-4def-b85d-1d964659d0a3/deploy-status)](https://app.netlify.com/sites/hma-sp2-onlypineapples/deploys)
 [![Automated E2E Testing](https://github.com/Spookyrumble/Auction/actions/workflows/e2e.yml/badge.svg)](https://github.com/Spookyrumble/Auction/actions/workflows/e2e.yml)
 
 ## Description
